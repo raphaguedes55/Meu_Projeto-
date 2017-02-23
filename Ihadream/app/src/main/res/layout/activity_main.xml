@@ -7,19 +7,51 @@
     android:fitsSystemWindows="true"
     tools:context="com.powellapps.ihadream.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+  <LinearLayout
+      android:layout_margin="40dp"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
 
-    </android.support.design.widget.AppBarLayout>
+      <ImageView
+          android:id="@+id/foto_google"
+          android:layout_gravity="center"
+          android:layout_width="100dp"
+          android:layout_height="100dp" />
+
+      <TextView
+          android:layout_gravity="center"
+          android:text="TextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/name_google"
+          android:layout_weight="0.37" />
+
+      <TextView
+          android:layout_gravity="center"
+          android:text="TextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/email"
+          android:layout_weight="0.37" />
+
+      <TextView
+          android:layout_gravity="center"
+          android:text="TextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/textView"
+          android:layout_weight="0.19" />
+      <Button
+          style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Subtitle.Inverse"
+          android:onClick="logout"
+          android:text="Button"
+          android:layout_width="276dp"
+          android:layout_height="wrap_content"
+          android:id="@+id/button3"
+          android:layout_weight="0.22" />
+  </LinearLayout>
 
 
 
