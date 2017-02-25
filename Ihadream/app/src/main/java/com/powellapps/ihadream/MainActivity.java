@@ -1,6 +1,7 @@
 package com.powellapps.ihadream;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.facebook.AccessToken;
@@ -28,12 +30,18 @@ import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener {
-    private ImageView foto_email;
+import org.w3c.dom.Text;
+
+import static com.powellapps.ihadream.R.id.textView;
+
+public class MainActivity extends AppCompatActivity {
+    private TextView name;
     private TextView email;
-    private TextView nome ;
-    private GoogleApiClient googleApiClient;
+    private ProgressBar progressBar;
+
 
 
     @Override
@@ -41,22 +49,20 @@ public class MainActivity extends FragmentActivity implements GoogleApiClient.On
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
-        foto_email= (ImageView)findViewById(R.id.foto_google);
-        email=(TextView)findViewById(R.id.email);
-        nome =(TextView)findViewById(R.id.name_google);
-        GoogleSignInOptions gso= new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        googleApiClient =new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API,gso)
-                .build();
+        name = (TextView) findViewById(R.id.name_google);
+        email= (TextView) findViewById(R.id.email);
 
 
-        if (AccessToken.getCurrentAccessToken() == null) {
-            goLoginScreen();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user !=null){
+            String nome=user.getDisplayName();
+            String endereço= user.getEmail();
+            Uri photo= user.getPhotoUrl();
+            name.setText(nome);
+            email.setText(endereço);
+
+
         }
-
 
     }
 
@@ -66,40 +72,11 @@ public class MainActivity extends FragmentActivity implements GoogleApiClient.On
         startActivity(intent);
     }
     public void logout (View view){
+        FirebaseAuth.getInstance().signOut();
         LoginManager.getInstance().logOut();
         goLoginScreen();
-    }
-    @Override
-    protected void onStart() {
-        super.onStart();
-        OptionalPendingResult<GoogleSignInResult> opr =Auth.GoogleSignInApi.silentSignIn(googleApiClient);
-        if (opr.isDone()){
-            GoogleSignInResult result= opr.get();
-            handleSignInResult(result);
-
-        }else {
-            opr.setResultCallback(new ResultCallback<GoogleSignInResult>() {
-                @Override
-                public void onResult(@NonNull GoogleSignInResult googleSignInResult) {
-                    handleSignInResult(googleSignInResult);
-                }
-            });
-        }
-    }
-
-    private void handleSignInResult(GoogleSignInResult result) {
-        if(result.isSuccess()){
-            GoogleSignInAccount account =result.getSignInAccount();
-            nome.setText(account.getDisplayName());
-            email.setText(account.getEmail());
-        }
-        else
-            goLoginScreen();
-    }
 
 
-    @Override
-    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-    }
-}
+
+}}

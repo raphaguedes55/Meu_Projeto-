@@ -14,6 +14,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent">
 
+
       <ImageView
           android:id="@+id/foto_google"
           android:layout_gravity="center"
@@ -43,14 +44,17 @@
           android:layout_height="wrap_content"
           android:id="@+id/textView"
           android:layout_weight="0.19" />
-      <Button
-          style="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Subtitle.Inverse"
+      <com.facebook.login.widget.LoginButton
+          android:padding="202dp"
+          android:id="@+id/login_button"
           android:onClick="logout"
-          android:text="Button"
-          android:layout_width="276dp"
+          android:layout_width="227dp"
           android:layout_height="wrap_content"
-          android:id="@+id/button3"
-          android:layout_weight="0.22" />
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="30dp"
+          android:layout_marginBottom="30dp"
+          android:text="Login Facebook"
+          android:layout_weight="0.43" />
   </LinearLayout>
 
 
