@@ -45,7 +45,7 @@ public class RegisterEmailActivity extends AppCompatActivity implements View.OnC
         //caso usuario não esteja logado ainda
         if (firebaseAuth.getCurrentUser() != null ){
             finish();
-            startActivity(new Intent(getApplicationContext(), InicioActivity.class));
+            startActivity(new Intent(getApplicationContext(), DesejosActivity.class));
         }
 
 
