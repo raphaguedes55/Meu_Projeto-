@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <AutoCompleteTextView
+                <EditText
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <AutoCompleteTextView
+                <EditText
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
 
             <Button
                 android:textSize="16dp"
-                android:id="@+id/email_sign_in_button"
+                android:id="@+id/button_registrar"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,6 +88,16 @@
                 android:textAllCaps="false"
                 android:text="Inscreva-se"
                 android:textStyle="bold" />
+
+            <TextView
+                android:textColor="@color/colorAccent"
+                android:text="já é registrado? Clique aqui para entrar"
+                android:id="@+id/textViewSignin"
+                android:textAlignment="center"
+                android:layout_margin="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
 
         </LinearLayout>
     </ScrollView>
