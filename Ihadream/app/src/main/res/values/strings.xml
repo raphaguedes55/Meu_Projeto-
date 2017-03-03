@@ -23,4 +23,6 @@
     <string name="prompt_name">Nome</string>
     <string name="title_activity_desejos">DesejosActivity</string>
     <string name="error_registro">Erro!</string>
+    <string name="msg_progress">Aguarde...</string>
+    <string name="sair">Sair</string>
 </resources>

@@ -12,6 +12,9 @@ import android.widget.Button;
  */
 
 public class InicioActivity extends AppCompatActivity {
+
+
+
     private Button btnEmail;
 
     @Override

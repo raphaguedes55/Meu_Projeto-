@@ -17,8 +17,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import static android.R.string.cancel;
-
 public class RegisterEmailActivity extends AppCompatActivity implements View.OnClickListener {
 
     private FirebaseAuth firebaseAuth;
@@ -52,9 +50,9 @@ public class RegisterEmailActivity extends AppCompatActivity implements View.OnC
         //UI
         mEmail = (EditText)findViewById(R.id.email);
         mNome = (EditText)findViewById(R.id.name);
-        mSenha = (EditText)findViewById(R.id.password);
+        mSenha = (EditText)findViewById(R.id.password_email);
         buttonRegistrar =(Button)findViewById(R.id.button_registrar);
-        textViewAcessar = (TextView)findViewById(R.id.textViewSignin);
+        textViewAcessar = (TextView)findViewById(R.id.textViewAcessar);
         buttonRegistrar.setOnClickListener(this);
         textViewAcessar.setOnClickListener(this);
         mProgressDialog = new ProgressDialog(this);
@@ -122,7 +120,8 @@ public class RegisterEmailActivity extends AppCompatActivity implements View.OnC
             focusView.requestFocus();
         } else {
 
-            Toast.makeText(getApplicationContext(),"OK ok ",Toast.LENGTH_LONG).show();
+            mProgressDialog.setMessage(getString(R.string.msg_progress));
+            mProgressDialog.show();
             //criando um novo usuario
 
             firebaseAuth.createUserWithEmailAndPassword(email, senha)

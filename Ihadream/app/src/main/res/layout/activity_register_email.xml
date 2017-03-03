@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/password_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
@@ -92,7 +92,7 @@
             <TextView
                 android:textColor="@color/colorAccent"
                 android:text="já é registrado? Clique aqui para entrar"
-                android:id="@+id/textViewSignin"
+                android:id="@+id/textViewAcessar"
                 android:textAlignment="center"
                 android:layout_margin="15dp"
                 android:layout_width="match_parent"
