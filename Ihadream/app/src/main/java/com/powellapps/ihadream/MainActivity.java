@@ -41,12 +41,18 @@ public class MainActivity extends AppCompatActivity {
     private TextView name;
     private TextView email;
     private ProgressBar progressBar;
+    private CallbackManager callBackManager;
+    private LoginButton loginButton;
+    private FirebaseAuth firebaseAuth;
+    private FirebaseAuth.AuthStateListener firebaseAuthListerne;
+
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
         name = (TextView) findViewById(R.id.name_google);
