@@ -2,11 +2,15 @@ package com.powellapps.ihadream;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.support.annotation.NonNull;
+=======
+>>>>>>> 12f129f6e90c2007beba58da386ab7d967951752
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+<<<<<<< HEAD
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -24,6 +28,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+=======
+>>>>>>> 12f129f6e90c2007beba58da386ab7d967951752
 
 /**
  * Created by matheus on 28/02/17.
@@ -33,6 +39,7 @@ public class InicioActivity extends AppCompatActivity {
 
 
 
+<<<<<<< HEAD
     private CallbackManager callBackManager;
     private LoginButton loginButton;
     private FirebaseAuth firebaseAuth;
@@ -86,6 +93,16 @@ public class InicioActivity extends AppCompatActivity {
                 }
             }
         };
+=======
+    private Button btnEmail;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_inicio);
+
+        //UI
+>>>>>>> 12f129f6e90c2007beba58da386ab7d967951752
         btnEmail = (Button) findViewById(R.id.button_email);
 
         btnEmail.setOnClickListener(new View.OnClickListener() {
@@ -96,6 +113,7 @@ public class InicioActivity extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
     }
 
     private void handleFacebookAcessToken(AccessToken accessToken) {
@@ -140,6 +158,10 @@ public class InicioActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         firebaseAuth.removeAuthStateListener(firebaseAuthListerne);
+=======
+
+
+>>>>>>> 12f129f6e90c2007beba58da386ab7d967951752
 
     }
 }

@@ -1,6 +1,9 @@
 package com.powellapps.ihadream;
 
+<<<<<<< HEAD
 import android.app.Activity;
+=======
+>>>>>>> 12f129f6e90c2007beba58da386ab7d967951752
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -13,7 +16,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import com.facebook.login.LoginManager;
+=======
+>>>>>>> 12f129f6e90c2007beba58da386ab7d967951752
 import com.google.firebase.auth.FirebaseAuth;
 
 public class DesejosActivity extends AppCompatActivity {
@@ -41,7 +47,13 @@ public class DesejosActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "metodo a ser impementado", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.actio_sair:
+<<<<<<< HEAD
               logout();
+=======
+                finish();
+                firebaseAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), InicioActivity.class));
+>>>>>>> 12f129f6e90c2007beba58da386ab7d967951752
 
 
                 break;
@@ -72,6 +84,7 @@ public class DesejosActivity extends AppCompatActivity {
 
 
     }
+<<<<<<< HEAD
     private void goLoginScreen() {
         Intent intent = new Intent(this,InicioActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -84,3 +97,7 @@ public class DesejosActivity extends AppCompatActivity {
 
 }
 }
+=======
+
+}
+>>>>>>> 12f129f6e90c2007beba58da386ab7d967951752
