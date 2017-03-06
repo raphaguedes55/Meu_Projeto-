@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.powellapps.ihadream.MainActivity">
+
+
+  <LinearLayout
+      android:layout_margin="40dp"
+      android:orientation="vertical"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+
+      <ImageView
+          android:id="@+id/foto_google"
+          android:layout_gravity="center"
+          android:layout_width="100dp"
+          android:layout_height="100dp" />
+
+      <TextView
+          android:layout_gravity="center"
+          android:text="TextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/name_google"
+          android:layout_weight="0.37" />
+
+      <TextView
+          android:layout_gravity="center"
+          android:text="TextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/email"
+          android:layout_weight="0.37" />
+
+      <TextView
+          android:layout_gravity="center"
+          android:text="TextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:id="@+id/textView"
+          android:layout_weight="0.19" />
+      <com.facebook.login.widget.LoginButton
+          android:padding="202dp"
+          android:id="@+id/login_button"
+          android:onClick="logout"
+          android:layout_width="227dp"
+          android:layout_height="wrap_content"
+          android:layout_gravity="center_horizontal"
+          android:layout_marginTop="30dp"
+          android:layout_marginBottom="30dp"
+          android:text="Login Facebook"
+          android:layout_weight="0.43" />
+  </LinearLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

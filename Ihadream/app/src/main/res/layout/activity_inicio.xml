@@ -82,12 +82,8 @@
                 android:textColor="#ffffff" />
 
             <com.facebook.login.widget.LoginButton
-<<<<<<< HEAD
                 android:padding="202dp"
                 android:id="@+id/login_button"
-=======
-                android:id="@+id/loginButton"
->>>>>>> 12f129f6e90c2007beba58da386ab7d967951752
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -100,7 +96,6 @@
                 android:paddingBottom="10dp"
                 android:paddingLeft="8dp"
                 android:paddingTop="10dp" />
-<<<<<<< HEAD
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:progressBarStyleLarge"
@@ -110,8 +105,6 @@
         android:layout_centerVertical="true"
         android:indeterminate="true"
         android:visibility="gone"/>
-=======
->>>>>>> 12f129f6e90c2007beba58da386ab7d967951752
 
         </RelativeLayout>
 

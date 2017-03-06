@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "201530369629",
+    "firebase_url": "https://ihadream-90f17.firebaseio.com",
+    "project_id": "ihadream-90f17",
+    "storage_bucket": "ihadream-90f17.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201530369629:android:19a74cdbad8d53d2",
+        "android_client_info": {
+          "package_name": "com.powellapps.ihadream"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201530369629-120266m2f1nr316bql3ggekf4e4jg00r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.powellapps.ihadream",
+            "certificate_hash": "0B14116C39BF1E22561A18FE06332F8A41C16A20"
+          }
+        },
+        {
+          "client_id": "201530369629-rjlovn42chcnvfg9h5e2q92vu0u2vq99.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdWGIrRm1YRR8C1K_DBYTP_PMs0hA6vDk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201530369629-rjlovn42chcnvfg9h5e2q92vu0u2vq99.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

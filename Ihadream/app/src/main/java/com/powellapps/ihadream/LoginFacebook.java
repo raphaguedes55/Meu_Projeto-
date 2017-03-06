@@ -1,12 +1,14 @@
 package com.powellapps.ihadream;
 
+import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -17,6 +19,13 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -26,29 +35,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 /**
- * Created by matheus on 28/02/17.
+ * Created by raphael on 20/02/17.
  */
 
-public class InicioActivity extends AppCompatActivity {
-
-
-
+public class LoginFacebook extends AppCompatActivity  {
     private CallbackManager callBackManager;
     private LoginButton loginButton;
     private FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener firebaseAuthListerne;
     private ProgressBar progressBar;
-    private Button btnEmail;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inicio);
-        progressBar =(ProgressBar) findViewById(R.id.progress_bar);
-
-
-
-
+        setContentView(R.layout.login_activity);
         FacebookSdk.sdkInitialize(getApplicationContext());
         callBackManager = CallbackManager.Factory.create();
         progressBar=(ProgressBar) findViewById(R.id.progress_bar);
@@ -57,7 +56,7 @@ public class InicioActivity extends AppCompatActivity {
         loginButton.registerCallback(callBackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                handleFacebookAcessToken(loginResult.getAccessToken());
+               handleFacebookAcessToken(loginResult.getAccessToken());
 
             }
 
@@ -86,38 +85,21 @@ public class InicioActivity extends AppCompatActivity {
                 }
             }
         };
-        btnEmail = (Button) findViewById(R.id.button_email);
-
-        btnEmail.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                startActivity( new Intent(getApplicationContext(), RegisterEmailActivity.class));
-            }
-        });
-
     }
 
     private void handleFacebookAcessToken(AccessToken accessToken) {
-        progressBar.setVisibility(View.VISIBLE);
-        loginButton.setVisibility(View.GONE);
-
         AuthCredential credencial= FacebookAuthProvider.getCredential(accessToken.getToken());
         firebaseAuth.signInWithCredential(credencial).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (!task.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), R.string.cancel_login, Toast.LENGTH_LONG).show();
-                }
-                progressBar.setVisibility(View.VISIBLE);
-                loginButton.setVisibility(View.GONE);
+                Toast.makeText(getApplicationContext(),R.string.cancel_login, Toast.LENGTH_LONG).show();
 
             }
         });
     }
 
     private void transicaologin() {
-        Intent intent = new Intent(this,DesejosActivity.class);
+        Intent intent = new Intent(this,MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
     }
