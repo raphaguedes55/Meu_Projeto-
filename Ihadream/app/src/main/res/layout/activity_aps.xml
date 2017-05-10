@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:background="#443147"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="104dp"
+            app:srcCompat="@drawable/minha_conta"
+            android:id="@+id/imageButton" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="99dp"
+            app:srcCompat="@drawable/me_ajuda"
+            android:id="@+id/imageButton2" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="118dp"
+            app:srcCompat="@drawable/indica"
+            android:id="@+id/imageButton3" />
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="118dp"
+            app:srcCompat="@drawable/bloqueio"
+            android:id="@+id/imageButton4"
+            android:layout_weight="0.19" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="right"
+        android:orientation="vertical"
+        android:background="#432C40"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1">
+
+        <TextView
+            android:paddingTop="40dp"
+            android:textColor="@color/white"
+            android:text="PROXIMAS FATURAS"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/proximasfaturas" />
+
+
+         <TextView
+             android:textStyle="bold"
+             android:textColor="#FFC107"
+             android:text="R$ 500,00"
+        android:layout_width="113dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/valorfatura" />
+        <TextView
+            android:paddingTop="40dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:text="FATURA ATUAL"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/contaatual" />
+
+
+        <TextView
+            android:textStyle="bold"
+            android:textColor="#4DD0E1"
+            android:text="R$ 200,000"
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+             />
+        <TextView
+            android:paddingTop="40dp"
+            android:textColor="@color/white"
+            android:text="FATURA FECHADA"
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            />
+
+
+        <TextView
+            android:textStyle="bold"
+            android:textColor="#D50000"
+            android:text="R$ 1500,00"
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:paddingTop="120dp"
+            android:textColor="@color/white"
+            android:text="LIMITE DISPONIVEL "
+            android:layout_width="169dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/conta" />
+
+
+        <TextView
+
+            android:textStyle="bold"
+            android:textColor="#00C853"
+            android:text="R$ 500,00"
+            android:layout_width="113dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView4" />
+    </LinearLayout>
+</LinearLayout>
+
+
+

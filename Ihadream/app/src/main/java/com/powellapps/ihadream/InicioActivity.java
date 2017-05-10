@@ -52,6 +52,7 @@ public class InicioActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         callBackManager = CallbackManager.Factory.create();
         progressBar=(ProgressBar) findViewById(R.id.progress_bar);
+
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("email", "public_profile");
         loginButton.registerCallback(callBackManager, new FacebookCallback<LoginResult>() {

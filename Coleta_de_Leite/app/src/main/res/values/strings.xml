@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Coleta_de_Leite</string>
+    <string name="problemas">Esta Com Problema ?</string>
+    <string name="senha_invalida">senha invalida!</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="rota_vazia">Preencha o Nome da Rota</string>
+    <string name="action_settings">Configuraçoes</string>
+    <string name="sair">Desconectar</string>
+
+    <array name="spinerRota">
+        <item>Rota Normal</item>
+        <item>Rota Extra</item>
+        <item>Rota Socorro</item>
+
+    </array>
+    <array name="spinerColeta">
+        <item>Qualida Boa </item>
+        <item>Qualidade Ruim </item>
+        <item>Qualidade Regular </item>
+    </array>
+    <array name="spinerAlizarol">
+        <item>74°</item>
+        <item>76°</item>
+        <item>78°</item>
+        <item>80°</item>
+        <item>Outro Tipo</item>
+        <item>Sem Alizarol</item>
+    </array>
+    <string name="title_activity_coleta">ColetaActivity</string>
+</resources>

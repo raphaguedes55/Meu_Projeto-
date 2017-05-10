@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:background="@drawable/fundo" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_margin="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+        <TextView
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textColor="#443147"
+            android:text="Faça Parte Dessa Nova Geraçao "
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:id="@+id/textView2" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:text="Nome"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText7" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:text="cpf"/>
+
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+
+            android:ems="10"
+            android:id="@+id/editText8" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Email"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:textSize="10dp"
+                android:textAlignment="center"
+                android:text="Não se preocupe , assim como voce, odiamos spam"
+                android:layout_width="262dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView3"
+                android:layout_weight="0.15" />
+
+            <TextView
+                android:onClick=""
+                android:textSize="10dp"
+                android:textColor="#443147"
+                android:textAlignment="center"
+                android:text="Como funciona a Lista de espera "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView5" />
+
+            <Button
+                android:textColor="#443147"
+
+                android:background="@color/white"
+                android:text="Entrar na Lista de Espera"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button2" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
