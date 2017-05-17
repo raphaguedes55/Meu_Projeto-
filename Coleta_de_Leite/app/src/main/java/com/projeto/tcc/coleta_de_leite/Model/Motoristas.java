@@ -14,4 +14,6 @@ public class Motoristas {
 
 
     }
+    public String getId_motorista() {return id_motorista;}
+
 }

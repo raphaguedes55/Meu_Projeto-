@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         auth = FirebaseAuth.getInstance();
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
         databaseMotorista= FirebaseDatabase.getInstance().getReference("motoristas");
 
         verificaAuth();
@@ -112,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
             if (user!=null){
                 String token= user.getUid();
                 Motoristas motoristas= new Motoristas(token);
-                databaseMotorista.child(token).setValue(motoristas);
+               databaseMotorista.child(token).setValue(motoristas);
                 Intent transicaoadc = new Intent(LoginActivity.this,RotaActivity.class);
                 transicaoadc.putExtra(motoristaId,token);
                 startActivity(transicaoadc);
@@ -125,6 +126,5 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-        }
-
+}
 

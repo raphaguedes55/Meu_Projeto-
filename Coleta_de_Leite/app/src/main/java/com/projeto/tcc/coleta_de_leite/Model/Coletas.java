@@ -1,10 +1,12 @@
 package com.projeto.tcc.coleta_de_leite.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by raphael on 30/03/17.
  */
 
-public class Coletas {
+public class Coletas implements Serializable{
     private String horaColeta;
     private String idColeta;
     private String nomeProdutor;

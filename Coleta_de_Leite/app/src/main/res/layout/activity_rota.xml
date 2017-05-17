@@ -4,19 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context="com.projeto.tcc.coleta_de_leite.Classes.ColetaActivity">
+    tools:context="com.projeto.tcc.coleta_de_leite.Classes.RotaActivity">
     <LinearLayout
+        android:background="@color/background"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_rota"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -24,14 +26,13 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <ListView
-        android:id="@+id/list_coleta"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        <ListView
+            android:id="@+id/list_rota"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"></ListView>
 
-    <include layout="@layout/content_coleta" />
+
     </LinearLayout>
-
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
@@ -39,5 +40,4 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
-
 </android.support.design.widget.CoordinatorLayout>

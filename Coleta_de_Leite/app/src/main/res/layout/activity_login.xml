@@ -25,7 +25,7 @@
 
         <ImageView
             android:layout_gravity="center"
-            android:src="@drawable/login"
+            android:src="@drawable/coletacadastro"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_weight="0.09" />

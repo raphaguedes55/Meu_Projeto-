@@ -1,7 +1,6 @@
 package com.projeto.tcc.coleta_de_leite.Adapter;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.projeto.tcc.coleta_de_leite.Model.Coletas;
-import com.projeto.tcc.coleta_de_leite.Model.Rota;
 import com.projeto.tcc.coleta_de_leite.R;
 
 import java.util.List;
-
-import static android.R.attr.resource;
 
 /**
  * Created by raphael on 31/03/17.
@@ -27,7 +23,7 @@ public class ColetaAdapter  extends ArrayAdapter {
     List<Coletas> coletas;
 
     public ColetaAdapter(Activity context,List<Coletas> coletas ) {
-        super(context, R.layout.coleta_layout,coletas);
+        super(context, R.layout.layout_coleta,coletas);
         this.context=context;
         this.coletas=coletas;
 
@@ -39,7 +35,7 @@ public class ColetaAdapter  extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
-        View listViewItem= inflater.inflate(R.layout.coleta_layout,null,true);
+        View listViewItem= inflater.inflate(R.layout.layout_coleta,null,true);
         mText_produtor = (TextView) listViewItem.findViewById(R.id.text_produtor);
         mText_litros = (TextView) listViewItem.findViewById(R.id.text_litros);
         Coletas coleta1 =coletas.get(position);
