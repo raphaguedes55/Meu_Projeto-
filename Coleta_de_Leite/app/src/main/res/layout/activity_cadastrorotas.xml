@@ -8,70 +8,55 @@
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:weightSum="1">
 
-    <android.support.v7.widget.CardView
-        card_view:cardElevation="20dp"
-        android:layout_margin="25dp"
-        android:id="@+id/card_view"
-        android:layout_gravity="center"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        card_view:cardCornerRadius="4dp">
+        android:layout_margin="15dp"
+        android:background="@color/cardview_light_background"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:weightSum="1">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+
+            android:id="@+id/titulo"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:orientation="vertical"
-            android:weightSum="1">
-            <TextView
-
-                android:id="@+id/titulo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:text="Nova Coleta "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:text="Nova Coleta "
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
 
-            <ImageView
-                android:layout_gravity="center"
-                android:background="@drawable/rotacadastro"
-                android:layout_width="80dp"
-                android:layout_height="80dp" />
+        <ImageView
+            android:layout_width="111dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rotacadastro"
+            android:layout_weight="0.37" />
 
-            <TextView
-                android:layout_marginTop="40dp"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/titulo"
-                android:layout_weight="0.18"
-                android:text="Nome Rota: "
-                android:textSize="20dp"
-             />
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/edit_Rota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textAutoComplete" />
+                android:hint="@string/nomeRota"
+                android:inputType="textAutoComplete"
+                android:textSize="@dimen/txt_15sp" />
+        </android.support.design.widget.TextInputLayout>
 
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/titulo"
-                android:layout_weight="0.18"
 
-                android:text="Capacidade Do Caminhao"
-
-                android:textSize="20dp"
-           />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
             <EditText
@@ -79,48 +64,61 @@
                 android:id="@+id/edit_capacidade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="Capacidade Do Caminhão"
                 android:inputType="number" />
-            <TextView
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/titulo"
-                android:layout_weight="0.18"
-                android:text="Tipo de Rota"
 
-                android:textSize="20dp"
-           />
+        </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titulo"
+            android:layout_weight="0.05"
+            android:text="Tipo de Rota"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+
+            android:textSize="20dp" />
 
 
-            <Spinner
-                android:spinnerMode="dropdown"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:id="@+id/spinnerRota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/spinerRota"
-                android:layout_weight="2.53"></Spinner>
+        <Spinner
+            android:id="@+id/spinnerRota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.09"
+            android:entries="@array/spinerRota"
+            android:spinnerMode="dropdown"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"></Spinner>
 
-            <Button
-                android:id="@+id/saveRota"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:text="Iniciar Rota " />
+        <Button
+            android:id="@+id/saveRota"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/background"
+            android:text="Iniciar Rota " />
 
-            <TextClock
-                android:id="@+id/textClockRota"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.42"
-                android:format24Hour="dd/MM/yyyy"
-                android:textSize="0dp" />
+        <TextView
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:textSize="@dimen/txt_15sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Data da Rota" />
 
-        </LinearLayout>
+        <TextClock
+            android:gravity="center"
+            android:id="@+id/textClockRota"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    </android.support.v7.widget.CardView>
+            android:format24Hour="dd/MM/yyyy"
+            android:textSize="@dimen/txt_size" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

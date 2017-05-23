@@ -2,6 +2,7 @@ package com.projeto.tcc.coleta_de_leite.Adapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
@@ -35,6 +36,7 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
     private List<Rota> rotaList;
 
     public static final String ROTA_ID="com.projeto.tcc.coleta_de_leite.rotaid";
+   public String aux;
 
     public RotaAdapter(Activity context,List<Rota>rotaList){
         super(context, R.layout.layout_rota,rotaList);
@@ -62,6 +64,9 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
                 rota.getRotaId();
                 Intent intent = new Intent(context,ColetaActivity.class);
                 intent.putExtra(ROTA_ID,rota.getRotaId());
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("capacidade",rota.getCapacidade());
+                intent.putExtras(bundle);
                 context.startActivity(intent);
 
             }
@@ -101,15 +106,17 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
                 String tipo = spinnerTipoRota.getSelectedItem().toString();
 
 
-                    updateArtist(idRota, name,carga,tipo,hora);
+                updateRota(idRota, name,carga,tipo,hora);
                 b.dismiss();
+            atualiza(rotaList);
 
             }
+
+
         });
         buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RotaDao rotaDao=new RotaDao();
                 deleteRota(idRota);
                 b.dismiss();
                 atualiza(rotaList);
@@ -117,6 +124,10 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
             }
         });
     }
+
+
+
+
     private boolean deleteRota(String id) {
         //getting the specified artist reference
         DatabaseReference dR =  FirebaseDatabase.getInstance().getReference("rotas").child(id);
@@ -128,15 +139,14 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
 
 
         databaseReference.removeValue();
-        Toast.makeText(context.getApplicationContext(), "Artist Deleted "+id, Toast.LENGTH_LONG).show();
+
 
         return true;
     }
-    private boolean updateArtist(String id, String name, String genre,String TipoRota, String Data) {
+    private boolean updateRota(String id, String name, String genre,String TipoRota, String Data) {
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("rotas").child(id);
         Rota rota = new Rota(id,name, genre,TipoRota,Data);
         dR.setValue(rota);
-        Toast.makeText(context.getApplicationContext(), "Artist Updated", Toast.LENGTH_LONG).show();
         return true;
 
         }

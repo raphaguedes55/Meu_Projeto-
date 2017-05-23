@@ -35,10 +35,14 @@ public class ColetaAdapter  extends ArrayAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
+
         View listViewItem= inflater.inflate(R.layout.layout_coleta,null,true);
         mText_produtor = (TextView) listViewItem.findViewById(R.id.text_produtor);
         mText_litros = (TextView) listViewItem.findViewById(R.id.text_litros);
+        mText_data=(TextView)listViewItem.findViewById(R.id.data_text);
         Coletas coleta1 =coletas.get(position);
+        coleta1.getLitrosColeta();
+        mText_data.setText(coleta1.getHoraColeta());
         mText_produtor.setText(coleta1.getNomeProdutor());
         mText_litros.setText(coleta1.getLitrosColeta());
 

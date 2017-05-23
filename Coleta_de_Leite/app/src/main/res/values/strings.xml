@@ -13,19 +13,36 @@
         <item>Rota Socorro</item>
 
     </array>
-    <array name="spinerColeta">
-        <item>Qualida Boa</item>
-        <item>Qualidade Ruim</item>
-        <item>Qualidade Regular</item>
+    <array name="spinerTemperatura">
+        <item>1°C</item>
+        <item>2°C</item>
+        <item>3°C</item>
+        <item>4°C</item>
+        <item>5°C</item>
+        <item>6°C</item>
+        <item>7°C</item>
+        <item>8°C</item>
+        <item>8°C</item>
+        <item>10°C</item>
+        <item>11°C</item>
+        <item>12°C</item>
+        <item>13°C</item>
+        <item>14°C</item>
+        <item>15°C</item>
+        <item>16°C</item>
+        <item>17°C</item>
+        <item>18°C</item>
+        <item>Maior que 18°</item>
+        <item>Sem Energia</item>
     </array>
     <array name="spinerAlizarol">
-        <item>74°</item>
-        <item>76°</item>
-        <item>78°</item>
-        <item>80°</item>
-        <item>Outro Tipo</item>
-        <item>Sem Alizarol</item>
+       <item>Aprovado</item>
+        <item>"Não Aprovado"</item>
     </array>
+     <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
     <string name="title_activity_coleta">ColetaActivity</string>
     <string name="title_activity_main2">Main2Activity</string>
+    <string name="nomeRota">Rota :</string>
 </resources>

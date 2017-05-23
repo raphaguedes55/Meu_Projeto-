@@ -34,38 +34,60 @@ public class DadosColetaActivity extends AppCompatActivity {
     TextView produtor;
     TextView matricula;
     TextView alizarol;
-    TextView qualidade;
+    TextView temperatura;
     TextView data;
     TextView litros;
     String aux;
     List<Coletas> coletasList;
+    Button updateDelete;
     DatabaseReference databaseColetas;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dadoscoleta);
         listadeid();
+        metodoButton();
         Intent intent =getIntent();
         coletasList= new ArrayList<>();
         aux=intent.getStringExtra(ColetaActivity.ROTA_ID);
-        Coletas coletas = (Coletas) getIntent().getSerializableExtra("coleta");
-        Toast.makeText(getApplicationContext(), " Coleta " + coletas.getNomeProdutor(), Toast.LENGTH_LONG).show();
+         Coletas coletas = (Coletas) getIntent().getSerializableExtra("coleta");
+
+
         Log.v("","Id Da Coleta foi "+aux);
+        alizarol.setText(coletas.getAlizarol());
         produtor.setText(coletas.getNomeProdutor());
         matricula.setText(coletas.getMatProdutor());
-        qualidade.setText(coletas.getQualidadeLeite());
+        temperatura.setText(coletas.getTemperatura());
         litros.setText(coletas.getLitrosColeta());
         data.setText(coletas.getHoraColeta());
+        updateDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Coletas coletas = (Coletas) getIntent().getSerializableExtra("coleta");
+                Intent intent= new Intent(getApplicationContext(),UpdateDeleteColetaActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("dados",coletas);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
 
 
 
 
     }
+
+    protected void metodoButton() {
+
+    }
+
     protected void listadeid(){
+        updateDelete=(Button)findViewById(R.id.button_updatedelete);
+        alizarol=(TextView)findViewById(R.id.exib_alizarol);
         produtor=(TextView)findViewById(R.id.exib_prod);
         matricula=(TextView)findViewById(R.id.exib_mat);
-        qualidade=(TextView)findViewById(R.id.exib_qualidade);
+        temperatura=(TextView)findViewById(R.id.exib_temperatura);
         litros=(TextView)findViewById(R.id.exib_Litros);
         data=(TextView)findViewById(R.id.exib_horario);
     }

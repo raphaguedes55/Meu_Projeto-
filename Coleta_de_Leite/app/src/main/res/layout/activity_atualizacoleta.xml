@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
-                android:text="Nova Coleta "
+                android:text="Atualizar Registro"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
@@ -42,48 +42,48 @@
                 android:layout_width="80dp"
                 android:layout_height="80dp" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:textSize="@dimen/txt_size"
-                android:hint="MATRICULA"
-                android:id="@id/edit_mat"
-                android:layout_width="match_parent"
-                android:layout_height="58dp" />
-
-        </android.support.design.widget.TextInputLayout>
-
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <EditText
+                    android:textSize="@dimen/txt_size"
+                    android:hint="MATRICULA"
+                    android:id="@+id/edit_update_matricula"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp" />
 
-            <EditText
-                android:textSize="@dimen/txt_size"
-                android:hint="PRODUTOR"
-                android:inputType="text"
-                android:id="@+id/edit_prod"
-                android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:layout_below="@+id/dados_prod"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-            <EditText
-                android:textSize="@dimen/txt_size"
-                android:hint="LITROS COLETADOS"
-                android:id="@+id/edit_litros"
+
+                <EditText
+                    android:textSize="@dimen/txt_size"
+                    android:hint="PRODUTOR"
+                    android:inputType="text"
+                    android:id="@+id/edit_update_prod"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_below="@+id/dados_prod"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="58dp"
-                android:layout_below="@+id/text_litros"
-                android:layout_gravity="right|center"
-                android:inputType="number" />
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:textSize="@dimen/txt_size"
+                    android:hint="LITROS COLETADOS"
+                    android:id="@+id/edit_update_litros"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_below="@+id/text_litros"
+                    android:layout_gravity="right|center"
+                    android:inputType="number" />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -96,7 +96,7 @@
                 android:textSize="20dp" />
 
             <Spinner
-                android:id="@+id/spinnerTemperatura"
+                android:id="@+id/spinner_update_Temperatura"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.22"
@@ -112,23 +112,30 @@
                 android:textSize="20dp" />
 
             <Spinner
-                android:id="@+id/spinnerAlizarol"
+                android:id="@+id/spinner_update_Alizarol"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.22"
                 android:entries="@array/spinerAlizarol"></Spinner>
 
-
-
             <Button
 
-                android:id="@+id/save"
+                android:id="@+id/update"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="@color/colorPrimaryDark"
-                android:text="SALVAR"
+                android:text="ATUALIZAR"
                 android:textColor="#ffffff" />
+            <Button
+                android:layout_marginTop="5dp"
+                android:background="@color/blood_primary"
+                android:textColor="#ffffff"
+                android:id="@+id/delete"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Deletar" />
 
             <TextClock
                 android:id="@+id/textClock"
@@ -137,6 +144,7 @@
                 android:layout_weight="0.42"
                 android:format24Hour="MMM dd, k:mm"
                 android:textSize="0dp" />
+            <!-- General Attributes -->
 
 
 

@@ -2,9 +2,11 @@ package com.projeto.tcc.coleta_de_leite.Classes;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,6 +33,9 @@ public class CadastroColetaActitity extends AppCompatActivity {
     private Spinner spinnerAlizarol;
     DatabaseReference databaseRotas;
 
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,12 +60,12 @@ public class CadastroColetaActitity extends AppCompatActivity {
         String nomeProdutor=produtor.getText().toString().trim();
         String litragem= litros.getText().toString().trim();
         String mat = matricula.getText().toString().trim();
-        String qualidade=spinnerAlizarol.getSelectedItem().toString();
-        String tipoAlizarol=spinner.getSelectedItem().toString();
+        String tipoAlizarol=spinnerAlizarol.getSelectedItem().toString();
+        String temperatura=spinner.getSelectedItem().toString();
         String hora=horario.getText().toString().trim();
         if(!TextUtils.isEmpty(nomeProdutor)){
             String id =databaseRotas.push().getKey();
-            Coletas coletas= new Coletas(id,nomeProdutor,litragem,mat,qualidade,hora,tipoAlizarol);
+            Coletas coletas= new Coletas(id,nomeProdutor,litragem,mat,hora,tipoAlizarol,temperatura);
             databaseRotas.child(id).setValue(coletas);
             finish();
 
@@ -70,6 +75,7 @@ public class CadastroColetaActitity extends AppCompatActivity {
             produtor.setError(getString(R.string.rota_vazia));
 
         }
+
         }
 
     private void findViewByIds() {
@@ -77,7 +83,7 @@ public class CadastroColetaActitity extends AppCompatActivity {
         rotaid=(intent.getStringExtra(ColetaActivity.rotaId));
         databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(rotaid);
         spinnerAlizarol=(Spinner)findViewById(R.id.spinnerAlizarol);
-        spinner=(Spinner)findViewById(R.id.spinnerColeta);
+        spinner=(Spinner)findViewById(R.id.spinnerTemperatura);
         matricula = (EditText) findViewById(R.id.edit_mat);
          horario= (TextClock) findViewById(R.id.textClock);
         produtor = (EditText) findViewById(R.id.edit_prod);

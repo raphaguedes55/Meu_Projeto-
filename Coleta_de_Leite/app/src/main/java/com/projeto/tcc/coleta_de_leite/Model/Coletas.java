@@ -12,15 +12,16 @@ public class Coletas implements Serializable{
     private String nomeProdutor;
     private String litrosColeta;
     private String matProdutor;
-    private String qualidadeLeite;
+    private String temperatura;
     private String alizarol;
     //private int rating;
     public Coletas (){}
 
-    public Coletas(String idColeta,String nomeProdutor,String litrosColeta,String matProdutor,String qualidadeLeite,String horaColeta,String Alizarol){
+    public Coletas(String idColeta,String nomeProdutor,String litrosColeta,String matProdutor,String horaColeta,String Alizarol,String temperatura){
+
         this.matProdutor=matProdutor;
         this.alizarol=Alizarol;
-        this.qualidadeLeite=qualidadeLeite;
+        this.temperatura=temperatura;
         this.idColeta=idColeta;
         this.nomeProdutor=nomeProdutor;
         this.litrosColeta=litrosColeta;
@@ -30,7 +31,7 @@ public class Coletas implements Serializable{
     public String getAlizarol(){return alizarol;}
     public String getHoraColeta(){return horaColeta;}
     public String getMatProdutor(){return matProdutor;};
-    public String getQualidadeLeite(){return qualidadeLeite;};
+    public String getTemperatura(){return temperatura;};
     public String getIdColeta() {
         return idColeta;
     }

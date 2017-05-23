@@ -65,7 +65,7 @@ public class CadastroRotaActivity extends AppCompatActivity {
         String tipoRota=spinner.getSelectedItem().toString();
         if(!TextUtils.isEmpty(rota)){
             String id =databaseRotas.push().getKey();
-            Rota rota1= new Rota(id,rota,tipoRota,hora,mCapacidade);
+            Rota rota1= new Rota(id,rota,hora,tipoRota,mCapacidade);
             databaseRotas.child(id).setValue(rota1);
            finish();
 

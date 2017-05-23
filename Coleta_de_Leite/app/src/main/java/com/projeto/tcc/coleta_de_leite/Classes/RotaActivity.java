@@ -12,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,6 +47,9 @@ public class RotaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rota);
+        Intent intent=getIntent();
+        idmotorista=intent.getStringExtra(LoginActivity.motoristaId);
+        databaseRotas= FirebaseDatabase.getInstance().getReference("rotas").child(idmotorista);
         auth = FirebaseAuth.getInstance();
 
 
@@ -82,41 +86,6 @@ public class RotaActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        listadeRotas();
-
-    }
-
-
-    private void metodosBotoes() {
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent transicaoadc = new Intent(RotaActivity.this,CadastroRotaActivity.class);
-                transicaoadc.putExtra(motoristaId,idmotorista);
-                startActivity(transicaoadc);
-
-
-            }
-        });
-    }
-
-
-
-    private void listarIds() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_rota);
-        setSupportActionBar(toolbar);
-        Intent intent=getIntent();
-        idmotorista=intent.getStringExtra(LoginActivity.motoristaId);
-
-        listViewRota=(ListView) findViewById(R.id.list_rota);
-        rotaList= new ArrayList<>();
-        databaseRotas= FirebaseDatabase.getInstance().getReference("rotas").child(idmotorista);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-    }
-
-
-
-    private void listadeRotas() {
 
         databaseRotas.addValueEventListener(new ValueEventListener() {
 
@@ -145,6 +114,36 @@ public class RotaActivity extends AppCompatActivity {
 
             }
         });
+
     }
+
+
+    private void metodosBotoes() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent transicaoadc = new Intent(RotaActivity.this,CadastroRotaActivity.class);
+                transicaoadc.putExtra(motoristaId,idmotorista);
+                startActivity(transicaoadc);
+
+
+            }
+        });
+    }
+
+
+
+    private void listarIds() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_rota);
+        setSupportActionBar(toolbar);
+
+
+        listViewRota=(ListView) findViewById(R.id.list_rota);
+        rotaList= new ArrayList<>();
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+    }
+
+
 
 }
