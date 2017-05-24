@@ -86,8 +86,11 @@ public class ColetaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_coleta);
 
+
         listaId();
         aux =(String) getIntent().getSerializableExtra("capacidade");
+        Toast.makeText(getApplicationContext(),idDaRota,Toast.LENGTH_LONG).show();
+        databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(idDaRota);
 
 
         capacidade = Integer.parseInt(aux);
@@ -128,12 +131,12 @@ public class ColetaActivity extends AppCompatActivity {
                     int numero = Integer.parseInt(mColeta.getLitrosColeta());
                     String alizarol=mColeta.getAlizarol();
 
-                    if (alizarol=="Aprovado") {
+
 
 
                         TotalColeta = TotalColeta + numero;
                         Nprodutor = Nprodutor + 1;
-                    }
+
 
                     coletasList.add(mColeta);
 
@@ -179,7 +182,7 @@ public class ColetaActivity extends AppCompatActivity {
         coletasList = new ArrayList<>();
         Intent intent =getIntent();
         idDaRota=intent.getStringExtra(RotaActivity.ROTA_ID);
-        databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(idDaRota);
+
         listViewColetas= (ListView) findViewById(R.id.list_coleta);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //  setSupportActionBar(toolbar);

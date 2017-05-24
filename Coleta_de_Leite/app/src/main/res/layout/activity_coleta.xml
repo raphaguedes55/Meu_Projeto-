@@ -38,34 +38,75 @@
     <include layout="@layout/content_coleta"
         ></include>
     <FrameLayout
-        android:background="#DCDCDC"
+            android:background="#ffff"
             android:id="@+id/frame_dados"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="gone">
 
             <LinearLayout
+                android:padding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:weightSum="1">
+                <TextView
+
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="INFORMACOES DA COLETA "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    />
+                <ImageView
+                    android:layout_gravity="center"
+                    android:background="@drawable/truck"
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="0.23" />
+                <TextView
+                    android:text="PRODUTORES COLETADOS"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
 
                 <TextView
+                    android:layout_gravity="center"
                     android:id="@+id/text_produtores"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                  />
+                <TextView
+                    android:text="LITROS COLETADOS"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
 
                 <TextView
+                    android:layout_gravity="center"
                     android:id="@+id/litros_caminhao"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    />
+                <TextView
+                    android:text="ESPAÇO RESTANTE"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
 
                 <TextView
+                    android:layout_gravity="center"
                     android:id="@+id/text_capacidade"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                     />
 
 
             </LinearLayout>

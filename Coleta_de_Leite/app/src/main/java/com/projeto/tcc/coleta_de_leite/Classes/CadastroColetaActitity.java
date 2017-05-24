@@ -41,6 +41,7 @@ public class CadastroColetaActitity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrocoleta);
         findViewByIds();
+        databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(rotaid);
         metodoBotoes();
     }
 
@@ -81,7 +82,7 @@ public class CadastroColetaActitity extends AppCompatActivity {
     private void findViewByIds() {
         Intent intent=getIntent();
         rotaid=(intent.getStringExtra(ColetaActivity.rotaId));
-        databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(rotaid);
+
         spinnerAlizarol=(Spinner)findViewById(R.id.spinnerAlizarol);
         spinner=(Spinner)findViewById(R.id.spinnerTemperatura);
         matricula = (EditText) findViewById(R.id.edit_mat);

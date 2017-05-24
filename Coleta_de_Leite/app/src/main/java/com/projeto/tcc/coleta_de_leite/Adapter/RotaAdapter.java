@@ -19,10 +19,14 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.projeto.tcc.coleta_de_leite.Classes.ColetaActivity;
+import com.projeto.tcc.coleta_de_leite.Classes.DadosColetaActivity;
+import com.projeto.tcc.coleta_de_leite.Classes.UpdateDeleteRotaActivity;
 import com.projeto.tcc.coleta_de_leite.Dao.RotaDao;
+import com.projeto.tcc.coleta_de_leite.Model.Coletas;
 import com.projeto.tcc.coleta_de_leite.Model.Rota;
 import com.projeto.tcc.coleta_de_leite.R;
 
+import java.io.Serializable;
 import java.util.List;
 
 import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
@@ -74,7 +78,12 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
         textViewUpdadeColeta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showUpdateDeleteDialog(rota.getRotaId(),rota.getNomeRota(),rota.getCapacidade(),rota.getHoraRota());
+
+                Intent intent = new Intent(context,UpdateDeleteRotaActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("rota",rota);
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
 

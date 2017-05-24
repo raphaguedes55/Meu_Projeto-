@@ -48,8 +48,13 @@ public class RotaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rota);
         Intent intent=getIntent();
+
         idmotorista=intent.getStringExtra(LoginActivity.motoristaId);
+        Toast.makeText(getApplicationContext(),idmotorista,Toast.LENGTH_LONG).show();
         databaseRotas= FirebaseDatabase.getInstance().getReference("rotas").child(idmotorista);
+
+
+
         auth = FirebaseAuth.getInstance();
 
 

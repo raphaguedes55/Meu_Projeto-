@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         auth = FirebaseAuth.getInstance();
 
-      FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+
         databaseMotorista= FirebaseDatabase.getInstance().getReference("motoristas");
 
         verificaAuth();

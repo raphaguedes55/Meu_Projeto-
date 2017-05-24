@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/temperatura"
+        android:icon="@drawable/milk"
         android:title="Coletas" />
 
     <item
@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:icon="@drawable/truck"
         android:title="Informaçao de Cargas" />
 
 </menu>

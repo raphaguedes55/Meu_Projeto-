@@ -1,10 +1,12 @@
 package com.projeto.tcc.coleta_de_leite.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by raphael on 29/03/17.
  */
 
-public class Rota {
+public class Rota implements Serializable {
 
 
     String rotaId;
