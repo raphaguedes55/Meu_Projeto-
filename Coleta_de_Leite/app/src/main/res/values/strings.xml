@@ -46,4 +46,9 @@
     <string name="title_activity_main2">Main2Activity</string>
     <string name="nomeRota">Rota :</string>
     <string name="info">Nenhuma coleta em andamento ,para realizar uma nova coleta clique no botao no lado direito da tela</string>
+    <string name="deseja_excluir_permanentemente_este_registro">deletar</string>
+    <string name="deletar">Deseja excluir este registro?</string>
+    <string name="atualizar">Deseja fazer retificaçao deste registro</string>
+    <string name="rotas">preenchimento Obrigatorio</string>
+    <string name="vazio">Preenchimento Obrigatorio</string>
 </resources>

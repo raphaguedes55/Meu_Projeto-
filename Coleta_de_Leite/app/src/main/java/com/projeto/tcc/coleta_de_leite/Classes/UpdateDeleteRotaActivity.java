@@ -2,24 +2,23 @@ package com.projeto.tcc.coleta_de_leite.Classes;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.projeto.tcc.coleta_de_leite.Dao.ColetaDao;
+import com.projeto.tcc.coleta_de_leite.Dao.RotaDao;
 import com.projeto.tcc.coleta_de_leite.Model.Coletas;
 import com.projeto.tcc.coleta_de_leite.Model.Rota;
 import com.projeto.tcc.coleta_de_leite.R;
-
-import static com.projeto.tcc.coleta_de_leite.R.id.update;
-import static com.projeto.tcc.coleta_de_leite.R.id.update_spinnerRota;
 
 /**
  * Created by raphael on 23/05/17.
@@ -38,21 +37,20 @@ public class UpdateDeleteRotaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atualizarota);
         findViewByIds();
-        Intent intent=getIntent();
-      motoristaID=intent.getStringExtra(RotaActivity.motoristaId);
 
-        Toast.makeText(getApplicationContext(),motoristaID,Toast.LENGTH_LONG).show();
 
 
         Rota rota= (Rota) getIntent().getSerializableExtra("rota");
+
         update_rota.setText(rota.getNomeRota());
         update_capacidade.setText(rota.getCapacidade());
         idRota=rota.getRotaId();
+        motoristaID=rota.getMotoristaid();
         hora=rota.getHoraRota();
         delete_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteRota(idRota);
+              DeleteDialog();
 
             }
         });
@@ -60,18 +58,25 @@ public class UpdateDeleteRotaActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                UpdateDialog();
 
-                String name = update_rota.getText().toString().trim();
-                String carga= update_capacidade.getText().toString().trim();
-                String tipo = spinner_rota.getSelectedItem().toString();
-
-
-                updateRota(idRota, name,carga,tipo,hora);
-                finish();
 
             }
         });}
+    private boolean verificaCampos() {
+        if (update_rota.getText().toString().isEmpty()) {
+            update_rota.setError(getString(R.string.vazio));
+            return false;
 
+        }
+        if (update_capacidade.getText().toString().isEmpty()) {
+
+            update_capacidade.setError(getString(R.string.vazio));
+            return false;}
+
+
+        return true;
+    }
 
 
     private void findViewByIds() {
@@ -82,27 +87,73 @@ public class UpdateDeleteRotaActivity extends AppCompatActivity {
         update_capacidade=(EditText)findViewById(R.id.edit_update_capacidade);
 
     }
-    private boolean deleteRota(String id) {
-        //getting the specified artist reference
-        DatabaseReference dR =  FirebaseDatabase.getInstance().getReference("motoristas").child(id);
 
-        //removing artist
-        dR.removeValue();
+    private void DeleteDialog() {
 
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("coletas").child(id);
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_delete, null);
+        dialogBuilder.setView(dialogView);
 
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_aceitar);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_cancelar);
 
-        databaseReference.removeValue();
-        Toast.makeText(getApplicationContext(), "Artist Deleted", Toast.LENGTH_LONG).show();
-    return true;
-
-
+        dialogBuilder.setTitle("ATENCAO");
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final RotaDao rotaDao=new RotaDao();
+               rotaDao.deleteRota(motoristaID,idRota);
+                finish();
+            }
+        });
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b.dismiss();
+            }
+        });
     }
-    private boolean updateRota(String id, String name, String genre,String TipoRota, String Data) {
-        DatabaseReference dR = FirebaseDatabase.getInstance().getReference("rotas").child(id);
-        Rota rota = new Rota(id,name, genre,TipoRota,Data);
-        dR.setValue(rota);
-        return true;
 
+    private void UpdateDialog() {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_update, null);
+        dialogBuilder.setView(dialogView);
+
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_aceitar);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_cancelar);
+
+        dialogBuilder.setTitle("ATENCAO");
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (verificaCampos()){
+                String name = update_rota.getText().toString().trim();
+                String carga= update_capacidade.getText().toString().trim();
+                String tipo = spinner_rota.getSelectedItem().toString();
+
+
+                    final RotaDao rotaDao=new RotaDao();
+                rotaDao.updateRota(idRota,motoristaID, name,tipo,hora,carga);
+                finish();
+                }
+
+
+            }
+        });
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b.dismiss();
+            }
+        });
     }
-    }
+
+
+}

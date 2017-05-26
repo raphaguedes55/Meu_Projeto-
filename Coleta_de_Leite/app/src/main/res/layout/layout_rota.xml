@@ -67,7 +67,7 @@
                 <TextView
                     android:id="@+id/data_rota"
                     android:text="Hora"
-                    android:layout_width="match_parent"
+                    android:layout_width="118dp"
                     android:layout_height="match_parent"
 
                     />

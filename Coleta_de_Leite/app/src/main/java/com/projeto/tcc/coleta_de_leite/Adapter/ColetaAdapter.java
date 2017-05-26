@@ -1,7 +1,9 @@
 package com.projeto.tcc.coleta_de_leite.Adapter;
 
 import android.app.Activity;
+import android.content.ClipData;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import com.projeto.tcc.coleta_de_leite.Model.Coletas;
 import com.projeto.tcc.coleta_de_leite.R;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,7 +22,7 @@ import java.util.List;
 
 public class ColetaAdapter  extends ArrayAdapter {
     private Activity context;
-    private TextView mText_litros,mText_produtor,mText_data;
+    private TextView mText_litros,mText_produtor,mText_data,mText_retificado;
     List<Coletas> coletas;
 
     public ColetaAdapter(Activity context,List<Coletas> coletas ) {
@@ -27,8 +30,8 @@ public class ColetaAdapter  extends ArrayAdapter {
         this.context=context;
         this.coletas=coletas;
 
-    }
 
+    }
 
 
     @NonNull
@@ -37,11 +40,14 @@ public class ColetaAdapter  extends ArrayAdapter {
         LayoutInflater inflater=context.getLayoutInflater();
 
         View listViewItem= inflater.inflate(R.layout.layout_coleta,null,true);
+        mText_retificado=(TextView)listViewItem.findViewById(R.id.text_retificado);
         mText_produtor = (TextView) listViewItem.findViewById(R.id.text_produtor);
         mText_litros = (TextView) listViewItem.findViewById(R.id.text_litros);
         mText_data=(TextView)listViewItem.findViewById(R.id.data_text);
         Coletas coleta1 =coletas.get(position);
+
         coleta1.getLitrosColeta();
+        mText_retificado.setText(coleta1.getRetificado());
         mText_data.setText(coleta1.getHoraColeta());
         mText_produtor.setText(coleta1.getNomeProdutor());
         mText_litros.setText(coleta1.getLitrosColeta());

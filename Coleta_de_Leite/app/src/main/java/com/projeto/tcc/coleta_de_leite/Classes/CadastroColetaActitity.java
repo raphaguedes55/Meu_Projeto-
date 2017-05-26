@@ -27,6 +27,7 @@ public class CadastroColetaActitity extends AppCompatActivity {
     private TextClock horario;
     private EditText produtor;
     private EditText litros;
+    private EditText numeroAmostra;
     private Button salva_coleta;
     private String rotaid;
     private Spinner spinner;
@@ -44,45 +45,65 @@ public class CadastroColetaActitity extends AppCompatActivity {
         databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(rotaid);
         metodoBotoes();
     }
+    private boolean verificaCampos() {
+        if (matricula.getText().toString().isEmpty()) {
+            matricula.setError(getString(R.string.vazio));
+            return false;
+
+        }
+        if (produtor.getText().toString().isEmpty()) {
+
+            produtor.setError(getString(R.string.vazio));
+            return false;}
+        if (numeroAmostra.getText().toString().isEmpty()) {
+
+            numeroAmostra.setError(getString(R.string.vazio));
+            return false;}
+
+        if (litros.getText().toString().isEmpty()) {
+
+            litros.setError(getString(R.string.vazio));
+            return false;}
+
+
+
+        return true;
+    }
 
     private void metodoBotoes() {
         salva_coleta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(verificaCampos()){
                 saveColeta();
-                finish();
+                finish();}
             }
 
             
         });
     }
 
+
     private void saveColeta() {
+        String retificado=" ";
+        String obs="";
         String nomeProdutor=produtor.getText().toString().trim();
         String litragem= litros.getText().toString().trim();
         String mat = matricula.getText().toString().trim();
         String tipoAlizarol=spinnerAlizarol.getSelectedItem().toString();
         String temperatura=spinner.getSelectedItem().toString();
         String hora=horario.getText().toString().trim();
-        if(!TextUtils.isEmpty(nomeProdutor)){
+        String amostra=numeroAmostra.getText().toString().trim();
             String id =databaseRotas.push().getKey();
-            Coletas coletas= new Coletas(id,nomeProdutor,litragem,mat,hora,tipoAlizarol,temperatura);
+            Coletas coletas= new Coletas(id,rotaid,nomeProdutor,litragem,mat,hora,tipoAlizarol,temperatura,amostra,retificado,obs);
             databaseRotas.child(id).setValue(coletas);
             finish();
-
-
-
-        }else {
-            produtor.setError(getString(R.string.rota_vazia));
-
-        }
-
-        }
+    }
 
     private void findViewByIds() {
         Intent intent=getIntent();
         rotaid=(intent.getStringExtra(ColetaActivity.rotaId));
-
+        numeroAmostra=(EditText)findViewById(R.id.edit_amostra);
         spinnerAlizarol=(Spinner)findViewById(R.id.spinnerAlizarol);
         spinner=(Spinner)findViewById(R.id.spinnerTemperatura);
         matricula = (EditText) findViewById(R.id.edit_mat);

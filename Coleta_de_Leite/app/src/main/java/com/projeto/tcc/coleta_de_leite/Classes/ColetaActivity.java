@@ -129,12 +129,8 @@ public class ColetaActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot:dataSnapshot.getChildren()){
                     Coletas mColeta =postSnapshot.getValue(Coletas.class);
                     int numero = Integer.parseInt(mColeta.getLitrosColeta());
-                    String alizarol=mColeta.getAlizarol();
 
-
-
-
-                        TotalColeta = TotalColeta + numero;
+                    TotalColeta = TotalColeta + numero;
                         Nprodutor = Nprodutor + 1;
 
 

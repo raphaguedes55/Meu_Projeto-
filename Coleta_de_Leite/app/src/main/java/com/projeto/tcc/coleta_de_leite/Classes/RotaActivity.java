@@ -52,23 +52,36 @@ public class RotaActivity extends AppCompatActivity {
         idmotorista=intent.getStringExtra(LoginActivity.motoristaId);
         Toast.makeText(getApplicationContext(),idmotorista,Toast.LENGTH_LONG).show();
         databaseRotas= FirebaseDatabase.getInstance().getReference("rotas").child(idmotorista);
-
-
-
         auth = FirebaseAuth.getInstance();
-
-
-
-        //get current user
-
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Carregando rotas...");
-        progressDialog.show();
         listarIds();
         metodosBotoes();
 
 
     }
+    private void listarIds() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_rota);
+        setSupportActionBar(toolbar);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Carregando rotas...");
+        progressDialog.show();
+        listViewRota=(ListView) findViewById(R.id.list_rota);
+        rotaList= new ArrayList<>();
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+    }
+    private void metodosBotoes() {
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent transicaoadc = new Intent(RotaActivity.this,CadastroRotaActivity.class);
+                transicaoadc.putExtra(motoristaId,idmotorista);
+                startActivity(transicaoadc);
+
+
+            }
+        });
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_desejos,menu);
@@ -105,6 +118,7 @@ public class RotaActivity extends AppCompatActivity {
                     rotaList.add(rota);
                 }
                 RotaAdapter rotaAdapter = new RotaAdapter(RotaActivity.this,rotaList);
+
                 listViewRota.setAdapter(rotaAdapter);
 
 
@@ -123,31 +137,9 @@ public class RotaActivity extends AppCompatActivity {
     }
 
 
-    private void metodosBotoes() {
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent transicaoadc = new Intent(RotaActivity.this,CadastroRotaActivity.class);
-                transicaoadc.putExtra(motoristaId,idmotorista);
-                startActivity(transicaoadc);
-
-
-            }
-        });
-    }
 
 
 
-    private void listarIds() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_rota);
-        setSupportActionBar(toolbar);
-
-
-        listViewRota=(ListView) findViewById(R.id.list_rota);
-        rotaList= new ArrayList<>();
-
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-    }
 
 
 

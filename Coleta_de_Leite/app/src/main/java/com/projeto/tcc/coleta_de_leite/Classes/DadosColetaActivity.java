@@ -69,6 +69,7 @@ public class DadosColetaActivity extends AppCompatActivity {
                 bundle.putSerializable("dados",coletas);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                finish();
             }
         });
 

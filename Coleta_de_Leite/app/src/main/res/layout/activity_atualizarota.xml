@@ -44,7 +44,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <EditText
+                android:maxLength="16"
                 android:id="@+id/edit_update_Rota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,7 +62,7 @@
 
 
             <EditText
-
+                android:maxLength="5"
                 android:id="@+id/edit_update_capacidade"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

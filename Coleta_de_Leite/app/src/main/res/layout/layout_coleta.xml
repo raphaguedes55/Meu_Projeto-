@@ -60,7 +60,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"/>
-
+        <TextView
+            android:textStyle="italic"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="@dimen/txt_15sp"
+            android:textColor="#FFFF0000"
+            android:id="@+id/text_retificado"
+            android:text=" "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"/>
 
 
     </LinearLayout>
