@@ -1,25 +1,26 @@
-package com.projeto.tcc.coleta_de_leite.Classes;
 
-import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextClock;
-import android.widget.TextView;
+        package com.projeto.tcc.coleta_de_leite.Classes;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.projeto.tcc.coleta_de_leite.Dao.ColetaDao;
-import com.projeto.tcc.coleta_de_leite.Dao.RotaDao;
-import com.projeto.tcc.coleta_de_leite.Model.Coletas;
-import com.projeto.tcc.coleta_de_leite.Model.Rota;
-import com.projeto.tcc.coleta_de_leite.R;
+        import android.os.Bundle;
+        import android.os.PersistableBundle;
+        import android.support.annotation.Nullable;
+        import android.support.v7.app.AlertDialog;
+        import android.support.v7.app.AppCompatActivity;
+        import android.view.LayoutInflater;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.Spinner;
+        import android.widget.TextClock;
+        import android.widget.TextView;
+
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
+        import com.projeto.tcc.coleta_de_leite.Dao.ColetaDao;
+        import com.projeto.tcc.coleta_de_leite.Dao.RotaDao;
+        import com.projeto.tcc.coleta_de_leite.Model.Coletas;
+        import com.projeto.tcc.coleta_de_leite.Model.Rota;
+        import com.projeto.tcc.coleta_de_leite.R;
 
 /**
  * Created by raphael on 19/05/17.
@@ -38,17 +39,19 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
     private Spinner spinner;
     private Spinner spinnerAlizarol;
     DatabaseReference databaseRotas;
-
+    String retifica;
     String idRota;
     String idColeta;
-    String retifica;
-    String hora;
-    final ColetaDao coletaDao=new ColetaDao();
+    final  ColetaDao coletaDao=new ColetaDao();;
+     Coletas coletas;
+
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atualizacoleta);
-        final Coletas coletas = (Coletas) getIntent().getSerializableExtra("dados");
+        coletas = (Coletas) getIntent().getSerializableExtra("dados");
+
         findViewByIds();
 
         matricula.setText(coletas.getMatProdutor());
@@ -57,9 +60,8 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         litros.setText(coletas.getLitrosColeta());
         amostra.setText(coletas.getAmostra());
         retifica="Registro Retificado";
-      idRota= coletas.getIdRota();
-    idColeta= coletas.getIdColeta();
-        hora=coletas.getHoraColeta();
+        idRota= coletas.getIdRota();
+        idColeta= coletas.getIdColeta();
 
 
 
@@ -67,8 +69,7 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
 
-                DeleteDialog();
-
+              DeleteDialog();
             }
         });
         atualizaColeta.setOnClickListener(new View.OnClickListener() {
@@ -76,9 +77,8 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
 
             public void onClick(View v) {
                 UpdateDialog();
-
-            }})
-        ;
+            }
+        });
 
 
 
@@ -137,22 +137,65 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         final View dialogView = inflater.inflate(R.layout.dialog_delete, null);
         dialogBuilder.setView(dialogView);
 
-        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_aceitar);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_cancelar);
+        final Button buttonAceitar = (Button) dialogView.findViewById(R.id.button_aceitar);
+        final Button buttonCancelar = (Button) dialogView.findViewById(R.id.button_cancelar);
 
         dialogBuilder.setTitle("ATENCAO");
         final AlertDialog b = dialogBuilder.create();
         b.show();
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+        buttonAceitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                final ColetaDao coletaDao =  new ColetaDao();
-                coletaDao.deleteColeta(idColeta,idRota);
+                coletaDao.deleteColeta(idRota,idColeta);
                 finish();
             }
         });
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
+        buttonCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b.dismiss();
+            }
+        });
+    }
+    private void UpdateDialog() {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_update, null);
+        dialogBuilder.setView(dialogView);
+
+        final Button buttonAceitar = (Button) dialogView.findViewById(R.id.button_aceitar);
+        final Button buttonDeletar = (Button) dialogView.findViewById(R.id.button_cancelar);
+
+        dialogBuilder.setTitle("ATENCAO");
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+        buttonAceitar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(verificaCampos()) {
+                    String sobs = obs.getText().toString().trim();
+                    String id = coletas.getIdColeta();
+                    String rotaId = coletas.getIdRota();
+                    String nomeProdutor = produtor.getText().toString().trim();
+                    String litragem = litros.getText().toString().trim();
+                    String mat = matricula.getText().toString().trim();
+                    String hora = coletas.getHoraColeta();
+                    String alizarol = spinnerAlizarol.getSelectedItem().toString();
+                    String temperatura = spinner.getSelectedItem().toString();
+                    String namostra = amostra.getText().toString().trim();
+                    String retificado = "Registro Retificado";
+
+
+                    coletaDao.updateColeta(id, rotaId, nomeProdutor, litragem, mat, hora, alizarol, temperatura, namostra, retificado, sobs);
+                    finish();
+                } }
+
+
+
+
+        });
+        buttonDeletar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 b.dismiss();
@@ -160,43 +203,8 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         });
     }
 
-    public void UpdateDialog() {
-
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.dialog_update, null);
-        dialogBuilder.setView(dialogView);
-
-        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_aceitar);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_cancelar);
-
-        dialogBuilder.setTitle("ATENCAO");
-        final AlertDialog b = dialogBuilder.create();
-        b.show();
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (verificaCampos()){
-                    if(verificaCampos()) {
-                        String sobs = obs.getText().toString().trim();
-                        String nomeProdutor = produtor.getText().toString().trim();
-                        String litragem = litros.getText().toString().trim();
-                        String mat = matricula.getText().toString().trim();
-                        String alizarol = spinnerAlizarol.getSelectedItem().toString();
-                        String temperatura = spinner.getSelectedItem().toString();
-                        String namostra = amostra.getText().toString().trim();
 
 
-                        coletaDao.updateColeta(idRota, idColeta, nomeProdutor, litragem, mat, hora, alizarol, temperatura, namostra, retifica, sobs);
-                        finish();
-                }
 
-
-            }}});
-
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                b.dismiss();}});
-    }
 }
+

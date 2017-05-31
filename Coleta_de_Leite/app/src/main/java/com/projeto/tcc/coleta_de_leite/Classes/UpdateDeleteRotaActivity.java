@@ -95,13 +95,13 @@ public class UpdateDeleteRotaActivity extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.dialog_delete, null);
         dialogBuilder.setView(dialogView);
 
-        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_aceitar);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_cancelar);
+        final Button buttonAceitar = (Button) dialogView.findViewById(R.id.button_aceitar);
+        final Button buttonCancelar = (Button) dialogView.findViewById(R.id.button_cancelar);
 
         dialogBuilder.setTitle("ATENCAO");
         final AlertDialog b = dialogBuilder.create();
         b.show();
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+        buttonAceitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final RotaDao rotaDao=new RotaDao();
@@ -109,7 +109,7 @@ public class UpdateDeleteRotaActivity extends AppCompatActivity {
                 finish();
             }
         });
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
+        buttonCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 b.dismiss();
@@ -124,13 +124,13 @@ public class UpdateDeleteRotaActivity extends AppCompatActivity {
         final View dialogView = inflater.inflate(R.layout.dialog_update, null);
         dialogBuilder.setView(dialogView);
 
-        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_aceitar);
-        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_cancelar);
+        final Button buttonAceitar = (Button) dialogView.findViewById(R.id.button_aceitar);
+        final Button buttonDeletar = (Button) dialogView.findViewById(R.id.button_cancelar);
 
         dialogBuilder.setTitle("ATENCAO");
         final AlertDialog b = dialogBuilder.create();
         b.show();
-        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+        buttonAceitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (verificaCampos()){
@@ -147,7 +147,7 @@ public class UpdateDeleteRotaActivity extends AppCompatActivity {
 
             }
         });
-        buttonDelete.setOnClickListener(new View.OnClickListener() {
+        buttonDeletar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 b.dismiss();
