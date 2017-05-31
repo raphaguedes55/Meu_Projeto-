@@ -30,21 +30,9 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/titulo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_gravity="center"
-                android:text="Nova Coleta "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
             <ImageView
                 android:layout_gravity="center"
-                android:background="@drawable/coletacadastro"
+                android:background="@drawable/coleta"
                 android:layout_width="80dp"
                 android:layout_height="80dp" />
 
@@ -153,6 +141,15 @@
                 android:background="@color/colorPrimaryDark"
                 android:text="SALVAR"
                 android:textColor="#ffffff" />
+            <Button
+                android:textColor="@color/sky_primary"
+                android:id="@+id/button_cancelar"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.50"
+                android:background="#ffffff"
+                android:text="Cancelar"/>
+
 
             <TextClock
                 android:id="@+id/textClock"

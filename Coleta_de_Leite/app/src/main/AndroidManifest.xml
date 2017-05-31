@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Classes.LoginActivity">
+        <activity android:name=".Classes.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,24 +29,25 @@
             />
         <activity
             android:name=".Classes.ColetaActivity"
-            android:label="@string/title_activity_coleta"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="Listas de Coletas"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".Classes.DadosColetaActivity"
-            android:label="@string/title_activity_coleta"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="Dados Da Coleta"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Classes.CadastroColetaActitity"
-            android:label="@string/title_activity_coleta"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="Nova Coleta"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Classes.UpdateDeleteColetaActivity"
-            android:label="@string/title_activity_coleta"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="Retificar Coleta"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".Classes.UpdateDeleteRotaActivity"
-            android:label="@string/title_activity_coleta"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:label="Retificar Rota"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

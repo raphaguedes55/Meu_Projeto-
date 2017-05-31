@@ -3,7 +3,9 @@ package com.projeto.tcc.coleta_de_leite.Classes;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.projeto.tcc.coleta_de_leite.Dao.ColetaDao;
+import com.projeto.tcc.coleta_de_leite.Dao.RotaDao;
 import com.projeto.tcc.coleta_de_leite.Model.Coletas;
 import com.projeto.tcc.coleta_de_leite.Model.Rota;
 import com.projeto.tcc.coleta_de_leite.R;
@@ -35,6 +38,12 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
     private Spinner spinner;
     private Spinner spinnerAlizarol;
     DatabaseReference databaseRotas;
+
+    String idRota;
+    String idColeta;
+    String retifica;
+    String hora;
+    final ColetaDao coletaDao=new ColetaDao();
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,42 +56,29 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         produtor.setText(coletas.getNomeProdutor());
         litros.setText(coletas.getLitrosColeta());
         amostra.setText(coletas.getAmostra());
-        String retifica="Registro Retificado";
-        final String idRota= coletas.getIdRota();
-        final String idColeta= coletas.getIdColeta();
-        final  ColetaDao coletaDao=new ColetaDao();;
+        retifica="Registro Retificado";
+      idRota= coletas.getIdRota();
+    idColeta= coletas.getIdColeta();
+        hora=coletas.getHoraColeta();
+
 
 
         deletaColeta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                coletaDao.deleteColeta(idRota,idColeta);
-                finish();
+                DeleteDialog();
+
             }
         });
         atualizaColeta.setOnClickListener(new View.OnClickListener() {
             @Override
 
             public void onClick(View v) {
-                if(verificaCampos()) {
-                    String sobs = obs.getText().toString().trim();
-                    String id = coletas.getIdColeta();
-                    String rotaId = coletas.getIdRota();
-                    String nomeProdutor = produtor.getText().toString().trim();
-                    String litragem = litros.getText().toString().trim();
-                    String mat = matricula.getText().toString().trim();
-                    String hora = coletas.getHoraColeta();
-                    String alizarol = spinnerAlizarol.getSelectedItem().toString();
-                    String temperatura = spinner.getSelectedItem().toString();
-                    String namostra = amostra.getText().toString().trim();
-                    String retificado = "Registro Retificado";
+                UpdateDialog();
 
-
-                    coletaDao.updateColeta(id, rotaId, nomeProdutor, litragem, mat, hora, alizarol, temperatura, namostra, retificado, sobs);
-                    finish();
-                } }
-        });
+            }})
+        ;
 
 
 
@@ -134,10 +130,73 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         spinner=(Spinner)findViewById(R.id.spinner_update_Temperatura);
     }
 
+    private void DeleteDialog() {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_delete, null);
+        dialogBuilder.setView(dialogView);
+
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_aceitar);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_cancelar);
+
+        dialogBuilder.setTitle("ATENCAO");
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final ColetaDao coletaDao =  new ColetaDao();
+                coletaDao.deleteColeta(idColeta,idRota);
+                finish();
+            }
+        });
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b.dismiss();
+            }
+        });
+    }
+
+    public void UpdateDialog() {
+
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.dialog_update, null);
+        dialogBuilder.setView(dialogView);
+
+        final Button buttonUpdate = (Button) dialogView.findViewById(R.id.button_aceitar);
+        final Button buttonDelete = (Button) dialogView.findViewById(R.id.button_cancelar);
+
+        dialogBuilder.setTitle("ATENCAO");
+        final AlertDialog b = dialogBuilder.create();
+        b.show();
+        buttonUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (verificaCampos()){
+                    if(verificaCampos()) {
+                        String sobs = obs.getText().toString().trim();
+                        String nomeProdutor = produtor.getText().toString().trim();
+                        String litragem = litros.getText().toString().trim();
+                        String mat = matricula.getText().toString().trim();
+                        String alizarol = spinnerAlizarol.getSelectedItem().toString();
+                        String temperatura = spinner.getSelectedItem().toString();
+                        String namostra = amostra.getText().toString().trim();
 
 
+                        coletaDao.updateColeta(idRota, idColeta, nomeProdutor, litragem, mat, hora, alizarol, temperatura, namostra, retifica, sobs);
+                        finish();
+                }
 
 
+            }}});
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                b.dismiss();}});
+    }
 }
-
-

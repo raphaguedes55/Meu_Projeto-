@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/coletacadastro"
+        android:icon="@drawable/coleta"
         android:title="Coletar"/>
 
     <item

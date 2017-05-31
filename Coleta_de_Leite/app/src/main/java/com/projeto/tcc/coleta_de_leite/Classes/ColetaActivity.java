@@ -110,9 +110,12 @@ public class ColetaActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.actio_sair) {
-            auth.signOut();
-            finish();
-        }
+                auth.signOut();
+                Intent intent=new Intent(ColetaActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -167,8 +170,8 @@ public class ColetaActivity extends AppCompatActivity {
         });
     }
     private void listaId() {
-        text_capacidade=(TextView)findViewById(R.id.text_capacidade);
-        text_litros=(TextView)findViewById(R.id.text_produtores);
+        text_capacidade=(TextView)findViewById(R.id.text_produtores);
+        text_litros=(TextView)findViewById(R.id.text_capacidade);
         text_produtor=(TextView)findViewById(R.id.litros_caminhao);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

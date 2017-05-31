@@ -37,6 +37,9 @@ public class DadosColetaActivity extends AppCompatActivity {
     TextView temperatura;
     TextView data;
     TextView litros;
+    TextView numeroAmostra;
+    TextView obs;
+
     String aux;
     List<Coletas> coletasList;
     Button updateDelete;
@@ -60,6 +63,8 @@ public class DadosColetaActivity extends AppCompatActivity {
         temperatura.setText(coletas.getTemperatura());
         litros.setText(coletas.getLitrosColeta());
         data.setText(coletas.getHoraColeta());
+        numeroAmostra.setText(coletas.getAmostra());
+        obs.setText(coletas.getObservaçao());
         updateDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,12 +90,17 @@ public class DadosColetaActivity extends AppCompatActivity {
 
     protected void listadeid(){
         updateDelete=(Button)findViewById(R.id.button_updatedelete);
-        alizarol=(TextView)findViewById(R.id.exib_alizarol);
+        alizarol=(TextView)findViewById(R.id.ver_alizarol);
         produtor=(TextView)findViewById(R.id.exib_prod);
         matricula=(TextView)findViewById(R.id.exib_mat);
-        temperatura=(TextView)findViewById(R.id.exib_temperatura);
+        temperatura=(TextView)findViewById(R.id.ver_temperatura);
         litros=(TextView)findViewById(R.id.exib_Litros);
         data=(TextView)findViewById(R.id.exib_horario);
+        obs=(TextView)findViewById(R.id.ver_obs);
+        numeroAmostra=(TextView)findViewById(R.id.ver_amostra);
+
+
+
     }
 
 
