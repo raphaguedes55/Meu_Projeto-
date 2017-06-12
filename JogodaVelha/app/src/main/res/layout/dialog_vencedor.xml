@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <TextView
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:text="RESULTADO"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/ganhador"
+            android:textSize="25dp"
+            android:gravity="center"
+            android:text="Teste"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/resultado"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:text="PARABENS !"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+
+            android:textStyle="bold"
+            android:textAlignment="center"
+        android:id="@+id/dialog_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="DESEJA JOGAR NOVAMENTE?"/>
+
+    <LinearLayout
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dialog_info">
+        <Button
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/button_aceitar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.50"
+            android:background="#ffffff"
+            android:text="JOGAR "/>
+
+        <Button
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:id="@+id/button_cancelar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.72"
+            android:background="#ffffff"
+            android:text="SAIR DO JOGO"/>
+
+
+    </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

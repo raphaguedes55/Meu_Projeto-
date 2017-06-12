@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:weightSum="1">
+
+    <ImageView
+        android:layout_marginTop="50dp"
+        android:src="@drawable/iconjogo"
+        android:layout_width="226dp"
+        android:layout_height="135dp"
+        android:layout_gravity="center"
+        android:layout_weight="0.05" />
+
+
+
+    <ProgressBar
+        android:layout_marginTop="150dp"
+        android:id="@+id/progress_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:progress="0"
+        android:layout_weight="0.24" />
+
+    <TextView
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:text="CRIADO POR"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+    <TextView
+        android:layout_marginTop="5dp"
+        android:text="Raphael e Joelmir"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_gravity="center" />
+
+
+
+</LinearLayout>
