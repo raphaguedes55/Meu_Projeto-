@@ -13,6 +13,13 @@
         <item>Rota Socorro</item>
 
     </array>
+    <array name="spinerOcorrencia">
+        <item>Empedimento na estrada</item>
+        <item>Chuva</item>
+        <item>Porteira trancada</item>
+        <item>Outros motivos</item>
+
+    </array>
     <array name="spinerTemperatura">
         <item>1°C</item>
         <item>2°C</item>

@@ -22,7 +22,7 @@ import java.util.List;
 
 public class ColetaAdapter  extends ArrayAdapter {
     private Activity context;
-    private TextView mText_litros,mText_produtor,mText_data,mText_retificado;
+    private TextView mText_litros,mText_produtor,mText_data,mText_retificado,mText_alizarol;
     List<Coletas> coletas;
 
     public ColetaAdapter(Activity context,List<Coletas> coletas ) {
@@ -34,7 +34,7 @@ public class ColetaAdapter  extends ArrayAdapter {
     }
 
 
-    @NonNull
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
@@ -44,6 +44,7 @@ public class ColetaAdapter  extends ArrayAdapter {
         mText_produtor = (TextView) listViewItem.findViewById(R.id.text_produtor);
         mText_litros = (TextView) listViewItem.findViewById(R.id.text_litros);
         mText_data=(TextView)listViewItem.findViewById(R.id.data_text);
+        mText_alizarol=(TextView)listViewItem.findViewById(R.id.text_alizarol);
         Coletas coleta1 =coletas.get(position);
 
         coleta1.getLitrosColeta();
@@ -51,6 +52,9 @@ public class ColetaAdapter  extends ArrayAdapter {
         mText_data.setText(coleta1.getHoraColeta());
         mText_produtor.setText(coleta1.getNomeProdutor());
         mText_litros.setText(coleta1.getLitrosColeta());
+        if (coleta1.getAlizarol().equals("Não Aprovado")){
+            mText_alizarol.setText("Não coletado");
+        }
 
         return listViewItem;
     }

@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.projeto.tcc.coleta_de_leite.Model.Coletas;
 import com.projeto.tcc.coleta_de_leite.R;
 
+import static com.projeto.tcc.coleta_de_leite.Classes.ColetaActivity.rotaId;
+
 /**
  * Created by raphael on 30/03/17.
  */
@@ -29,7 +31,9 @@ public class CadastroColetaActitity extends AppCompatActivity {
     private EditText litros;
     private EditText numeroAmostra;
     private Button salva_coleta;
-    private String rotaid;
+    private Button ocorrencia_coleta;
+   String rotaid;
+    String idDaRota;
     private Spinner spinner;
     private Spinner spinnerAlizarol;
     DatabaseReference databaseRotas;
@@ -42,7 +46,7 @@ public class CadastroColetaActitity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrocoleta);
         findViewByIds();
-        databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(rotaid);
+        databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(idDaRota);
         metodoBotoes();
     }
     private boolean verificaCampos() {
@@ -81,6 +85,14 @@ public class CadastroColetaActitity extends AppCompatActivity {
 
             
         });
+        ocorrencia_coleta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent transicaoadc = new Intent(CadastroColetaActitity.this,OcorrenciaActivity.class);
+                transicaoadc.putExtra(rotaid,idDaRota);
+                startActivity(transicaoadc);
+            }
+        });
     }
 
 
@@ -95,14 +107,14 @@ public class CadastroColetaActitity extends AppCompatActivity {
         String hora=horario.getText().toString().trim();
         String amostra=numeroAmostra.getText().toString().trim();
             String id =databaseRotas.push().getKey();
-            Coletas coletas= new Coletas(id,rotaid,nomeProdutor,litragem,mat,hora,tipoAlizarol,temperatura,amostra,retificado,obs);
+            Coletas coletas= new Coletas(id,idDaRota,nomeProdutor,litragem,mat,hora,tipoAlizarol,temperatura,amostra,retificado,obs,"","");
             databaseRotas.child(id).setValue(coletas);
             finish();
     }
 
     private void findViewByIds() {
         Intent intent=getIntent();
-        rotaid=(intent.getStringExtra(ColetaActivity.rotaId));
+        idDaRota=(intent.getStringExtra(rotaId));
         numeroAmostra=(EditText)findViewById(R.id.edit_amostra);
         spinnerAlizarol=(Spinner)findViewById(R.id.spinnerAlizarol);
         spinner=(Spinner)findViewById(R.id.spinnerTemperatura);
@@ -111,5 +123,6 @@ public class CadastroColetaActitity extends AppCompatActivity {
         produtor = (EditText) findViewById(R.id.edit_prod);
         litros = (EditText) findViewById(R.id.edit_litros);
         salva_coleta = (Button) findViewById(R.id.save);
+        ocorrencia_coleta=(Button)findViewById(R.id.ocorrencia);
     }
 }

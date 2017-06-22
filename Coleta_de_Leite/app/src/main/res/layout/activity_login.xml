@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPadrao"
+    android:background="@color/colorPrimary"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -25,10 +25,13 @@
 
         <ImageView
             android:layout_gravity="center"
-            android:src="@drawable/icon"
-            android:layout_width="100dp"
+            android:src="@drawable/in2"
+            android:layout_width="211dp"
             android:layout_height="100dp"
-            android:layout_weight="0.09" />
+            android:layout_weight="0.51" />
+          <android.support.design.widget.TextInputLayout
+              android:layout_width="291dp"
+              android:layout_height="wrap_content">
 
         <EditText
             android:hint="Email"
@@ -38,7 +41,10 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/login_Email" />
-
+    </android.support.design.widget.TextInputLayout>
+          <android.support.design.widget.TextInputLayout
+              android:layout_width="291dp"
+              android:layout_height="wrap_content">
       <EditText
           android:hint="Senha"
           android:layout_width="298dp"
@@ -46,11 +52,12 @@
           android:inputType="numberPassword"
           android:ems="10"
           android:id="@+id/loginSenha" />
+          </android.support.design.widget.TextInputLayout>
           <Button
               android:layout_margin="20dp"
               android:layout_marginTop="30dp"
               android:textColor="#FAFAFA"
-              android:background="@color/colorPadrao"
+              android:background="@color/colorPrimary"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:text="Logar"

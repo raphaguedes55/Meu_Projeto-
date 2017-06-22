@@ -15,9 +15,9 @@ public class ColetaDao {
         return true;
 
     }
-    public boolean updateColeta(String id, String rotaid,String nomeProdutor, String litragem, String mat,String hora,String tipoAlizarol,String temperatura,String amostra,String retificado,String obs) {
+    public boolean updateColeta(String id, String rotaid,String nomeProdutor, String litragem, String mat,String hora,String tipoAlizarol,String temperatura,String amostra,String retificado,String obs,String motivo,String imagem) {
         DatabaseReference dR = FirebaseDatabase.getInstance().getReference("coletas").child(rotaid).child(id);
-        Coletas coletas = new Coletas(id,rotaid,nomeProdutor,litragem,mat,hora,tipoAlizarol,temperatura,amostra,retificado,obs);
+        Coletas coletas = new Coletas(id,rotaid,nomeProdutor,litragem,mat,hora,tipoAlizarol,temperatura,amostra,retificado,obs,imagem,motivo);
         dR.setValue(coletas);
         return true;
 }

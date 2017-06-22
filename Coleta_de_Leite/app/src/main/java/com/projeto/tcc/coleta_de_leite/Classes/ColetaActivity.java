@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GetTokenResult;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -49,7 +50,8 @@ public class ColetaActivity extends AppCompatActivity {
     TextView text_litros;
     int Nprodutor;
     int TotalColeta;
-    FirebaseAuth auth;
+    String alizarol;
+    private FirebaseAuth auth;
     String aux;
     int positon;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -91,6 +93,7 @@ public class ColetaActivity extends AppCompatActivity {
         aux =(String) getIntent().getSerializableExtra("capacidade");
         Toast.makeText(getApplicationContext(),idDaRota,Toast.LENGTH_LONG).show();
         databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(idDaRota);
+        auth = FirebaseAuth.getInstance();
 
 
         capacidade = Integer.parseInt(aux);
@@ -132,19 +135,16 @@ public class ColetaActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot:dataSnapshot.getChildren()){
                     Coletas mColeta =postSnapshot.getValue(Coletas.class);
                     int numero = Integer.parseInt(mColeta.getLitrosColeta());
-
-                    TotalColeta = TotalColeta + numero;
-                        Nprodutor = Nprodutor + 1;
-
-
+                    alizarol = mColeta.getAlizarol();
+                    if (alizarol.equals("Aprovado")){
+                        TotalColeta = TotalColeta + numero;
+                        Nprodutor = Nprodutor + 1;}
                     coletasList.add(mColeta);
-
                 }
                 int aux1 = capacidade - TotalColeta;
-
-                text_capacidade.setText(""+ aux1);
-                text_litros.setText("  " +TotalColeta);
-                text_produtor.setText("  "+Nprodutor);
+                text_litros.setText(""+ aux1);
+                text_produtor.setText("  " +TotalColeta);
+                text_capacidade.setText("  "+Nprodutor);
                 ColetaAdapter coletaAdapter= new ColetaAdapter(ColetaActivity.this,coletasList);
                 listViewColetas.setAdapter(coletaAdapter);
                 listViewColetas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -193,6 +193,7 @@ public class ColetaActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         aux =(String) getIntent().getSerializableExtra("capacidade");
+        alizarol="";
         Nprodutor=0;
         TotalColeta=0;
 

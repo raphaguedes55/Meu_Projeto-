@@ -43,6 +43,8 @@ public class RotaActivity extends AppCompatActivity {
     private FloatingActionButton fab;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,7 @@ public class RotaActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         listarIds();
         metodosBotoes();
+
 
 
     }
@@ -136,11 +139,10 @@ public class RotaActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
 
-
-
-
-
-
+    }
 }

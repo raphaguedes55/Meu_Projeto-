@@ -1,5 +1,6 @@
 package com.projeto.tcc.coleta_de_leite.Classes;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -30,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText senha,email;
     private Button login;
     private FirebaseAuth auth;
-    private ProgressBar progressBar;
+    ProgressDialog progressDialog;
     DatabaseReference databaseMotorista;
     public static final String motoristaId="com.projeto.tcc.coleta_de_leite.motoristaId";
 
@@ -39,11 +40,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         auth = FirebaseAuth.getInstance();
-
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Carregando Usuario");
 
         databaseMotorista= FirebaseDatabase.getInstance().getReference("motoristas");
 
-        verificaAuth();
+
         buscadeid();
         metodobotoes();
     }
@@ -57,6 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
                 final String inputemail = email.getText().toString();
                 final String password= senha.getText().toString();
                 if (TextUtils.isEmpty(inputemail)) {
@@ -83,14 +86,11 @@ public class LoginActivity extends AppCompatActivity {
 
 
                                 }
-
-                                else{
-                                    progressBar.setVisibility(View.VISIBLE);
-                                    login.setVisibility(View.GONE);
-                                    Intent intent=new Intent(LoginActivity.this, RotaActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                else {
+                                    verificaAuth();
                                 }
+
+
                             }
                         });
             }
@@ -102,7 +102,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     public void buscadeid(){
-        progressBar=(ProgressBar)findViewById(R.id.progressBar);
         email=(EditText)findViewById(R.id.login_Email);
         senha=(EditText)findViewById(R.id.loginSenha);
         login=(Button)findViewById(R.id.logar);}
@@ -114,11 +113,10 @@ public class LoginActivity extends AppCompatActivity {
             if (user!=null){
                 String token= user.getUid();
                 Motoristas motoristas= new Motoristas(token);
-
-               //databaseMotorista.child(token).setValue(motoristas);
                 Intent transicaoadc = new Intent(LoginActivity.this,RotaActivity.class);
                 transicaoadc.putExtra(motoristaId, motoristas.getId_motorista());
                 startActivity(transicaoadc);
+                progressDialog.dismiss();
                 finish();
 
             }

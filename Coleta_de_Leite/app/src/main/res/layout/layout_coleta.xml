@@ -13,13 +13,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp">
-
         <TextView
-            android:textSize="@dimen/txt_size"
-            android:id="@+id/textView3"
-            android:layout_width="match_parent"
+            android:textStyle="italic"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="10dp"
+            android:textColor="#FFFF0000"
+            android:id="@+id/text_retificado"
+            android:text="1231231231 "
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PRODUTOR" />
+            android:layout_gravity="left"/>
 
 
         <TextView
@@ -61,15 +64,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"/>
         <TextView
-            android:textStyle="italic"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:textSize="@dimen/txt_15sp"
             android:textColor="#FFFF0000"
-            android:id="@+id/text_retificado"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textSize="10dp"
+            android:id="@+id/text_alizarol"
             android:text=" "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"/>
+
 
 
     </LinearLayout>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.projeto.tcc.coleta_de_leite">
-
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".Utils.BancoOfilline"
         android:allowBackup="true"
-        android:icon="@drawable/icon"
+        android:icon="@drawable/in2"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -46,6 +46,10 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Classes.UpdateDeleteRotaActivity"
+            android:label="Retificar Rota"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Classes.OcorrenciaActivity"
             android:label="Retificar Rota"
             android:theme="@style/AppTheme" />
     </application>

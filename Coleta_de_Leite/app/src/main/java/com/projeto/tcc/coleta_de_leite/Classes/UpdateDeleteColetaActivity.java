@@ -187,7 +187,7 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
                     String retificado = "Registro Retificado";
 
 
-                    coletaDao.updateColeta(id, rotaId, nomeProdutor, litragem, mat, hora, alizarol, temperatura, namostra, retificado, sobs);
+                    coletaDao.updateColeta(id, rotaId, nomeProdutor, litragem, mat, hora, alizarol, temperatura, namostra, retificado, sobs,"","");
                     finish();
                 } }
 

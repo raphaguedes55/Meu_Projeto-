@@ -65,7 +65,6 @@ public class CadastroRotaActivity extends AppCompatActivity {
     }
     private void metodoButoon(){
         inicioColeta.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 if (verificaCampos()){

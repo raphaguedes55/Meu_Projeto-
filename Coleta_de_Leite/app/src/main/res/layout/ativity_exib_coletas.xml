@@ -2,11 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
-        android:padding="50dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="50dp"
+        android:orientation="vertical">
+
         <TextView
 
             android:id="@+id/titulo"
@@ -19,16 +21,18 @@
             android:textColor="@color/colorPrimary"
             android:textSize="20dp"
             android:textStyle="bold" />
+
         <ImageView
-            android:layout_gravity="center"
-            android:background="@drawable/coleta"
             android:layout_width="80dp"
-            android:layout_height="80dp" />
-        <TextView
+            android:layout_height="80dp"
             android:layout_gravity="center"
+            android:background="@drawable/coleta" />
+
+        <TextView
             android:id="@+id/text_retifica"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
 
         <TextView
             android:id="@+id/text_mat"
@@ -49,8 +53,18 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/text_mat"
             android:inputType="number"
+            android:padding="15dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_mat"
+            android:inputType="number"
             android:padding="15dp"
-           />
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,6 +97,16 @@
 
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar_main"
+            android:layout_marginTop="20dp"
+            android:text="PRODUTOR"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="20dp" />
+
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -91,6 +115,7 @@
             android:inputType="number"
             android:padding="15dp"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -110,25 +135,7 @@
             android:inputType="number"
             android:padding="15dp"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/toolbar_main"
-            android:layout_marginTop="20dp"
-            android:text="PRODUTOR"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textSize="20dp" />
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/text_mat"
-            android:inputType="number"
-            android:padding="15dp"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -148,7 +155,6 @@
             android:inputType="number"
             android:padding="15dp"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
 
 
     </LinearLayout>
