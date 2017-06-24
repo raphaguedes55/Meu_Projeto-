@@ -1,7 +1,63 @@
 <resources>
-    <string name="app_name">"coleta_de_leite_administrador "</string>
+    <string name="app_name">Coleta_de_Leite</string>
+    <string name="problemas">Esta Com Problema ?</string>
+    <string name="senha_invalida">senha invalida!</string>
+    <string name="title_activity_main">Lista de Rotas</string>
+    <string name="rota_vazia">Preencha o Nome da Rota</string>
+    <string name="action_settings">Configuraçoes</string>
+    <string name="sair">Desconectar</string>
+
+    <array name="spinerRota">
+        <item>Rota Normal</item>
+        <item>Rota Extra</item>
+        <item>Rota Socorro</item>
+
+    </array>
+    <array name="spinerOcorrencia">
+        <item>Empedimento na estrada</item>
+        <item>Chuva</item>
+        <item>Porteira trancada</item>
+        <item>Outros motivos</item>
+
+    </array>
+    <array name="spinerTemperatura">
+        <item>1°C</item>
+        <item>2°C</item>
+        <item>3°C</item>
+        <item>4°C</item>
+        <item>5°C</item>
+        <item>6°C</item>
+        <item>7°C</item>
+        <item>8°C</item>
+        <item>8°C</item>
+        <item>10°C</item>
+        <item>11°C</item>
+        <item>12°C</item>
+        <item>13°C</item>
+        <item>14°C</item>
+        <item>15°C</item>
+        <item>16°C</item>
+        <item>17°C</item>
+        <item>18°C</item>
+        <item>Maior que 18°</item>
+        <item>Sem Energia</item>
+    </array>
+    <array name="spinerAlizarol">
+        <item>Aprovado</item>
+        <item>"Não Aprovado"</item>
+    </array>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="cadastro">   Preencha corretamente os campos obrigatorios</string>
+    <string name="title_activity_coleta">ColetaActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="nomeRota">Rota :</string>
+    <string name="info">Nenhuma coleta em andamento ,para realizar uma nova coleta clique no botao no lado direito da tela</string>
+    <string name="deseja_excluir_permanentemente_este_registro">deletar</string>
+    <string name="deletar">Deseja excluir este registro?</string>
+    <string name="atualizar">Deseja fazer retificaçao deste registro</string>
+    <string name="rotas">preenchimento Obrigatorio</string>
+    <string name="vazio">Preenchimento Obrigatorio</string>
+    <string name="cadastro">REALIZAR CADASTRO</string>
+    <string name="pesquisa">buscas por data de coleta EX : 01/01/2017</string>
 </resources>

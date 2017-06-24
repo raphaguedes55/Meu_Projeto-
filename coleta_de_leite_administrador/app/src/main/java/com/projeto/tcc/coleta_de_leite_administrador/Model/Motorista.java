@@ -6,6 +6,11 @@ package com.projeto.tcc.coleta_de_leite_administrador.Model;
 
 public class Motorista {
     private String Idmotorista;
+
+
+
+
+    private String identificador;
     private String emailmotorista;
     private String nome;
     private String senha;
@@ -15,12 +20,17 @@ public class Motorista {
     }
 
 
-    public Motorista(String Idmotorista, String emailmotorista, String nome, String Senha) {
+    public Motorista(String Idmotorista, String emailmotorista, String nome, String Senha,String identificador) {
         this.Idmotorista= Idmotorista;
         this.emailmotorista=emailmotorista;
         this.nome=nome;
         this.senha=Senha;
+        this.identificador=identificador;
     }
+    public String getIdentificador() {
+        return identificador;
+    }
+
     public String getIdmotorista() {
         return Idmotorista;
     }

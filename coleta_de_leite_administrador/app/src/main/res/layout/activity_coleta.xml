@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.projeto.tcc.coleta_de_leite_administrador.Classes.ColetaActivity"
+    android:weightSum="1">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="446dp"
+    android:layout_weight="1.89">
+        <ListView
+            android:id="@+id/list_coleta"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+
+    <include layout="@layout/content_coleta"
+        ></include>
+    <FrameLayout
+            android:background="#ffff"
+            android:id="@+id/frame_dados"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="1">
+                <TextView
+
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:textColor="@color/colorPrimary"
+                    android:text="INFORMACOES DA COLETA "
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    />
+                <ImageView
+                    android:layout_gravity="center"
+                    android:background="@drawable/truck"
+                    android:layout_width="120dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="0.23" />
+                <TextView
+                    android:text="PRODUTORES COLETADOS"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/text_produtores"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                  />
+                <TextView
+                    android:text="LITROS COLETADOS"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/litros_caminhao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+                <TextView
+                    android:text="ESPAÇO RESTANTE"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+
+                <TextView
+                    android:layout_gravity="center"
+                    android:id="@+id/text_capacidade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                     />
+
+
+            </LinearLayout>
+
+        </FrameLayout>
+</FrameLayout>
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        app:menu="@menu/menu_coletas" />
+    </LinearLayout>
+    </LinearLayout>
+

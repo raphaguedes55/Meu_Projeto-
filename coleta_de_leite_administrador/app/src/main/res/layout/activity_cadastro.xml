@@ -1,8 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEEEEE">
+    android:fillViewport="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
     <TextView
         android:textSize="20dp"
         android:textStyle="bold"
@@ -13,7 +18,7 @@
     <TextView
         android:textStyle="italic"
         android:text="@string/cadastro"
-        android:layout_width="wrap_content"
+        android:layout_width="260dp"
         android:layout_height="wrap_content" />
     <android.support.v7.widget.CardView
         android:layout_margin="20dp"
@@ -41,6 +46,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="20dp">
                 <EditText
+                    android:maxLength="16"
                     android:layout_margin="20dp"
                     android:background="@null"
                     android:hint="Motorista"
@@ -55,7 +61,22 @@
                 android:layout_width="291dp"
                 android:layout_height="wrap_content">
                 <EditText
-
+                    android:maxLength="8"
+                    android:layout_margin="20dp"
+                    android:background="@null"
+                    android:hint="Matricula"
+                    android:layout_width="298dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/matricula" />
+            </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_marginEnd="20dp"
+                android:layout_width="291dp"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:maxLength="16"
                     android:layout_margin="20dp"
                     android:background="@null"
                     android:hint="Email"
@@ -70,10 +91,10 @@
                 android:layout_width="291dp"
                 android:layout_height="wrap_content">
                 <EditText
-
+                    android:maxLength="9"
                     android:layout_margin="20dp"
                     android:background="@null"
-                    android:hint="senha"
+                    android:hint="Senha"
                     android:layout_width="298dp"
                     android:layout_height="wrap_content"
                     android:inputType="numberPassword"
@@ -85,9 +106,10 @@
                 android:layout_width="291dp"
                 android:layout_height="wrap_content">
                 <EditText
+                    android:maxLength="9"
                     android:layout_margin="20dp"
                     android:background="@null"
-                    android:hint="confirmar senha"
+                    android:hint="Confirmar Senha"
                     android:layout_width="298dp"
                     android:layout_height="wrap_content"
                     android:inputType="numberPassword"
@@ -105,5 +127,5 @@
         android:background="@color/colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="40dp" />
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
