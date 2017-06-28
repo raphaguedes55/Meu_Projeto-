@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorPrimary"
+
+
+    tools:context="com.projeto.tcc.coleta_de_leite.Classes.ColetaActivity"
+    android:weightSum="1">
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="20dp">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="10dp">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                android:padding="5dp">
+
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/coleta" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:background="@mipmap/data" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity=""
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/toolbar_main"
+                            android:layout_marginTop="5dp"
+                            android:text="DATA DA COLETA"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/txt_15sp"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/exib_horario"
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/edit_prod"
+                            android:textSize="@dimen/txt_15sp" />
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/matricula" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity=""
+                        android:orientation="vertical">
+
+
+                        <TextView
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/toolbar_main"
+                            android:layout_marginTop="5dp"
+                            android:text="MATRICULA"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/txt_15sp"
+
+                            />
+
+                        <TextView
+                            android:id="@+id/exib_mat"
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left"
+                            android:textSize="@dimen/txt_15sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/prod" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity=""
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/edit_mat"
+                            android:text="PRODUTOR"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/txt_15sp" />
+
+                        <TextView
+                            android:id="@+id/exib_prod"
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/txt_15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/milk" />
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity=""
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:text="LITROS COLETADOS"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/txt_15sp" />
+
+                        <TextView
+                            android:id="@+id/exib_Litros"
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/txt_15sp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/temperatura" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="TEMPERATURA"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:id="@+id/ver_temperatura"
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/txt_15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/amostra" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="NUMERO DA COLETA "
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:id="@+id/ver_amostra"
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/txt_15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/qualidade" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="ALIZAROL"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:id="@+id/ver_alizarol"
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/txt_15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
+                        android:background="@mipmap/obs_icon" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="OBSERVACAO "
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:id="@+id/ver_obs"
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/txt_15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:layout_weight="0.77"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal">
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp">
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/button_updatedelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="Alterar/Remover Registro"
+                    android:textAllCaps="true"
+                    android:textColor="#ffffff" />
+
+            </LinearLayout>
+
+        </ScrollView>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
+

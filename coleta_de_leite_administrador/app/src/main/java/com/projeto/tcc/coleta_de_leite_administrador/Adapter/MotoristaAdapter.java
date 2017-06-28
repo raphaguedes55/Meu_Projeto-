@@ -44,9 +44,11 @@ public class MotoristaAdapter extends ArrayAdapter<Motorista> {
         TextView text_nome= (TextView) listViewItem.findViewById(R.id.text_nome);
         TextView text_email= (TextView)listViewItem.findViewById(R.id.text_email);
         TextView textViewColeta= (TextView)listViewItem.findViewById(R.id.textViewColetar);
+        TextView text_matricula=(TextView)listViewItem.findViewById(R.id.text_matricula);
         final Motorista motorista = motorista1.get(position);
         text_nome.setText(motorista.getNome());
         text_email.setText(motorista.getEmailmotorista());
+        text_matricula.setText(motorista.getIdmotorista());
         final String aux=(motorista.getIdentificador());
 
         textViewColeta.setOnClickListener(new View.OnClickListener() {

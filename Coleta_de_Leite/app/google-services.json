@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "745065708173",
+    "firebase_url": "https://coleta-de-leite.firebaseio.com",
+    "project_id": "coleta-de-leite",
+    "storage_bucket": "coleta-de-leite.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:745065708173:android:73239dc625099929",
+        "android_client_info": {
+          "package_name": "com.projeto.tcc.coleta_de_leite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "745065708173-onkod3qihk8gr6hf1hd8ht73cnes4uci.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.projeto.tcc.coleta_de_leite",
+            "certificate_hash": "0b14116c39bf1e22561a18fe06332f8a41c16a20"
+          }
+        },
+        {
+          "client_id": "745065708173-2ipt64p5ub62iu9do85fn9on356m9nag.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK1hurRhluwnGvvrGKDIW225wL9B8fBeU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "745065708173-2ipt64p5ub62iu9do85fn9on356m9nag.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

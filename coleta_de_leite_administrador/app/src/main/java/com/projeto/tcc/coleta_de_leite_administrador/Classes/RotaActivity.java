@@ -1,9 +1,14 @@
 package com.projeto.tcc.coleta_de_leite_administrador.Classes;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -12,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,17 +44,22 @@ public class RotaActivity extends AppCompatActivity {
     public static final String ROTA_ID="com.projeto.tcc.coleta_de_leite.rotaid";
     public static final String motoristaId="com.projeto.tcc.coleta_de_leite.motoristaId";
     ListView listViewRota;
+
+
     FrameLayout framevazio,frameLista;
     DatabaseReference databaseRotas;
     List<Rota> rotaList;
     int aux;
     String auxstr;
+    Activity context;
+
 
     String idmotorista;
     private FirebaseAuth auth;
 
     private ProgressDialog progressDialog;
     private FloatingActionButton fab;
+    View coordinator;
 
 
 
@@ -57,6 +68,8 @@ public class RotaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rota);
+         coordinator= findViewById(R.id.coodinator);
+
         Intent intent=getIntent();
 
         idmotorista=intent.getStringExtra(MotoristaActivity.motoristaId);
@@ -108,7 +121,10 @@ public class RotaActivity extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.dialog_busca, null);
         dialogBuilder.setView(dialogView);
-        final EditText data=(EditText) dialogView.findViewById(R.id.edit_busca);
+
+        //MaskEditTextChangedListener maskDate = new MaskEditTextChangedListener("##/##/####",data);
+      //  data.addTextChangedListener(maskDate);
+       final    EditText data=(EditText) findViewById(R.id.edit_busca);
         final Button buttonAceitar = (Button) dialogView.findViewById(R.id.button_aceitar);
         final Button buttonCancelar = (Button) dialogView.findViewById(R.id.button_cancelar);
         final AlertDialog b = dialogBuilder.create();
@@ -117,8 +133,10 @@ public class RotaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 auxstr=data.getText().toString().trim();
-
                 buscaPorData(auxstr);
+                b.dismiss();
+
+
 
             }
 
@@ -127,6 +145,7 @@ public class RotaActivity extends AppCompatActivity {
         buttonCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                b.dismiss();
 
 
             }
@@ -138,15 +157,20 @@ public class RotaActivity extends AppCompatActivity {
         databaseRotas.addValueEventListener(new ValueEventListener() {
 
 
+            public Context getContext() {
+                return context;
+            }
+
             public void onDataChange(DataSnapshot dataSnapshot) {
 
 
                 rotaList.clear();
+                aux=0;
                 for(DataSnapshot rotaSnapShot:dataSnapshot.getChildren()){
 
                     Rota rota =rotaSnapShot.getValue(Rota.class);
-                    Toast.makeText(getApplicationContext(),""+data,Toast.LENGTH_LONG).show();
                   if (data.equals(rota.getHoraRota())){
+                      aux=aux+1;
                     rotaList.add(rota);
                   }
 
@@ -155,8 +179,35 @@ public class RotaActivity extends AppCompatActivity {
                 RotaAdapter rotaAdapter = new RotaAdapter(RotaActivity.this,rotaList);
 
                 listViewRota.setAdapter(rotaAdapter);
+                if (aux>0){
+             Snackbar snackbar=   Snackbar.make(coordinator, aux+" BUSCAS FORAM ENCONTRADAS ", Snackbar.LENGTH_INDEFINITE);
+                    snackbar.setActionTextColor(getResources().getColor(R.color.colorPadrao));
+
+                        snackbar.setAction("RECARREGAR ROTAS", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                carregaRota();
+
+
+                            }
+                        })
+                        .show();
 
                 progressDialog.dismiss();
+                }else {
+                    Snackbar snackbar = Snackbar.make(coordinator, "NENHUMA BUSCA ENCONTRADA", Snackbar.LENGTH_INDEFINITE);
+                    snackbar.setActionTextColor(getResources().getColor(R.color.colorPadrao));
+
+                            snackbar.setAction("RECARREGAR ROTAS", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    carregaRota();
+
+
+                                }
+                            })
+                            .show();
+                }
             }
 
             @Override
@@ -174,6 +225,11 @@ public class RotaActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+      carregaRota();
+
+    }
+
+    private void carregaRota() {
         databaseRotas.addValueEventListener(new ValueEventListener() {
 
 
@@ -209,7 +265,6 @@ public class RotaActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     @Override
