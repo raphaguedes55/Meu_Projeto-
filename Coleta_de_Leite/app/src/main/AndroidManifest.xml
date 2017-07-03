@@ -8,7 +8,7 @@
         android:name=".Utils.BancoOfilline"
         android:allowBackup="true"
         android:icon="@drawable/in2"
-        android:label="@string/app_name"
+        android:label="Elite Leitera"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Classes.LoginActivity"
@@ -23,10 +23,7 @@
             android:name=".Classes.RotaActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Classes.CadastroRotaActivity"
-            android:theme="@style/AppTheme"
 
-            />
         <activity
             android:name=".Classes.ColetaActivity"
             android:label="Listas de Coletas"
@@ -35,20 +32,51 @@
         <activity
             android:name=".Classes.DadosColetaActivity"
             android:label="Dados Da Coleta"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Classes.DadosColetaActivity" />
+            />
+
+        </activity>
+
         <activity
             android:windowSoftInputMode="stateVisible"
             android:name=".Classes.CadastroColetaActitity"
             android:label="Nova Coleta"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".Classes.CadastroColetaActitity" />
+            />
+        </activity>
+        <activity
+            android:windowSoftInputMode="stateVisible"
+            android:name=".Classes.CadastroRotaActivity"
+            android:label="Nova Coleta"
+            android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Classes.CadastroRotaActivity" />
+            />
+        </activity>
         <activity
             android:name=".Classes.UpdateDeleteColetaActivity"
             android:label="Retificar Coleta"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Classes.UpdateDeleteColetaActivity" />
+            />
+        </activity>
         <activity
             android:name=".Classes.UpdateDeleteRotaActivity"
             android:label="Retificar Rota"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value=".Classes.UpdateDeleteRotaActivity" />
+        </activity>
     </application>
 
 </manifest>

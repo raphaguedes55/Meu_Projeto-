@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.projeto.tcc.coleta_de_leite_administrador">
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:name=".Utils.BancoOfilline"
@@ -10,18 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Classes.splash"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".Classes.MotoristaActivity"
             android:label="Motorista Administrador">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Classes.NovoMotoristaActivity"
-            android:label="@string/app_name">
+            android:label="Cadastro Novo Motorista">
 
         </activity>
         <activity

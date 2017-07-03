@@ -68,6 +68,8 @@ public class RotaActivity extends AppCompatActivity {
         progressDialog.setMessage("Carregando rotas...");
         progressDialog.show();
         listViewRota=(ListView) findViewById(R.id.list_rota);
+        listViewRota.setDivider(this.getResources().getDrawable(R.drawable.transperent_color));
+        listViewRota.setDividerHeight(20);
         rotaList= new ArrayList<>();
         fab = (FloatingActionButton) findViewById(R.id.fab);
     }

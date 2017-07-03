@@ -12,12 +12,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.projeto.tcc.coleta_de_leite_administrador.Classes.ColetaActivity;
+import com.projeto.tcc.coleta_de_leite_administrador.Classes.DadosColetaActivity;
 import com.projeto.tcc.coleta_de_leite_administrador.Classes.RotaActivity;
+import com.projeto.tcc.coleta_de_leite_administrador.Model.Coletas;
 import com.projeto.tcc.coleta_de_leite_administrador.Model.Motorista;
 import com.projeto.tcc.coleta_de_leite_administrador.R;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +40,7 @@ public class MotoristaAdapter extends ArrayAdapter<Motorista> {
         this.motorista1=motorista;
     }
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater=context.getLayoutInflater();
 
         View listViewItem= inflater.inflate(R.layout.layout_motorista,null,true);
@@ -45,19 +48,23 @@ public class MotoristaAdapter extends ArrayAdapter<Motorista> {
         TextView text_email= (TextView)listViewItem.findViewById(R.id.text_email);
         TextView textViewColeta= (TextView)listViewItem.findViewById(R.id.textViewColetar);
         TextView text_matricula=(TextView)listViewItem.findViewById(R.id.text_matricula);
+
         final Motorista motorista = motorista1.get(position);
         text_nome.setText(motorista.getNome());
         text_email.setText(motorista.getEmailmotorista());
-        text_matricula.setText(motorista.getIdmotorista());
-        final String aux=(motorista.getIdentificador());
+        text_matricula.setText(motorista.getmotoristaId());
+
+        final String aux=(motorista.getMatricula());
 
         textViewColeta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+              final  Motorista motorista2 = motorista1.get(position);
                 Intent intent = new Intent(context,RotaActivity.class);
-            intent.putExtra(motoristaId,aux);
-                Toast.makeText(getContext(),aux,Toast.LENGTH_LONG).show();
-                context.startActivity(intent);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("dados_motorista",motorista2);
+                intent.putExtras(bundle);
+               context.startActivity(intent);
 
             }});
 

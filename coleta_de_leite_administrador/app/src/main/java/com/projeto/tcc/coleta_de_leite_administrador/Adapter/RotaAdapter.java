@@ -34,7 +34,10 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
         this.rotaList=rotaList;
         Collections.reverse(rotaList);
 
+
     }
+
+
 
     @NonNull
     @Override
@@ -47,7 +50,6 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
         final Rota rota=rotaList.get(position);
         textViewRota.setText(rota.getNomeRota());
          textViewHora.setText(rota.getHoraRota());
-
         textViewColeta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -128,10 +128,14 @@ public class ColetaActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         databaseRotas.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                coletasList.clear();
+                alizarol="";
+                Nprodutor=0;
+                TotalColeta=0;
                 for (DataSnapshot postSnapshot:dataSnapshot.getChildren()){
                     Coletas mColeta =postSnapshot.getValue(Coletas.class);
                     int numero = Integer.parseInt(mColeta.getLitrosColeta());
@@ -193,9 +197,7 @@ public class ColetaActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         aux =(String) getIntent().getSerializableExtra("capacidade");
-        alizarol="";
-        Nprodutor=0;
-        TotalColeta=0;
+
 
     }
 }

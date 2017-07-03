@@ -32,11 +32,12 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:inputType="textCapWords"
                 android:id="@+id/edit_Rota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nomeRota"
-                android:inputType="textAutoComplete"
+
                 android:maxLength="15"
                 android:textSize="@dimen/txt_15sp" />
         </android.support.design.widget.TextInputLayout>

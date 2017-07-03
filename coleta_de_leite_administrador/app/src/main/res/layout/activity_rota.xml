@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context="com.projeto.tcc.coleta_de_leite_administrador.Classes.ColetaActivity">
     <LinearLayout
+        android:id="@+id/linear_rota"
         android:background="@color/background"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -59,7 +60,21 @@
 
             </FrameLayout>
         </FrameLayout>
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_alignParentBottom="true" android:gravity="center_vertical"
+            android:background="@color/colorPrimary" android:layout_height="wrap_content"
+            android:id="@+id/rodape" android:padding="10dip">
 
+
+            <TextView
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:gravity="center_horizontal"
+                android:id="@+id/text_motorista"
+                android:text="Aqui fica o rodapé" />
+        </LinearLayout>
 
 
     </LinearLayout>

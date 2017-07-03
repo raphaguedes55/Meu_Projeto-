@@ -3,9 +3,10 @@
     <color name="colorPrimary">#283593</color>
     <color name="colorPrimaryDark">#1A237E</color>
     <color name="colorAccent">#283593</color>
-    <color name="colorPadrao">#2196F3</color>
+    <color name="colorPadrao">#283593</color>
     <color name="background">#f5f5f5</color>
     <color name="blood_primary">#ffffff</color>
     <color name="sky_primary">#fe5f55</color>
     <color name="cinza">#7c7c7c</color>
+    <drawable name="transperent_color">#00000000</drawable>
 </resources>

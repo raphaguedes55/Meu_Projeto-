@@ -60,9 +60,12 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
         TextView textViewHora=(TextView) listViewItem.findViewById(R.id.data_rota);
         TextView textViewColeta = (TextView) listViewItem.findViewById(R.id.textViewColetar);
         TextView textViewUpdadeColeta=(TextView)listViewItem.findViewById(R.id.textViewUpdate);
+
         final Rota rota=rotaList.get(position);
+
         textViewRota.setText(rota.getNomeRota());
          textViewHora.setText(rota.getHoraRota());
+
 
         textViewColeta.setOnClickListener(new View.OnClickListener() {
             @Override

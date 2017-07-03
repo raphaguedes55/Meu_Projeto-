@@ -33,12 +33,12 @@
 
 
             <EditText
-                android:maxLength="16"
+                android:inputType="textCapWords"
+                android:maxLength="25"
                 android:id="@+id/edit_update_Rota"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/nomeRota"
-                android:inputType="textAutoComplete"
                 android:textSize="@dimen/txt_15sp" />
         </android.support.design.widget.TextInputLayout>
 

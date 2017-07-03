@@ -34,17 +34,17 @@ public class MotoristaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_motoristas);
-        databaseMotoristas= FirebaseDatabase.getInstance().getReference("motoristas");
-        listViewMotoristas=(ListView)findViewById(R.id.list_motorista) ;
-        motoristasList =new ArrayList<>();
-        progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Carregando Motoristas...");
-        progressDialog.setCancelable(true);
-        progressDialog.show();
+        listadeId();
         metodosBotoes();
+        databaseMotoristas= FirebaseDatabase.getInstance().getReference("motoristas");
+        progressDialog.show();
+
 
 
     }
+
+
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -76,9 +76,16 @@ public class MotoristaActivity extends AppCompatActivity {
         });
 
     }
+    private void listadeId() {
+        listViewMotoristas=(ListView)findViewById(R.id.list_motorista) ;
+        listViewMotoristas.setDivider(this.getResources().getDrawable(R.drawable.transperent_color));
+        listViewMotoristas.setDividerHeight(20);
+        motoristasList =new ArrayList<>();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Carregando Motoristas...");
+        progressDialog.setCancelable(true);
 
-
-
+    }
 
     private void metodosBotoes() {
         fab=(FloatingActionButton) findViewById(R.id.float_cadastro);

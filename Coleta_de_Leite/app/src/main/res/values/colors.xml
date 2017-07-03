@@ -6,5 +6,6 @@
     <color name="colorPadrao">#2196F3</color>
     <color name="background">#f5f5f5</color>
     <color name="cinza">#7c7c7c</color>
+    <drawable name="transperent_color">#00000000</drawable>
 
 </resources>

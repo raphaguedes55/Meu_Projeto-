@@ -30,7 +30,7 @@ import static com.projeto.tcc.coleta_de_leite.Classes.ColetaActivity.rotaId;
 
 public class CadastroColetaActitity extends AppCompatActivity {
     private EditText matricula;
-    private TextClock horario;
+    private String horario;
     private EditText produtor;
     private EditText litros;
     private EditText numeroAmostra;
@@ -45,6 +45,10 @@ public class CadastroColetaActitity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrocoleta);
         findViewByIds();
+        final Calendar c = Calendar.getInstance();
+        String hora = "" + c.get(Calendar.HOUR_OF_DAY);
+        String minute=""+c.get(Calendar.MINUTE);
+        horario=(hora+":"+minute);
         databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(idDaRota);
         metodoBotoes();
 
@@ -96,10 +100,9 @@ public class CadastroColetaActitity extends AppCompatActivity {
         String mat = matricula.getText().toString().trim();
         String tipoAlizarol=spinnerAlizarol.getSelectedItem().toString();
         String temperatura=spinner.getSelectedItem().toString();
-        String hora=horario.getText().toString().trim();
         String amostra=numeroAmostra.getText().toString().trim();
             String id =databaseRotas.push().getKey();
-            Coletas coletas= new Coletas(id,idDaRota,nomeProdutor,litragem,mat,hora,tipoAlizarol,temperatura,amostra,retificado,obs,"","");
+            Coletas coletas= new Coletas(id,idDaRota,nomeProdutor,litragem,mat,horario,tipoAlizarol,temperatura,amostra,retificado,obs,"","");
             databaseRotas.child(id).setValue(coletas);
             finish();
     }
@@ -111,7 +114,6 @@ public class CadastroColetaActitity extends AppCompatActivity {
         spinnerAlizarol=(Spinner)findViewById(R.id.spinnerAlizarol);
         spinner=(Spinner)findViewById(R.id.spinnerTemperatura);
         matricula = (EditText) findViewById(R.id.edit_mat);
-         horario= (TextClock) findViewById(R.id.textClock);
         produtor = (EditText) findViewById(R.id.edit_prod);
         litros = (EditText) findViewById(R.id.edit_litros);
         salva_coleta = (Button) findViewById(R.id.save);

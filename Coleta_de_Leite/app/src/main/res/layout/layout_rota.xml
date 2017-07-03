@@ -3,117 +3,115 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="5dp"
+
+    >
 
 
 
-    <android.support.v7.widget.CardView
-        android:layout_margin="10dp"
-         android:padding="20dp"
-         android:layout_marginEnd="5dp"
+    <LinearLayout
+        android:background="#ffffff"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:cardCornerRadius="5dp">
+        android:layout_height="wrap_content"
+        >
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
             <View
-                android:background="@color/cinza"
+                android:background="@color/colorPrimary"
                 android:layout_width="5dp"
                 android:layout_height="match_parent"/>
-            <ImageView
-                android:layout_gravity="center"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:background="@drawable/rotacadastro" />
 
 
             <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:padding="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-
-
-            <LinearLayout
-
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:orientation="horizontal">
-
-
-                <TextView
-
-
-                   android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
-                    android:id="@+id/textRota"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:text="TextView" />
-
-                <TextView
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
-                    android:id="@+id/data_rota"
-                    android:layout_width="118dp"
-                    android:layout_height="match_parent"
-                    android:text="Hora"
-
-                    />
-
-            </LinearLayout>
+                android:orientation="vertical"
+                android:weightSum="1">
 
 
                 <LinearLayout
-                android:layout_width="240dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:orientation="horizontal">
+                    android:orientation="vertical"
+                    android:padding="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp">
 
-                <TextView
-                    android:id="@+id/textViewColetar"
 
-                    android:layout_width="wrap_content"
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorPrimary"
+                            android:layout_gravity="center"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+                            android:id="@+id/textRota"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+                        <TextView
+                            android:gravity="right"
+                            android:textStyle="italic"
+                            android:textSize="15sp"
+                            android:layout_gravity="center"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Light.Widget.PopupMenu.Large"
+                            android:id="@+id/data_rota"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hora"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:gravity="right"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:padding="5dp"
-                    android:text="Coletar"
-                    android:textColor="@color/colorPrimary"
-                    android:textStyle="bold" />
+                    android:layout_margin="2dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/textViewUpdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="5dp"
+                        android:text="INFORMAÇOES ROTA"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textViewUpdate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="Remover/Atualizar"
-                    android:textColor="@color/blood_primary"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textViewColetar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:padding="5dp"
+                        android:text="COLETAR"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
-
-
         </LinearLayout>
     </LinearLayout>
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
 </LinearLayout>
+
 
 
 

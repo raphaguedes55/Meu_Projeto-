@@ -1,12 +1,14 @@
 package com.projeto.tcc.coleta_de_leite_administrador.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by raphael on 21/06/17.
  */
 
-public class Motorista {
-    private String Idmotorista;
-    private String identificador;
+public class Motorista implements Serializable {
+    private String motoristaId;
+    private String matricula;
     private String emailmotorista;
     private String nome;
     private String senha;
@@ -16,19 +18,19 @@ public class Motorista {
     }
 
 
-    public Motorista( String identificador,String emailmotorista, String nome, String Senha,String Idmotorista) {
-        this.Idmotorista= Idmotorista;
+    public Motorista( String motoristaId,String matricula,String emailmotorista, String nome, String Senha) {
+        this.motoristaId= motoristaId;
         this.emailmotorista=emailmotorista;
         this.nome=nome;
         this.senha=Senha;
-        this.identificador=identificador;
+        this.matricula=matricula;
     }
-    public String getIdentificador() {
-        return identificador;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public String getIdmotorista() {
-        return Idmotorista;
+    public String getmotoristaId() {
+        return motoristaId;
     }
 
     public String getEmailmotorista() {
