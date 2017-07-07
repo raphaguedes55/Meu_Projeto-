@@ -30,12 +30,12 @@ import static com.projeto.tcc.coleta_de_leite.Classes.ColetaActivity.rotaId;
 
 public class CadastroColetaActitity extends AppCompatActivity {
     private EditText matricula;
-    private String horario;
     private EditText produtor;
     private EditText litros;
     private EditText numeroAmostra;
     private Button salva_coleta;
     String idDaRota;
+    String horario;
     private Spinner spinner;
     private Spinner spinnerAlizarol;
     DatabaseReference databaseRotas;
@@ -93,6 +93,7 @@ public class CadastroColetaActitity extends AppCompatActivity {
 
 
     private void saveColeta() {
+        HoradaColeta();
         String retificado=" ";
         String obs="";
         String nomeProdutor=produtor.getText().toString().trim();
@@ -118,4 +119,18 @@ public class CadastroColetaActitity extends AppCompatActivity {
         litros = (EditText) findViewById(R.id.edit_litros);
         salva_coleta = (Button) findViewById(R.id.save);
     }
-}
+    private void HoradaColeta() {
+        final String Minuto;
+        final Calendar c = Calendar.getInstance();
+        String hora = "" + c.get(Calendar.HOUR_OF_DAY);
+        int minuto=c.get(Calendar.MINUTE);
+        if(minuto<10){
+             Minuto="0"+minuto;
+        }else {
+             Minuto=""+minuto;
+        }
+        horario=(hora+":"+Minuto);
+    }
+
+    }
+

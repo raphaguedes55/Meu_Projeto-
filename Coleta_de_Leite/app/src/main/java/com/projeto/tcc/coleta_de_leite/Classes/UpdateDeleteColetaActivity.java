@@ -28,7 +28,6 @@
 
 public class UpdateDeleteColetaActivity extends AppCompatActivity{
     private EditText matricula;
-    private TextClock horario;
     private EditText produtor;
     private EditText litros;
     private EditText obs;
@@ -55,7 +54,6 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         findViewByIds();
 
         matricula.setText(coletas.getMatProdutor());
-        horario.setText(coletas.getHoraColeta());
         produtor.setText(coletas.getNomeProdutor());
         litros.setText(coletas.getLitrosColeta());
         amostra.setText(coletas.getAmostra());
@@ -123,7 +121,6 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         atualizaColeta=(Button)findViewById(R.id.button_atualiza_coleta);
         amostra=(EditText)findViewById(R.id.edit_update_amostra);
         matricula=(EditText)findViewById(R.id.edit_update_matricula);
-        horario=(TextClock)findViewById(R.id.textClock);
         produtor=(EditText)findViewById(R.id.edit_update_prod);
         litros=(EditText)findViewById(R.id.edit_update_litros);
         spinnerAlizarol=(Spinner)findViewById(R.id.spinner_update_Alizarol);
@@ -169,42 +166,41 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
 
         dialogBuilder.setTitle("ATENCAO");
         final AlertDialog b = dialogBuilder.create();
-        b.show();
+
+        if(verificaCampos()) {
+            final   String sobs = obs.getText().toString().trim();
+            final   String id = coletas.getIdColeta();
+            final  String rotaId = coletas.getIdRota();
+            final   String nomeProdutor = produtor.getText().toString().trim();
+            final  String litragem = litros.getText().toString().trim();
+            final  String mat = matricula.getText().toString().trim();
+            final  String alizarol = spinnerAlizarol.getSelectedItem().toString();
+            final   String temperatura = spinner.getSelectedItem().toString();
+            final   String namostra = amostra.getText().toString().trim();
+            final   String retificado = "Registro Retificado";
+            final    String Horario= coletas.getHoraColeta();
+            b.show();
         buttonAceitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(verificaCampos()) {
-                    String sobs = obs.getText().toString().trim();
-                    String id = coletas.getIdColeta();
-                    String rotaId = coletas.getIdRota();
-                    String nomeProdutor = produtor.getText().toString().trim();
-                    String litragem = litros.getText().toString().trim();
-                    String mat = matricula.getText().toString().trim();
-                    String hora = coletas.getHoraColeta();
-                    String alizarol = spinnerAlizarol.getSelectedItem().toString();
-                    String temperatura = spinner.getSelectedItem().toString();
-                    String namostra = amostra.getText().toString().trim();
-                    String retificado = "Registro Retificado";
-
-
-                    coletaDao.updateColeta(id, rotaId, nomeProdutor, litragem, mat, hora, alizarol, temperatura, namostra, retificado, sobs,"","");
+                coletaDao.updateColeta(id, rotaId, nomeProdutor, litragem, mat, Horario, alizarol, temperatura, namostra, retificado, sobs,"","");
                     finish();
                 } }
 
 
 
-
-        });
+        );
         buttonDeletar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 b.dismiss();
             }
         });
-    }
-
-
-
-
+    }}
 }
+
+
+
+
+
 

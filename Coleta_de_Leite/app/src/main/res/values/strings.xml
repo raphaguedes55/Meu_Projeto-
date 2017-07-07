@@ -29,7 +29,7 @@
         <item>6°C</item>
         <item>7°C</item>
         <item>8°C</item>
-        <item>8°C</item>
+        <item>9°C</item>
         <item>10°C</item>
         <item>11°C</item>
         <item>12°C</item>
@@ -58,4 +58,6 @@
     <string name="atualizar">Deseja fazer retificaçao deste registro</string>
     <string name="rotas">preenchimento Obrigatorio</string>
     <string name="vazio">Preenchimento Obrigatorio</string>
+    <string name="email">raphaguedes55@hotmail.com</string>
+    <string name="email_invalido">email invalido</string>
 </resources>

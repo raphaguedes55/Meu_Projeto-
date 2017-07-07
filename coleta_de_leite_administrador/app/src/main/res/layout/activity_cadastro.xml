@@ -111,7 +111,7 @@
                     android:id="@+id/verificasenha" />
             </android.support.design.widget.TextInputLayout>
             <Button
-                android:id="@+id/button_cadastrar"
+                android:id="@+id/button_editar"
                 android:layout_gravity="end"
                 android:layout_margin="20dp"
                 android:text="Cadastrar Usuario"

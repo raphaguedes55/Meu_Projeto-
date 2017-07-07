@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ADM Elite Leitera</string>
+    <string name="app_name">Elite Leitera Empresa </string>
     <string name="problemas">Esta Com Problema ?</string>
     <string name="senha_invalida">senha invalida!</string>
     <string name="title_activity_main">Lista de Rotas</string>
@@ -60,5 +60,5 @@
     <string name="vazio">Preenchimento Obrigatorio</string>
     <string name="cadastro">REALIZAR CADASTRO</string>
     <string name="pesquisa">buscas por data de coleta EX : 01/01/2017</string>
-    <string name="aviso_confirmaçao">Apos confirmar o cadastro , ele so podera ser excluido pelo admistrador do sistema </string>
+    <string name="aviso_confirmaçao">Após confirmar o cadastro , ele só podera ser excluido pelo administrador do sistema </string>
 </resources>

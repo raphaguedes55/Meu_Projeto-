@@ -34,18 +34,11 @@ public class CadastroRotaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastrorotas);
         listaId();
         metodoButoon();
-        final Calendar c = Calendar.getInstance();
-        String ano = "" + c.get(Calendar.YEAR);
-        String mes=c.get(Calendar.MONTH)+1+"";
-        if(mes.length()<2){
-            mes="0"+mes;
-        }
-        String dia = "" + c.get(Calendar.DAY_OF_MONTH);
-        if(dia.length()<2){
-            dia="0"+dia;
-        }
-        Data=(dia +"/"+mes+"/"+ano);
+        datadarota();
     }
+
+
+
     private boolean verificaCampos() {
         if (rotas.getText().toString().isEmpty()) {
             rotas.setError(getString(R.string.vazio));
@@ -97,8 +90,18 @@ public class CadastroRotaActivity extends AppCompatActivity {
             databaseRotas.child(id).setValue(rota1);
            finish();
 
-
-
-
+    }
+      private void datadarota() {
+        final Calendar c = Calendar.getInstance();
+        String ano = "" + c.get(Calendar.YEAR);
+        String mes=c.get(Calendar.MONTH)+1+"";
+        if(mes.length()<2){
+            mes="0"+mes;
+        }
+        String dia = "" + c.get(Calendar.DAY_OF_MONTH);
+        if(dia.length()<2){
+            dia="0"+dia;
+        }
+        Data=(dia +"/"+mes+"/"+ano);
     }
 }

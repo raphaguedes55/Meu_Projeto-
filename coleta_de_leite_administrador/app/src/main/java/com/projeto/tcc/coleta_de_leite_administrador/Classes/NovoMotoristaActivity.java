@@ -17,8 +17,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -69,7 +67,7 @@ public class NovoMotoristaActivity extends AppCompatActivity {
         edit_email = (EditText) findViewById(R.id.email);
         edit_senha = (EditText) findViewById(R.id.senha);
         edit_verifica = (EditText) findViewById(R.id.verificasenha);
-        cadastrar = (Button) findViewById(R.id.button_cadastrar);
+        cadastrar = (Button) findViewById(R.id.button_editar);
     }
 
     private void incluirMotorista() {
@@ -78,7 +76,7 @@ public class NovoMotoristaActivity extends AppCompatActivity {
         final String nome = edit_nome.getText().toString().trim();
         final String email = edit_email.getText().toString().trim();
         final String password = edit_senha.getText().toString().trim();
-        String passwordV = edit_verifica.getText().toString().trim();
+        final String passwordV = edit_verifica.getText().toString().trim();
         final String matricula = edit_matricula.getText().toString().trim();
 
 
@@ -91,6 +89,7 @@ public class NovoMotoristaActivity extends AppCompatActivity {
                 snackbar("Matricula vazia!");
                 return;
             }
+
             if (TextUtils.isEmpty(matricula)) {
                 snackbar("Matricula deve conter 6 digistos!");
                 return;
@@ -108,10 +107,13 @@ public class NovoMotoristaActivity extends AppCompatActivity {
                 snackbar("A senha deve ter no minimo 6 digitos!");
                 return;
             }
-        if (password.equals(passwordV)) {
-            snackbar("Senhas nao conferem!");
-            return;
-        }
+            if (password.equals( passwordV)){}else {
+                snackbar("As senhas sao diferentes");
+                return;
+
+            }
+
+
             auth.createUserWithEmailAndPassword(email, password)
 
                     .addOnCompleteListener(NovoMotoristaActivity.this, new OnCompleteListener<AuthResult>() {
@@ -123,7 +125,7 @@ public class NovoMotoristaActivity extends AppCompatActivity {
 
 
                             if (!task.isSuccessful()) {
-                                snackbar("Atençao este email ja foi cadastrado");
+                                snackbar("EMAIL JA CADASTRADO OU  INVALIDO");
                             } else {
                                 AlertDialog.Builder alerta = new AlertDialog.Builder(NovoMotoristaActivity.this);
                                 alerta.setTitle("Confirmaçao de cadastro !");
@@ -136,6 +138,8 @@ public class NovoMotoristaActivity extends AppCompatActivity {
                                             public void onClick(DialogInterface dialog, int which) {
                                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                                                 String token = user.getUid();
+                                                Log.v("SENHA",password);
+                                                Log.v("VERIFICA",passwordV);
                                                 Motorista motorista = new Motorista(matricula, token, email, nome, password);
                                                 databaseMotorista.child(token).setValue(motorista);
                                                 progressDialog.dismiss();

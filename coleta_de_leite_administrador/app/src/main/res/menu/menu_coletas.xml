@@ -11,7 +11,7 @@
 
     <item
         android:id="@+id/navigation_notifications"
-        android:icon="@drawable/truck"
+        android:icon="@drawable/truck2"
         android:title="Informaçao de Cargas" />
 
 </menu>

@@ -27,14 +27,18 @@
                 android:textColor="#ffffff"
                 android:textStyle="bold" />
         </android.support.design.widget.AppBarLayout>
-       <CalendarView
+       <DatePicker
            android:id="@+id/calendar_busca"
-
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"></CalendarView>
+           android:layout_height="match_parent"
+           android:endYear="2100"
+           android:startYear="2017">
+
+       </DatePicker>
 
 
         <LinearLayout
+            android:layout_gravity="end"
             android:layout_width="match_parent"
             android:layout_height="40dp">
 
@@ -44,7 +48,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.50"
                 android:background="#ffffff"
-                android:text="ACEITAR"
+                android:text="BUSCAR"
                 android:textColor="@color/colorPrimaryDark" />
 
             <Button

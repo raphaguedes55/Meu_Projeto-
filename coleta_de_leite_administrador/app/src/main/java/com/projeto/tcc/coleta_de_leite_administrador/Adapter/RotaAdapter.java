@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.projeto.tcc.coleta_de_leite_administrador.Classes.ColetaActivity;
 import com.projeto.tcc.coleta_de_leite_administrador.Model.Rota;
@@ -47,6 +49,7 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
         TextView textViewRota=(TextView) listViewItem.findViewById(R.id.textRota);
         TextView textViewHora=(TextView) listViewItem.findViewById(R.id.data_rota);
         TextView textViewColeta = (TextView) listViewItem.findViewById(R.id.textViewColetar);
+
         final Rota rota=rotaList.get(position);
         textViewRota.setText(rota.getNomeRota());
          textViewHora.setText(rota.getHoraRota());

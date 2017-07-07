@@ -1,49 +1,35 @@
 package com.projeto.tcc.coleta_de_leite_administrador.Classes;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.EditText;
+import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.projeto.tcc.coleta_de_leite_administrador.Adapter.RotaAdapter;
-import com.projeto.tcc.coleta_de_leite_administrador.Dao.RotaDao;
-import com.projeto.tcc.coleta_de_leite_administrador.Model.Coletas;
 import com.projeto.tcc.coleta_de_leite_administrador.Model.Motorista;
 import com.projeto.tcc.coleta_de_leite_administrador.Model.Rota;
 import com.projeto.tcc.coleta_de_leite_administrador.R;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 
@@ -58,6 +44,8 @@ public class RotaActivity extends AppCompatActivity {
     List<Rota> rotaList;
     int aux;
     String stringBuscas;
+   String strdia;
+    String strmes;
     long strData;
     String idmotorista;
     FirebaseAuth auth;
@@ -84,9 +72,16 @@ public class RotaActivity extends AppCompatActivity {
 
 
     }
+
     private void listarIds() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_rota);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_black_24dp));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }});
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Carregando rotas...");
         progressDialog.show();
@@ -102,22 +97,23 @@ public class RotaActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_desejos,menu);
+        getMenuInflater().inflate(R.menu.menu_rotas,menu);
         return  true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
+        if(id==R.id.action_settings){
+                buscaDialog();
+        }
+
+
         if (id == R.id.actio_sair) {
             auth.signOut();
             Intent intent=new Intent(RotaActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
-        }
-        if(id==R.id.action_settings){
-            buscaDialog();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -178,7 +174,7 @@ public class RotaActivity extends AppCompatActivity {
 
 
 
-        final    CalendarView data=(CalendarView) findViewById(R.id.calendar_busca);
+       final DatePicker datePicker=(DatePicker) dialogView.findViewById(R.id.calendar_busca);
         final Button buttonAceitar = (Button) dialogView.findViewById(R.id.button_aceitar);
         final Button buttonCancelar = (Button) dialogView.findViewById(R.id.button_cancelar);
         final AlertDialog b = dialogBuilder.create();
@@ -186,10 +182,23 @@ public class RotaActivity extends AppCompatActivity {
         buttonAceitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                strData=data.getDate();
-                Toast.makeText(RotaActivity.this,""+ strData,Toast.LENGTH_LONG).show();
-                //buscaPorData(""+strData);
+                int ano=datePicker.getYear();
+                int mes=datePicker.getMonth()+1;
+                int dia=datePicker.getDayOfMonth();
+                if (dia<10){
+                     strdia="0"+dia;
+                }else {
+                    strdia=""+dia;}
+                if (mes<10){
+                  strmes="0"+mes;
+                }else {
+                    strmes=""+mes;
+                }
+                buscaPorData(strdia+"/"+strmes+"/"+ano);
+
+
                 b.dismiss();
+
 
 
 
@@ -230,12 +239,11 @@ public class RotaActivity extends AppCompatActivity {
 
                 listViewRota.setAdapter(rotaAdapter);
                 if (aux>0){
-                     stringBuscas="Buscas foi encontrada";}
+                     stringBuscas="A Buscas foi encontrada";}
                 if (aux==0){
-                        aux= Integer.parseInt(null);
                          stringBuscas="Nenhuma busca foi encontrada";
                     }
-                    Snackbar snackbar=   Snackbar.make(coordinator, aux+stringBuscas+"", Snackbar.LENGTH_INDEFINITE);
+                    Snackbar snackbar=   Snackbar.make(coordinator,stringBuscas+"", Snackbar.LENGTH_INDEFINITE);
                     snackbar.setActionTextColor(getResources().getColor(R.color.colorPadrao));
 
                     snackbar.setAction("RECARREGAR ROTAS", new View.OnClickListener() {

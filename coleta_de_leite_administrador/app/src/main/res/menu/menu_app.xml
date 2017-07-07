@@ -2,6 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.powellapps.ihadream.MainActivity">
+
     <item
         android:id="@+id/actio_sair"
         android:orderInCategory="100"

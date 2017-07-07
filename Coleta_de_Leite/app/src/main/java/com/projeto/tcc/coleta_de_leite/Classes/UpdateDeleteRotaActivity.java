@@ -129,31 +129,31 @@ public class UpdateDeleteRotaActivity extends AppCompatActivity {
 
         dialogBuilder.setTitle("ATENCAO");
         final AlertDialog b = dialogBuilder.create();
-        b.show();
-        buttonAceitar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (verificaCampos()){
-                String name = update_rota.getText().toString().trim();
-                String carga= update_capacidade.getText().toString().trim();
-                String tipo = spinner_rota.getSelectedItem().toString();
+        if (verificaCampos()) {
+            final String name = update_rota.getText().toString().trim();
+            final String carga = update_capacidade.getText().toString().trim();
+            final String tipo = spinner_rota.getSelectedItem().toString();
 
+            b.show();
+            buttonAceitar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                    final RotaDao rotaDao=new RotaDao();
-                rotaDao.updateRota(idRota,motoristaID, name,tipo,hora,carga);
-                finish();
+                    final RotaDao rotaDao = new RotaDao();
+                    rotaDao.updateRota(idRota, motoristaID, name, tipo, hora, carga);
+                    finish();
                 }
 
 
-            }
-        });
-        buttonDeletar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                b.dismiss();
-            }
-        });
+            });
+            buttonDeletar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    b.dismiss();
+                }
+            });
+        }
+
+
     }
-
-
 }

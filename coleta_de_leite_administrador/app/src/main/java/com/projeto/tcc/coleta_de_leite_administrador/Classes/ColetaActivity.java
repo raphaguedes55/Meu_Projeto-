@@ -2,6 +2,7 @@ package com.projeto.tcc.coleta_de_leite_administrador.Classes;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -25,7 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.projeto.tcc.coleta_de_leite_administrador.Adapter.ColetaAdapter;
 import com.projeto.tcc.coleta_de_leite_administrador.Model.Coletas;
 import com.projeto.tcc.coleta_de_leite_administrador.R;
-import com.projeto.tcc.coleta_de_leite_administrador.Model.Coletas;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,6 +44,7 @@ public class ColetaActivity extends AppCompatActivity {
     TextView text_capacidade;
     TextView text_produtor;
     TextView text_litros;
+    TextView capacidade_caminhao;
     int Nprodutor;
     int TotalColeta;
     String alizarol;
@@ -60,6 +61,7 @@ public class ColetaActivity extends AppCompatActivity {
 
                     frameLayout.setVisibility(View.GONE);
                     return  true;
+
 
 
                 case R.id.navigation_notifications:
@@ -81,7 +83,7 @@ public class ColetaActivity extends AppCompatActivity {
 
         listaId();
         aux =(String) getIntent().getSerializableExtra("capacidade");
-        Toast.makeText(getApplicationContext(),idDaRota,Toast.LENGTH_LONG).show();
+        capacidade_caminhao.setText(aux);
         databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(idDaRota);
         auth = FirebaseAuth.getInstance();
 
@@ -95,33 +97,36 @@ public class ColetaActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_desejos,menu);
+        getMenuInflater().inflate(R.menu.menu_app,menu);
         return  true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id == R.id.actio_sair) {
-                auth.signOut();
-                Intent intent=new Intent(ColetaActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
 
+        if (id == R.id.actio_sair) {
+            auth.signOut();
+            Intent intent=new Intent(ColetaActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
         return super.onOptionsItemSelected(item);
     }
-
 
 
 
     @Override
     protected void onStart() {
         super.onStart();
+
         databaseRotas.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-               coletasList.clear();
+                coletasList.clear();
+                alizarol="";
+                Nprodutor=0;
+                TotalColeta=0;
                 for (DataSnapshot postSnapshot:dataSnapshot.getChildren()){
                     Coletas mColeta =postSnapshot.getValue(Coletas.class);
                     int numero = Integer.parseInt(mColeta.getLitrosColeta());
@@ -132,9 +137,16 @@ public class ColetaActivity extends AppCompatActivity {
                     coletasList.add(mColeta);
                 }
                 int aux1 = capacidade - TotalColeta;
-                text_litros.setText(""+ aux1);
-                text_produtor.setText("  " +TotalColeta);
-                text_capacidade.setText("  "+Nprodutor);
+                if(aux1<0){
+                    text_capacidade.setText("insuficiente "+aux1*-1+" litros não coletados");
+                    text_capacidade.setTextColor(Color.RED);
+                }else {
+                    text_capacidade.setText(""+ aux1);
+                }
+
+
+                text_produtor.setText("  " +Nprodutor);
+                text_litros.setText("  "+TotalColeta);
                 ColetaAdapter coletaAdapter= new ColetaAdapter(ColetaActivity.this,coletasList);
                 listViewColetas.setAdapter(coletaAdapter);
                 listViewColetas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -160,18 +172,25 @@ public class ColetaActivity extends AppCompatActivity {
         });
     }
     private void listaId() {
-        text_capacidade=(TextView)findViewById(R.id.text_produtores);
-        text_litros=(TextView)findViewById(R.id.text_capacidade);
-        text_produtor=(TextView)findViewById(R.id.litros_caminhao);
+        text_capacidade=(TextView)findViewById(R.id.text_capacidade);
+        text_litros=(TextView)findViewById(R.id.litros_caminhao);
+        text_produtor=(TextView)findViewById(R.id.text_produtores);
+        capacidade_caminhao=(TextView)findViewById(R.id.text_caminhao);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("Lista De Coletas");
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_black_24dp));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         coletasList = new ArrayList<>();
         Intent intent =getIntent();
         idDaRota=intent.getStringExtra(RotaActivity.ROTA_ID);
-
         listViewColetas= (ListView) findViewById(R.id.list_coleta);
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //  setSupportActionBar(toolbar);
@@ -183,9 +202,7 @@ public class ColetaActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         aux =(String) getIntent().getSerializableExtra("capacidade");
-        alizarol="";
-        Nprodutor=0;
-        TotalColeta=0;
+
 
     }
 }

@@ -7,20 +7,10 @@
 
     <ImageView
         android:layout_marginTop="50dp"
-        android:src="@drawable/in2"
+        android:src="@drawable/elite_adm"
         android:layout_width="237dp"
         android:layout_height="255dp"
         android:layout_gravity="center" />
-    <TextView
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"
-        android:text="VERSAO ADMINISTRADOR"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_gravity="center"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
-
 
 
     <ProgressBar
@@ -32,7 +22,14 @@
         android:layout_weight="0.24" />
 
     <TextView
-        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:text="SISTEMA PARA EMPRESA"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:textStyle=""
         android:layout_marginTop="10dp"
         android:text="CRIADO POR"
         android:layout_width="wrap_content"
@@ -40,12 +37,11 @@
         android:layout_gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
     <TextView
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:text="Raphael Guedes"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
         android:layout_gravity="center" />
-
 
 
 </LinearLayout>
