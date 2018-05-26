@@ -38,6 +38,21 @@
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="291dp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:maxLength="30"
+                    android:hint="Seu Nome"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="291dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName
+"
+                    android:ems="10"
+                    android:id="@+id/novo_nome" />
+            </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="291dp"
@@ -45,6 +60,7 @@
 
                 <EditText
                     android:hint="Email"
+                    android:maxLength="30"
                     android:layout_marginTop="30dp"
                     android:layout_width="291dp"
                     android:layout_height="wrap_content"
@@ -57,6 +73,7 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:maxLength="12"
                     android:hint="Senha"
                     android:layout_width="298dp"
                     android:layout_height="wrap_content"

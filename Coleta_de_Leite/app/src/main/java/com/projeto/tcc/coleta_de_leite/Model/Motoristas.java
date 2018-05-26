@@ -7,12 +7,15 @@ package com.projeto.tcc.coleta_de_leite.Model;
 public class Motoristas {
     String id_motorista;
     String emailmotorista;
-     String senha;
+    String nomeMotorista;
+    String senha;
 
     public Motoristas (){}
 
-    public Motoristas(String id_motorista , String emailmotorista,String senha){
+    public Motoristas( String id_motorista ,String nomeMotorista, String emailmotorista,String senha){
+
         this.id_motorista=id_motorista;
+        this.nomeMotorista=nomeMotorista;
         this.emailmotorista=emailmotorista;
         this.senha=senha;
 
@@ -35,4 +38,13 @@ public class Motoristas {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public String getNomeMotorista() {
+        return nomeMotorista;
+    }
+
+    public void setNomeMotorista(String nomeMotorista) {
+        this.nomeMotorista = nomeMotorista;
+    }
+
 }

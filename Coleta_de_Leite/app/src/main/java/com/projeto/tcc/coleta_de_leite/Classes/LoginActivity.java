@@ -142,7 +142,7 @@ public class LoginActivity extends AppCompatActivity {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             if (user != null) {
                 String token = user.getUid();
-                Motoristas motoristas = new Motoristas(token, "", "");
+                Motoristas motoristas = new Motoristas(token, "","", "");
                 Intent transicaoadc = new Intent(LoginActivity.this, RotaActivity.class);
                 transicaoadc.putExtra(motoristaId, motoristas.getId_motorista());
                 startActivity(transicaoadc);

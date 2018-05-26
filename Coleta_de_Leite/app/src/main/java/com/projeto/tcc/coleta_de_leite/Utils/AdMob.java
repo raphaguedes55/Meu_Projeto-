@@ -11,9 +11,9 @@ import com.projeto.tcc.coleta_de_leite.R;
 
 public class AdMob {
     public boolean mAdmob(Context context ,AdView adView){
-        MobileAds.initialize(context, "YOUR_ADMOB_APP_ID");
+        MobileAds.initialize(context, "ca-app-pub-7740037973360371/2579306449");
         adView = (AdView) adView.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("ca-app-pub-7740037973360371/2579306449").build();
         adView.loadAd(adRequest);
         return true;
 

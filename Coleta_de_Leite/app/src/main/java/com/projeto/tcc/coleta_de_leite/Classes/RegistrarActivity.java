@@ -31,6 +31,7 @@ public class RegistrarActivity extends AppCompatActivity {
     FirebaseAuth auth;
     EditText editLogin;
     EditText editPassword;
+    EditText editName;
     Button btnLoginRegister;
     ProgressDialog progressDialog;
     LinearLayout linearLayout;
@@ -51,6 +52,7 @@ public class RegistrarActivity extends AppCompatActivity {
     }
 
     private void buscadeId() {
+        editName= (EditText)findViewById(R.id.novo_nome);
         editLogin = (EditText) findViewById(R.id.novo_email);
         editPassword = (EditText) findViewById(R.id.nova_senha);
         btnLoginRegister = (Button) findViewById(R.id.registrar);
@@ -61,26 +63,34 @@ public class RegistrarActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 final String email = editLogin.getText().toString().trim();
+                final String nome = editName.getText().toString().trim();
                 final String password = editPassword.getText().toString().trim();
+                if (TextUtils.isEmpty(nome)) {
+                    editName.setError("Obrigatorio");
+                    snackbar("Insira seu Nome");
+
+                    return;
+                }
                 if (TextUtils.isEmpty(email)) {
                     editLogin.setError("Obrigatorio");
                     snackbar("Insira seu Email");
 
                     return;
                 }
-                if (TextUtils.isEmpty(password)) {
-                    editLogin.setError("Obrigatorio");
-                    snackbar("Insira sua Senha");
 
+                if (password.length() < 6) {
+                    editPassword.setError("Obrigatorio");
+                    snackbar("A senha deve ter no minimo 6 digitos!");
                     return;
                 }
-                registerUser(email, password);
+
+                registerUser(email,nome,password);
 
             }
         });
     }
 
-    private void registerUser(final String email, final String password) {
+    private void registerUser(final String email,final String name,final String password) {
         progressDialog.show();
 
 
@@ -91,7 +101,7 @@ public class RegistrarActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                             String token = user.getUid();
-                            Motoristas motoristas = new Motoristas(token, email, password);
+                            Motoristas motoristas = new Motoristas(token,name,email, password);
                             databaseMotorista.child(token).setValue(motoristas);
                             Intent transicaoadc = new Intent(RegistrarActivity.this, LoginActivity.class);
                             transicaoadc.putExtra(motoristaId, motoristas.getId_motorista());
@@ -100,6 +110,7 @@ public class RegistrarActivity extends AppCompatActivity {
                             finish();
                         } else {
                             editLogin.setText("");
+                            editName.setText("");
                             editPassword.setText("");
                             snackbar("Email Ja Cadastrado");
                         }
