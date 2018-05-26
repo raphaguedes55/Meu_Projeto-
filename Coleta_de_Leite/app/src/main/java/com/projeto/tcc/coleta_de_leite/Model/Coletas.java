@@ -13,7 +13,7 @@ public class Coletas implements Serializable{
     private String horaColeta;
     private String nomeProdutor;
     private String litrosColeta;
-    private String matProdutor;
+    private String medida;
     private String temperatura;
     private String alizarol;
     private String amostra;
@@ -28,11 +28,11 @@ public class Coletas implements Serializable{
 
 
     public Coletas(String idColeta,String idRota,String nomeProdutor,String litrosColeta,
-                   String matProdutor,String horaColeta,String Alizarol,String temperatura,
+                   String medida,String horaColeta,String Alizarol,String temperatura,
                    String amostra,String retifica,String observaçao,String motivo,String imagem){
         this.idColeta=idColeta;
         this.idRota=idRota;
-        this.matProdutor=matProdutor;
+        this.medida =medida;
         this.alizarol=Alizarol;
         this.temperatura=temperatura;
         this.nomeProdutor=nomeProdutor;
@@ -53,7 +53,7 @@ public class Coletas implements Serializable{
     public String getIdRota(){return idRota;}
     public String getAlizarol(){return alizarol;}
     public String getHoraColeta(){return horaColeta;}
-    public String getMatProdutor(){return matProdutor;};
+    public String getMedida(){return medida;};
     public String getTemperatura(){return temperatura;};
     public String getIdColeta() {
         return idColeta;

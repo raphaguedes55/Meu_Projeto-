@@ -17,6 +17,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -87,6 +90,10 @@ public class ColetaActivity extends AppCompatActivity {
 
 
         listaId();
+        MobileAds.initialize(this, "YOUR_ADMOB_APP_ID");
+       AdView mAdView = (AdView)findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         aux =(String) getIntent().getSerializableExtra("capacidade");
         capacidade_caminhao.setText(aux);
         databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(idDaRota);
@@ -102,7 +109,7 @@ public class ColetaActivity extends AppCompatActivity {
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_rotas,menu);
+        getMenuInflater().inflate(R.menu.menu_coleta,menu);
         return  true;
     }
 

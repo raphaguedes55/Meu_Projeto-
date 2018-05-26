@@ -12,10 +12,12 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.projeto.tcc.coleta_de_leite.Model.Rota;
 import com.projeto.tcc.coleta_de_leite.R;
+import com.projeto.tcc.coleta_de_leite.Utils.AdMob;
 
 import java.util.Calendar;
 
@@ -32,6 +34,9 @@ public class CadastroRotaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrorotas);
+        AdView  mAdView = (AdView)findViewById(R.id.adView);
+        final AdMob adMob = new AdMob();
+        adMob.mAdmob(getApplicationContext(),mAdView);
         listaId();
         metodoButoon();
         datadarota();
@@ -67,6 +72,7 @@ public class CadastroRotaActivity extends AppCompatActivity {
         rotas = (EditText) findViewById(R.id.edit_Rota);
         inicioColeta=(Button)findViewById(R.id.saveRota);
         spinner=(Spinner)findViewById(R.id.spinnerRota);
+
     }
     private void metodoButoon(){
         inicioColeta.setOnClickListener(new View.OnClickListener() {

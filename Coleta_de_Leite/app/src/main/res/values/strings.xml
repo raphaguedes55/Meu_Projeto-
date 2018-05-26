@@ -60,4 +60,6 @@
     <string name="vazio">Preenchimento Obrigatorio</string>
     <string name="email">raphaguedes55@hotmail.com</string>
     <string name="email_invalido">email invalido</string>
+    <string name="frase_redefinir">Precisamos da identificação do e-mail registrado para enviar instruções de reinicialização de senha</string>
+    <string name="criar_conta">Ainda nao possui uma conta ? <b>Clique aqui para registrar</b> </string>
 </resources>

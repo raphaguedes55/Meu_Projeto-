@@ -2,7 +2,6 @@
         package com.projeto.tcc.coleta_de_leite.Classes;
 
         import android.os.Bundle;
-        import android.os.PersistableBundle;
         import android.support.annotation.Nullable;
         import android.support.v7.app.AlertDialog;
         import android.support.v7.app.AppCompatActivity;
@@ -11,23 +10,21 @@
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.Spinner;
-        import android.widget.TextClock;
         import android.widget.TextView;
 
+        import com.google.android.gms.ads.AdView;
         import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
         import com.projeto.tcc.coleta_de_leite.Dao.ColetaDao;
-        import com.projeto.tcc.coleta_de_leite.Dao.RotaDao;
         import com.projeto.tcc.coleta_de_leite.Model.Coletas;
-        import com.projeto.tcc.coleta_de_leite.Model.Rota;
         import com.projeto.tcc.coleta_de_leite.R;
+        import com.projeto.tcc.coleta_de_leite.Utils.AdMob;
 
-/**
+        /**
  * Created by raphael on 19/05/17.
  */
 
 public class UpdateDeleteColetaActivity extends AppCompatActivity{
-    private EditText matricula;
+    private EditText medida;
     private EditText produtor;
     private EditText litros;
     private EditText obs;
@@ -50,10 +47,13 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atualizacoleta);
         coletas = (Coletas) getIntent().getSerializableExtra("dados");
+        AdView mAdView = (AdView)findViewById(R.id.adView);
+        final AdMob adMob = new AdMob();
+        adMob.mAdmob(getApplicationContext(),mAdView);
 
         findViewByIds();
 
-        matricula.setText(coletas.getMatProdutor());
+        medida.setText(coletas.getMedida());
         produtor.setText(coletas.getNomeProdutor());
         litros.setText(coletas.getLitrosColeta());
         amostra.setText(coletas.getAmostra());
@@ -83,8 +83,8 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
 
     }
     private boolean verificaCampos() {
-        if (matricula.getText().toString().isEmpty()) {
-            matricula.setError(getString(R.string.vazio));
+        if (medida.getText().toString().isEmpty()) {
+            medida.setError(getString(R.string.vazio));
             return false;
 
         }
@@ -120,7 +120,7 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         deletaColeta=(Button)findViewById(R.id.button_deletar_coleta);
         atualizaColeta=(Button)findViewById(R.id.button_atualiza_coleta);
         amostra=(EditText)findViewById(R.id.edit_update_amostra);
-        matricula=(EditText)findViewById(R.id.edit_update_matricula);
+        medida =(EditText)findViewById(R.id.edit_update_medida);
         produtor=(EditText)findViewById(R.id.edit_update_prod);
         litros=(EditText)findViewById(R.id.edit_update_litros);
         spinnerAlizarol=(Spinner)findViewById(R.id.spinner_update_Alizarol);
@@ -173,7 +173,7 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
             final  String rotaId = coletas.getIdRota();
             final   String nomeProdutor = produtor.getText().toString().trim();
             final  String litragem = litros.getText().toString().trim();
-            final  String mat = matricula.getText().toString().trim();
+            final  String mat = medida.getText().toString().trim();
             final  String alizarol = spinnerAlizarol.getSelectedItem().toString();
             final   String temperatura = spinner.getSelectedItem().toString();
             final   String namostra = amostra.getText().toString().trim();

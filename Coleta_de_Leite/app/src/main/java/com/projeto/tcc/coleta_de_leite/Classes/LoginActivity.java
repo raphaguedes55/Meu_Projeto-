@@ -34,14 +34,14 @@ import com.projeto.tcc.coleta_de_leite.R;
  */
 
 public class LoginActivity extends AppCompatActivity {
-    private EditText senha,email;
+    private EditText senha, email;
     private LinearLayout linearLayout;
-    private TextView ajuda;
+    private TextView redefinir, criarconta;
     private Button login;
     private FirebaseAuth auth;
     ProgressDialog progressDialog;
     DatabaseReference databaseMotorista;
-    public static final String motoristaId="com.projeto.tcc.coleta_de_leite.motoristaId";
+    public static final String motoristaId = "com.projeto.tcc.coleta_de_leite.motoristaId";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,7 +52,8 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.setMessage("Carregando Usuario");
         progressDialog.setCancelable(false);
 
-        databaseMotorista= FirebaseDatabase.getInstance().getReference("motoristas");
+
+        databaseMotorista = FirebaseDatabase.getInstance().getReference("motoristas");
         verificaAuth();
 
 
@@ -61,20 +62,16 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
-
-
-
-    public void metodobotoes(){
+    public void metodobotoes() {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 progressDialog.show();
                 final String inputemail = email.getText().toString();
-                final String password= senha.getText().toString();
+                final String password = senha.getText().toString();
                 if (TextUtils.isEmpty(inputemail)) {
                     email.setError("Obrigatorio");
-                    snackbar( "Insira seu Email ");
+                    snackbar("Insira seu Email ");
 
                     progressDialog.dismiss();
                     return;
@@ -82,30 +79,26 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(password)) {
                     senha.setError("Obrigatorio");
-                    snackbar( "Insira sua senha ");
+                    snackbar("Insira sua senha ");
 
                     progressDialog.dismiss();
                     return;
                 }
 
 
-
-
-
-                auth.signInWithEmailAndPassword(inputemail,password)
+                auth.signInWithEmailAndPassword(inputemail, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                if(!task.isSuccessful()){
+                                if (!task.isSuccessful()) {
                                     snackbar("Usuario ou senha invalidos ");
                                     vibrar();
 
                                     progressDialog.dismiss();
 
 
-                                }
-                                else {
+                                } else {
                                     verificaAuth();
                                 }
 
@@ -114,41 +107,42 @@ public class LoginActivity extends AppCompatActivity {
                         });
             }
         });
-        ajuda.setOnClickListener(new View.OnClickListener() {
+        redefinir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("message/rfc822");
-                i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"suporteeliteleitera@hotmail.com"});
-                i.putExtra(Intent.EXTRA_SUBJECT, "SOLICITAÇAO DE AJUDA ");
-                try {
-                    startActivity(Intent.createChooser(i, "Send mail..."));
-                } catch (android.content.ActivityNotFoundException ex) {
-                    Toast.makeText(getApplicationContext(), "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-                }
+                Intent transicaoadc = new Intent(LoginActivity.this, RedefinirActivity.class);
+                startActivity(transicaoadc);
+
+            }
+        });
+        criarconta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent transicaoadc = new Intent(LoginActivity.this, RegistrarActivity.class);
+                startActivity(transicaoadc);
+
 
             }
         });
     }
 
 
+    public void buscadeid() {
+        linearLayout = (LinearLayout) findViewById(R.id.linear_login);
+        email = (EditText) findViewById(R.id.login_Email);
+        senha = (EditText) findViewById(R.id.loginSenha);
+        redefinir = (TextView) findViewById(R.id.text_redefinir);
+        criarconta = (TextView) findViewById(R.id.text_criar_conta);
+        login = (Button) findViewById(R.id.logar);
+    }
 
 
-
-    public void buscadeid(){
-        linearLayout=(LinearLayout)findViewById(R.id.linear_login);
-        email=(EditText)findViewById(R.id.login_Email);
-        senha=(EditText)findViewById(R.id.loginSenha);
-        ajuda=(TextView)findViewById(R.id.text_ajuda);
-        login=(Button)findViewById(R.id.logar);}
-
-
-    public void verificaAuth(){
-        if(auth.getCurrentUser() !=null) {
+    public void verificaAuth() {
+        if (auth.getCurrentUser() != null) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             if (user != null) {
                 String token = user.getUid();
-                Motoristas motoristas = new Motoristas(token);
+                Motoristas motoristas = new Motoristas(token, "", "");
                 Intent transicaoadc = new Intent(LoginActivity.this, RotaActivity.class);
                 transicaoadc.putExtra(motoristaId, motoristas.getId_motorista());
                 startActivity(transicaoadc);
@@ -160,6 +154,7 @@ public class LoginActivity extends AppCompatActivity {
 
         }
     }
+
     private void snackbar(final String text) {
         Snackbar snackbar = Snackbar.make(linearLayout, text, Snackbar.LENGTH_SHORT);
         progressDialog.dismiss();
@@ -170,11 +165,12 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
     public void vibrar() {
         Vibrator rr = (Vibrator) getSystemService(getApplicationContext().VIBRATOR_SERVICE);
         long milliseconds = 100;//'300' é o tempo em milissegundos, é basicamente o tempo de duração da vibração. portanto, quanto maior este numero, mais tempo de vibração você irá ter
         rr.vibrate(milliseconds);
     }
 
-    }
+}
 

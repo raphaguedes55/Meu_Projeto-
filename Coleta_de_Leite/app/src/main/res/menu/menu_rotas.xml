@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.powellapps.ihadream.MainActivity">
     <item
+        android:id="@+id/action_busca"
+        android:orderInCategory="100"
+        android:title="Pesquisar"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_ajuda"
         android:orderInCategory="100"
         android:title="Suporte"

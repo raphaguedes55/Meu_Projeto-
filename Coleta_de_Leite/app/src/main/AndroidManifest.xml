@@ -24,6 +24,29 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
+            <activity
+                android:screenOrientation="portrait"
+                android:name=".Classes.RegistrarActivity"
+                android:label="Novo Usuario "
+                android:theme="@style/AppTheme">
+                <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".Classes.LoginActivity" />
+                />
+
+            </activity>
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".Classes.RedefinirActivity"
+            android:label="Esqueci minha senha  "
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Classes.LoginActivity" />
+            />
+
+        </activity>
+
         <activity
             android:screenOrientation="portrait"
             android:name=".Classes.RotaActivity"

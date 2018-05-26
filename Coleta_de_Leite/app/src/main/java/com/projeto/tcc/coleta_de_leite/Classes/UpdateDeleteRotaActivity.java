@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.projeto.tcc.coleta_de_leite.Dao.ColetaDao;
@@ -19,6 +20,7 @@ import com.projeto.tcc.coleta_de_leite.Dao.RotaDao;
 import com.projeto.tcc.coleta_de_leite.Model.Coletas;
 import com.projeto.tcc.coleta_de_leite.Model.Rota;
 import com.projeto.tcc.coleta_de_leite.R;
+import com.projeto.tcc.coleta_de_leite.Utils.AdMob;
 
 /**
  * Created by raphael on 23/05/17.
@@ -36,7 +38,11 @@ public class UpdateDeleteRotaActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atualizarota);
+        AdView mAdView = (AdView)findViewById(R.id.adView);
+        final AdMob adMob = new AdMob();
+        adMob.mAdmob(getApplicationContext(),mAdView);
         findViewByIds();
+
 
 
 

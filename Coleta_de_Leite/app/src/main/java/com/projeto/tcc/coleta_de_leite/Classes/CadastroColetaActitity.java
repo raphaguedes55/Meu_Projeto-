@@ -3,17 +3,11 @@ package com.projeto.tcc.coleta_de_leite.Classes;
 import android.content.Intent;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextClock;
-import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,7 +23,7 @@ import static com.projeto.tcc.coleta_de_leite.Classes.ColetaActivity.rotaId;
  */
 
 public class CadastroColetaActitity extends AppCompatActivity {
-    private EditText matricula;
+    private EditText medida;
     private EditText produtor;
     private EditText litros;
     private EditText numeroAmostra;
@@ -54,8 +48,8 @@ public class CadastroColetaActitity extends AppCompatActivity {
 
     }
     private boolean verificaCampos() {
-        if (matricula.getText().toString().isEmpty()) {
-            matricula.setError(getString(R.string.vazio));
+        if (medida.getText().toString().isEmpty()) {
+            medida.setError(getString(R.string.vazio));
             return false;
 
         }
@@ -98,12 +92,12 @@ public class CadastroColetaActitity extends AppCompatActivity {
         String obs="";
         String nomeProdutor=produtor.getText().toString().trim();
         String litragem= litros.getText().toString().trim();
-        String mat = matricula.getText().toString().trim();
+        String medidas= medida.getText().toString().trim();
         String tipoAlizarol=spinnerAlizarol.getSelectedItem().toString();
         String temperatura=spinner.getSelectedItem().toString();
         String amostra=numeroAmostra.getText().toString().trim();
             String id =databaseRotas.push().getKey();
-            Coletas coletas= new Coletas(id,idDaRota,nomeProdutor,litragem,mat,horario,tipoAlizarol,temperatura,amostra,retificado,obs,"","");
+            Coletas coletas= new Coletas(id,idDaRota,nomeProdutor,litragem,medidas,horario,tipoAlizarol,temperatura,amostra,retificado,obs,"","");
             databaseRotas.child(id).setValue(coletas);
             finish();
     }
@@ -114,7 +108,7 @@ public class CadastroColetaActitity extends AppCompatActivity {
         numeroAmostra=(EditText)findViewById(R.id.edit_amostra);
         spinnerAlizarol=(Spinner)findViewById(R.id.spinnerAlizarol);
         spinner=(Spinner)findViewById(R.id.spinnerTemperatura);
-        matricula = (EditText) findViewById(R.id.edit_mat);
+        medida = (EditText) findViewById(R.id.edit_mat);
         produtor = (EditText) findViewById(R.id.edit_prod);
         litros = (EditText) findViewById(R.id.edit_litros);
         salva_coleta = (Button) findViewById(R.id.save);
