@@ -29,6 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.projeto.tcc.coleta_de_leite.Adapter.ColetaAdapter;
 import com.projeto.tcc.coleta_de_leite.Model.Coletas;
 import com.projeto.tcc.coleta_de_leite.R;
+import com.projeto.tcc.coleta_de_leite.Utils.AdMob;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -90,10 +91,9 @@ public class ColetaActivity extends AppCompatActivity {
 
 
         listaId();
-        MobileAds.initialize(this, "YOUR_ADMOB_APP_ID");
-       AdView mAdView = (AdView)findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().build();
-        mAdView.loadAd(adRequest);
+        AdView  mAdView = (AdView)findViewById(R.id.adView);
+        final AdMob adMob = new AdMob();
+        adMob.mAdmob(getApplicationContext(),mAdView);
         aux =(String) getIntent().getSerializableExtra("capacidade");
         capacidade_caminhao.setText(aux);
         databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(idDaRota);
@@ -119,7 +119,7 @@ public class ColetaActivity extends AppCompatActivity {
         if (id == R.id.action_ajuda) {
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("message/rfc822");
-            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"suporteeliteleitera@hotmail.com"});
+            i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"eliteleitera.dev@gmail.com"});
             i.putExtra(Intent.EXTRA_SUBJECT, "SOLICITAÇAO DE AJUDA ");
             try {
                 startActivity(Intent.createChooser(i, "Send mail..."));

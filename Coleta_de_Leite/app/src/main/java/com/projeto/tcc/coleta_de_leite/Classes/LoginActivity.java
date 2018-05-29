@@ -1,8 +1,10 @@
 package com.projeto.tcc.coleta_de_leite.Classes;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -92,8 +94,14 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
                                 if (!task.isSuccessful()) {
-                                    snackbar("Usuario ou senha invalidos ");
+                                    if(isOnline()) {
+                                        snackbar("Usuario ou senha invalidos ");
+                                        vibrar();
+                                        return;
+                                    }
+                                   snackbar("Sem conexao de internet");
                                     vibrar();
+
 
                                     progressDialog.dismiss();
 
@@ -153,6 +161,13 @@ public class LoginActivity extends AppCompatActivity {
 
 
         }
+    }
+    public boolean isOnline() {
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return manager.getActiveNetworkInfo() != null &&
+                manager.getActiveNetworkInfo().isConnectedOrConnecting();
+
     }
 
     private void snackbar(final String text) {

@@ -45,7 +45,7 @@
 
             <EditText
                 android:inputType="textCapWords"
-                android:maxLength="16"
+                android:maxLength="40"
                 android:textSize="@dimen/txt_15sp"
                 android:hint="PRODUTOR"
                 android:id="@+id/edit_prod"

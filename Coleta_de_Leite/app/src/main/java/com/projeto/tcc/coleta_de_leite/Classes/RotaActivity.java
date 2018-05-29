@@ -117,7 +117,7 @@ public class RotaActivity extends AppCompatActivity {
         if (id == R.id.action_ajuda) {
             Intent i = new Intent(Intent.ACTION_SEND);
             i.setType("message/rfc822");
-            i.putExtra(Intent.EXTRA_EMAIL, new String[]{"suporteeliteleitera@hotmail.com"});
+            i.putExtra(Intent.EXTRA_EMAIL, new String[]{"eliteleitera.dev@gmail.com"});
             i.putExtra(Intent.EXTRA_SUBJECT, "SOLICITAÇAO DE AJUDA ");
             try {
                 startActivity(Intent.createChooser(i, "Send mail..."));

@@ -1,6 +1,7 @@
 package com.projeto.tcc.coleta_de_leite.Utils;
 
 import android.content.Context;
+import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;

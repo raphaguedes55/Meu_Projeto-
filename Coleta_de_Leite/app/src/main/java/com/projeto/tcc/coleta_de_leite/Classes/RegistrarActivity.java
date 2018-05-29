@@ -2,8 +2,10 @@ package com.projeto.tcc.coleta_de_leite.Classes;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.Vibrator;
@@ -109,13 +111,27 @@ public class RegistrarActivity extends AppCompatActivity {
 
                             finish();
                         } else {
-                            editLogin.setText("");
-                            editName.setText("");
-                            editPassword.setText("");
-                            snackbar("Email Ja Cadastrado");
+                            if(isOnline()) {
+                                editLogin.setText("");
+                                editName.setText("");
+                                editPassword.setText("");
+                                snackbar( "Email ja Cadastrado");
+                                vibrar();
+                                return;
+                            }
+
+                            snackbar("Sem conexao de internet");
+                            vibrar();
                         }
                     }
                 });
+    }
+    public boolean isOnline() {
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return manager.getActiveNetworkInfo() != null &&
+                manager.getActiveNetworkInfo().isConnectedOrConnecting();
+
     }
 
     private void snackbar(final String text) {

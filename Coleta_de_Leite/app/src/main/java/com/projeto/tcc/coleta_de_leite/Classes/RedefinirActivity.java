@@ -2,7 +2,9 @@ package com.projeto.tcc.coleta_de_leite.Classes;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.Vibrator;
@@ -72,13 +74,24 @@ public class RedefinirActivity extends AppCompatActivity {
 
                             finish();
                         } else {
-                            snackbar("Email não Cadastrado");
-
+                            if(isOnline()) {
+                                snackbar( "Email não Cadastrado");
+                                vibrar();
+                                return;
+                            }
+                                snackbar("Sem conexao de internet");
+                                    vibrar();
                         }
                     }
                 });
     }
+    public boolean isOnline() {
+        ConnectivityManager manager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        return manager.getActiveNetworkInfo() != null &&
+                manager.getActiveNetworkInfo().isConnectedOrConnecting();
+
+    }
     private void snackbar(final String text) {
         Snackbar snackbar = Snackbar.make(linearLayout, text, Snackbar.LENGTH_SHORT);
         progressDialog.dismiss();
