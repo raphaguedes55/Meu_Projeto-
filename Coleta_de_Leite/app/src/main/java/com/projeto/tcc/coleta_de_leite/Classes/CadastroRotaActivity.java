@@ -12,7 +12,9 @@ import android.widget.TextClock;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.projeto.tcc.coleta_de_leite.Model.Rota;
@@ -26,6 +28,7 @@ public class CadastroRotaActivity extends AppCompatActivity {
     private Button inicioColeta;
     private Spinner spinner;
     private TextClock textClock;
+     AdView adView;
     String motoristaID;
     String Data;
     DatabaseReference databaseRotas;
@@ -34,6 +37,10 @@ public class CadastroRotaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrorotas);
+        MobileAds.initialize(this, "ca-app-pub-7740037973360371/4869779032");
+        adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
         listaId();
         metodoButoon();
         datadarota();

@@ -1,6 +1,7 @@
 package com.projeto.tcc.coleta_de_leite.Adapter;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,10 +58,11 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
     public View getView(int position, final View convertView, ViewGroup parent) {
         LayoutInflater inflater =context.getLayoutInflater();
         View listViewItem= inflater.inflate(R.layout.layout_rota,null,true);
+        final ProgressBar progressBar = listViewItem.findViewById(R.id.progressbarRota);
         TextView textViewRota=(TextView) listViewItem.findViewById(R.id.textRota);
         TextView textViewHora=(TextView) listViewItem.findViewById(R.id.data_rota);
-        TextView textViewColeta = (TextView) listViewItem.findViewById(R.id.textViewColetar);
-        TextView textViewUpdadeColeta=(TextView)listViewItem.findViewById(R.id.textViewUpdate);
+        final TextView textViewColeta = (TextView) listViewItem.findViewById(R.id.textViewColetar);
+        final TextView textViewUpdadeColeta=(TextView)listViewItem.findViewById(R.id.textViewUpdate);
 
         final Rota rota=rotaList.get(position);
 
@@ -71,12 +74,16 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
             @Override
             public void onClick(View v) {
                 rota.getRotaId();
-                Intent intent = new Intent(context,ColetaActivity.class);
-                intent.putExtra(ROTA_ID,rota.getRotaId());
+                Intent intent = new Intent(context, ColetaActivity.class);
+                intent.putExtra(ROTA_ID, rota.getRotaId());
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("capacidade",rota.getCapacidade());
+                bundle.putSerializable("capacidade", rota.getCapacidade());
                 intent.putExtras(bundle);
                 context.startActivity(intent);
+                textViewColeta.setVisibility(View.GONE);
+                textViewUpdadeColeta.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
+               
 
             }
         });
@@ -89,6 +96,9 @@ public class RotaAdapter extends ArrayAdapter<Rota> {
                 bundle.putSerializable("rota",rota);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
+                textViewColeta.setVisibility(View.GONE);
+                textViewUpdadeColeta.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
             }
         });
 

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
@@ -49,6 +50,8 @@ public class RotaActivity extends AppCompatActivity {
     long strData;
     String idmotorista;
     private FirebaseAuth auth;
+    private AdView adView;
+    private ProgressBar progressBar;
 
 
     private ProgressDialog progressDialog;
@@ -58,10 +61,12 @@ public class RotaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rota);
+
         Intent intent = getIntent();
-      AdView  mAdView = (AdView)findViewById(R.id.adView);
-        final AdMob adMob = new AdMob();
-        adMob.mAdmob(getApplicationContext(),mAdView);
+        MobileAds.initialize(this, "ca-app-pub-7740037973360371/4869779032");
+        adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
         idmotorista = intent.getStringExtra(LoginActivity.motoristaId);
         databaseRotas = FirebaseDatabase.getInstance().getReference("rotas").child(idmotorista);
         auth = FirebaseAuth.getInstance();
@@ -73,18 +78,21 @@ public class RotaActivity extends AppCompatActivity {
     }
 
     private void listarIds() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_rota);
+        Toolbar toolbar = findViewById(R.id.toolbar_rota);
         setSupportActionBar(toolbar);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Carregando rotas...");
         progressDialog.setCancelable(true);
         progressDialog.show();
-        listViewRota = (ListView) findViewById(R.id.list_rota);
+        progressBar= findViewById(R.id.progressBar);
+        listViewRota = findViewById(R.id.list_rota);
         listViewRota.setDivider(this.getResources().getDrawable(R.drawable.transperent_color));
         listViewRota.setDividerHeight(20);
         rotaList = new ArrayList<>();
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = findViewById(R.id.fab);
         coordinator = findViewById(R.id.coordinator_rota);
+
+
 
     }
 
@@ -95,6 +103,9 @@ public class RotaActivity extends AppCompatActivity {
                 Intent transicaoadc = new Intent(RotaActivity.this, CadastroRotaActivity.class);
                 transicaoadc.putExtra(motoristaId, idmotorista);
                 startActivity(transicaoadc);
+                progressDialog.setMessage("Cadastrando Rota");
+                progressDialog.show();
+
 
 
             }

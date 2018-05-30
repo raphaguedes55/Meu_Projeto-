@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.projeto.tcc.coleta_de_leite.Model.Coletas;
@@ -33,11 +36,16 @@ public class CadastroColetaActitity extends AppCompatActivity {
     private Spinner spinner;
     private Spinner spinnerAlizarol;
     DatabaseReference databaseRotas;
+    AdView adView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrocoleta);
+        MobileAds.initialize(this, "ca-app-pub-7740037973360371/4869779032");
+        adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
         findViewByIds();
         final Calendar c = Calendar.getInstance();
         String hora = "" + c.get(Calendar.HOUR_OF_DAY);

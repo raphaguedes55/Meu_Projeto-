@@ -14,7 +14,7 @@ public class AdMob {
     public boolean mAdmob(Context context ,AdView adView){
         MobileAds.initialize(context, "ca-app-pub-7740037973360371/2579306449");
         adView = (AdView) adView.findViewById(R.id.adView);
-        AdRequest adRequest = new AdRequest.Builder().addTestDevice("ca-app-pub-7740037973360371/2579306449").build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
         return true;
 

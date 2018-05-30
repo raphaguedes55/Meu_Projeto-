@@ -103,7 +103,11 @@
                         android:text="COLETAR"
                         android:textColor="@color/colorPrimary"
                         android:textStyle="bold" />
-
+                    <ProgressBar
+                        android:visibility="gone"
+                        android:id="@+id/progressbarRota"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
 

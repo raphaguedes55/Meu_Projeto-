@@ -38,6 +38,7 @@ public class ColetaActivity extends AppCompatActivity {
     public static final String rotaId="com.projeto.tcc.coleta_de_leite.rotaid";
     public static final String ROTA_ID="com.projeto.tcc.coleta_de_leite.rotaid";
      int coletaId=0;
+     AdView adView;
     ProgressDialog progressDialog;
     public String rotaName;
     ListView listViewColetas;
@@ -91,9 +92,10 @@ public class ColetaActivity extends AppCompatActivity {
 
 
         listaId();
-        AdView  mAdView = (AdView)findViewById(R.id.adView);
-        final AdMob adMob = new AdMob();
-        adMob.mAdmob(getApplicationContext(),mAdView);
+        MobileAds.initialize(this, "ca-app-pub-7740037973360371/4869779032");
+        adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
         aux =(String) getIntent().getSerializableExtra("capacidade");
         capacidade_caminhao.setText(aux);
         databaseRotas = FirebaseDatabase.getInstance().getReference("coletas").child(idDaRota);
@@ -182,6 +184,7 @@ public class ColetaActivity extends AppCompatActivity {
                         bundle.putSerializable("coleta", coletas);
                         intent.putExtras(bundle);
                         startActivity(intent);
+
 
                     }
                 });

@@ -1,4 +1,5 @@
 <resources>
+    <string name="banner_ad_unit_id">ca-app-pub-7740037973360371/4869779032</string>
     <string name="app_name">Coleta_de_Leite</string>
     <string name="problemas">Esta Com Problema ?</string>
     <string name="senha_invalida">senha invalida!</string>

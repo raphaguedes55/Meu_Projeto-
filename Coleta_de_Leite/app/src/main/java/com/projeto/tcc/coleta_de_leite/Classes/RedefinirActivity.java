@@ -39,7 +39,7 @@ public class RedefinirActivity extends AppCompatActivity {
         setContentView(R.layout.activity_refinir);
         auth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Cadastrando Usuario");
+        progressDialog.setMessage("Enviando redefinição");
         progressDialog.setCancelable(false);
         linearLayout = (LinearLayout) findViewById(R.id.linear_redefinir);
         email = (AutoCompleteTextView) findViewById(R.id.redefinir_email);

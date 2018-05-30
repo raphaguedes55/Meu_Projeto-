@@ -145,16 +145,6 @@
                 android:background="@color/colorPrimaryDark"
                 android:text="SALVAR"
                 android:textColor="#ffffff" />
-            <Button
-                android:visibility="invisible"
-                android:id="@+id/ocorrencia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/colorPrimaryDark"
-                android:text="FAZER OCORRENCIA"
-                android:textColor="#ffffff" />
-
 
 
             <TextClock
@@ -165,7 +155,18 @@
                 android:format24Hour="MMM dd, k:mm"
                 android:textSize="0dp" />
 
-
+            <com.google.android.gms.ads.AdView
+                android:layout_marginTop="10dp"
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/adView"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_alignParentBottom="true"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-7740037973360371/4869779032">
+            </com.google.android.gms.ads.AdView>
 
         </LinearLayout>
 

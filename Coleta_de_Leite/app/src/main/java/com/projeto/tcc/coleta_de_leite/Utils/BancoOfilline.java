@@ -14,6 +14,6 @@ public class BancoOfilline extends Application {
     public void onCreate() {
         super.onCreate();
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-        FirebaseStorage.getInstance();
+
     }
 }

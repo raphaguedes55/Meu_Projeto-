@@ -26,10 +26,12 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-<FrameLayout
+
+        <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="446dp"
     android:layout_weight="1.89">
+
         <ListView
             android:id="@+id/list_coleta"
             android:layout_width="match_parent"
@@ -44,12 +46,14 @@
             android:layout_height="match_parent"
             android:visibility="gone">
 
+
             <LinearLayout
                 android:padding="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:weightSum="1">
+
                 <com.google.android.gms.ads.AdView
                     xmlns:ads="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/adView"
@@ -59,8 +63,9 @@
                     android:layout_centerHorizontal="true"
                     android:layout_alignParentBottom="true"
                     ads:adSize="BANNER"
-                    ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+                    ads:adUnitId="ca-app-pub-7740037973360371/4869779032">
                 </com.google.android.gms.ads.AdView>
+
                 <TextView
 
                     android:layout_centerHorizontal="true"

@@ -7,6 +7,9 @@
     android:background="@color/colorPrimary"
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     android:weightSum="1">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
 
     <LinearLayout
@@ -110,9 +113,20 @@
             android:textSize="@dimen/txt_size" />
 
 
-
+        <com.google.android.gms.ads.AdView
+            android:layout_marginTop="10dp"
+            xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            ads:adSize="BANNER"
+            ads:adUnitId="ca-app-pub-7740037973360371/4869779032">
+        </com.google.android.gms.ads.AdView>
     </LinearLayout>
 
-
+    </ScrollView>
 
 </LinearLayout>
