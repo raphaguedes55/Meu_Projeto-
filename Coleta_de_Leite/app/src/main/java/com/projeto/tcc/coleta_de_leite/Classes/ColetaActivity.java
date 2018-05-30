@@ -37,8 +37,8 @@ import java.util.List;
 public class ColetaActivity extends AppCompatActivity {
     public static final String rotaId="com.projeto.tcc.coleta_de_leite.rotaid";
     public static final String ROTA_ID="com.projeto.tcc.coleta_de_leite.rotaid";
-   int coletaId=0;
-    private ProgressDialog progressDialog;
+     int coletaId=0;
+    ProgressDialog progressDialog;
     public String rotaName;
     ListView listViewColetas;
     DatabaseReference databaseRotas;
@@ -52,7 +52,7 @@ public class ColetaActivity extends AppCompatActivity {
     int Nprodutor;
     int TotalColeta;
     String alizarol;
-    private FirebaseAuth auth;
+   FirebaseAuth auth;
     String aux;
     int positon;
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

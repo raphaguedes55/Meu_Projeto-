@@ -54,7 +54,6 @@ public class RotaActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private FloatingActionButton fab;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,6 +77,7 @@ public class RotaActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Carregando rotas...");
+        progressDialog.setCancelable(true);
         progressDialog.show();
         listViewRota = (ListView) findViewById(R.id.list_rota);
         listViewRota.setDivider(this.getResources().getDrawable(R.drawable.transperent_color));

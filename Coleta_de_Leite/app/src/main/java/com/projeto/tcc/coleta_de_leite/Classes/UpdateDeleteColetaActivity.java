@@ -47,9 +47,7 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atualizacoleta);
         coletas = (Coletas) getIntent().getSerializableExtra("dados");
-        AdView mAdView = (AdView)findViewById(R.id.adView);
-        final AdMob adMob = new AdMob();
-        adMob.mAdmob(getApplicationContext(),mAdView);
+
 
         findViewByIds();
 

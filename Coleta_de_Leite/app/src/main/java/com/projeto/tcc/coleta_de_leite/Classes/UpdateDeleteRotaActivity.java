@@ -38,9 +38,7 @@ public class UpdateDeleteRotaActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_atualizarota);
-        AdView mAdView = (AdView)findViewById(R.id.adView);
-        final AdMob adMob = new AdMob();
-        adMob.mAdmob(getApplicationContext(),mAdView);
+
         findViewByIds();
 
 

@@ -34,9 +34,6 @@ public class CadastroRotaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastrorotas);
-        AdView  mAdView = (AdView)findViewById(R.id.adView);
-        final AdMob adMob = new AdMob();
-        adMob.mAdmob(getApplicationContext(),mAdView);
         listaId();
         metodoButoon();
         datadarota();
