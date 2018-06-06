@@ -275,6 +275,37 @@
                         android:layout_width="30dp"
                         android:layout_height="30dp"
                         android:layout_margin="10dp"
+                        android:background="@drawable/truck" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="COMPARTIMENTO"
+                            android:textColor="@color/colorPrimary" />
+
+                        <TextView
+                            android:id="@+id/ver_compartimento"
+                            android:layout_width="252dp"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/txt_15sp" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_margin="10dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="10dp"
                         android:background="@drawable/qualidade" />
 
                     <LinearLayout

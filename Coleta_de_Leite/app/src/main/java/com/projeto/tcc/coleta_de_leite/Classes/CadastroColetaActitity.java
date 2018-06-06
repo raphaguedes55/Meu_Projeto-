@@ -30,9 +30,10 @@ public class CadastroColetaActitity extends AppCompatActivity {
     private EditText produtor;
     private EditText litros;
     private EditText numeroAmostra;
+    private EditText compartimento;
     private Button salva_coleta;
-    String idDaRota;
-    String horario;
+    private String idDaRota;
+    private String horario;
     private Spinner spinner;
     private Spinner spinnerAlizarol;
     DatabaseReference databaseRotas;
@@ -74,6 +75,10 @@ public class CadastroColetaActitity extends AppCompatActivity {
 
             litros.setError(getString(R.string.vazio));
             return false;}
+        if (compartimento.getText().toString().isEmpty()) {
+
+            compartimento.setError(getString(R.string.vazio));
+            return false;}
 
 
 
@@ -104,8 +109,9 @@ public class CadastroColetaActitity extends AppCompatActivity {
         String tipoAlizarol=spinnerAlizarol.getSelectedItem().toString();
         String temperatura=spinner.getSelectedItem().toString();
         String amostra=numeroAmostra.getText().toString().trim();
-            String id =databaseRotas.push().getKey();
-            Coletas coletas= new Coletas(id,idDaRota,nomeProdutor,litragem,medidas,horario,tipoAlizarol,temperatura,amostra,retificado,obs,"","");
+        String mcompartimento= compartimento.getText().toString().trim();
+        String id =databaseRotas.push().getKey();
+            Coletas coletas= new Coletas(id,idDaRota,nomeProdutor,litragem,medidas,horario,tipoAlizarol,temperatura,amostra,retificado,obs,"","",mcompartimento);
             databaseRotas.child(id).setValue(coletas);
             finish();
     }
@@ -119,6 +125,7 @@ public class CadastroColetaActitity extends AppCompatActivity {
         medida = (EditText) findViewById(R.id.edit_mat);
         produtor = (EditText) findViewById(R.id.edit_prod);
         litros = (EditText) findViewById(R.id.edit_litros);
+        compartimento=(EditText)findViewById(R.id.edit_compartimento);
         salva_coleta = (Button) findViewById(R.id.save);
     }
     private void HoradaColeta() {
@@ -126,12 +133,23 @@ public class CadastroColetaActitity extends AppCompatActivity {
         final Calendar c = Calendar.getInstance();
         String hora = "" + c.get(Calendar.HOUR_OF_DAY);
         int minuto=c.get(Calendar.MINUTE);
+        String ano = "" + c.get(Calendar.YEAR);
+        String mes=c.get(Calendar.MONTH)+1+"";
         if(minuto<10){
              Minuto="0"+minuto;
         }else {
              Minuto=""+minuto;
         }
-        horario=(hora+":"+Minuto);
+
+        if(mes.length()<2){
+            mes="0"+mes;
+        }
+        String dia = "" + c.get(Calendar.DAY_OF_MONTH);
+        if(dia.length()<2){
+            dia="0"+dia;
+        }
+        horario=(" "+dia +"/"+mes+"/"+ano+" às " +hora+":"+Minuto);
+
     }
 
     }

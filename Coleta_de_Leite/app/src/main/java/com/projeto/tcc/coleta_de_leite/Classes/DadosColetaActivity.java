@@ -28,6 +28,7 @@ public class DadosColetaActivity extends AppCompatActivity {
     TextView litros;
     TextView numeroAmostra;
     TextView obs;
+    TextView compartimento;
 
     String aux;
     List<Coletas> coletasList;
@@ -56,6 +57,7 @@ public class DadosColetaActivity extends AppCompatActivity {
         data.setText(coletas.getHoraColeta());
         numeroAmostra.setText(coletas.getAmostra());
         obs.setText(coletas.getObservaçao());
+        compartimento.setText(coletas.getCompartimento());
         updateDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,6 +91,7 @@ public class DadosColetaActivity extends AppCompatActivity {
         data=(TextView)findViewById(R.id.exib_horario);
         obs=(TextView)findViewById(R.id.ver_obs);
         numeroAmostra=(TextView)findViewById(R.id.ver_amostra);
+        compartimento=(TextView)findViewById(R.id.ver_compartimento);
 
 
 

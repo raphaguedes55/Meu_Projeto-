@@ -67,7 +67,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="58dp" />
 
+
             </android.support.design.widget.TextInputLayout>
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:maxLength="4"
+                    android:text="0.0"
+                    android:inputType="numberDecimal"
+                    android:textSize="@dimen/txt_15sp"
+                    android:hint="MEDIDA DA REGUA "
+                    android:id="@+id/edit_mat"
+                    android:layout_width="match_parent"
+                    android:layout_height="58dp" />
+
+            </android.support.design.widget.TextInputLayout>
+
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -88,17 +105,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <EditText
-                    android:maxLength="4"
-                    android:text="0.0"
-                    android:inputType="numberDecimal"
-                    android:textSize="@dimen/txt_15sp"
-                    android:hint="MEDIDA DA REGUA "
-                    android:id="@+id/edit_mat"
-                    android:layout_width="match_parent"
-                    android:layout_height="58dp" />
+            <EditText
+                android:maxLength="4"
+                android:textSize="@dimen/txt_size"
+                android:hint="COMPARTIMENTO ARMAZENADO"
+                android:id="@+id/edit_compartimento"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_below="@+id/text_litros"
+                android:layout_gravity="right|center"
+                android:inputType="text" />
+        </android.support.design.widget.TextInputLayout>
 
-            </android.support.design.widget.TextInputLayout>
 
 
             <TextView

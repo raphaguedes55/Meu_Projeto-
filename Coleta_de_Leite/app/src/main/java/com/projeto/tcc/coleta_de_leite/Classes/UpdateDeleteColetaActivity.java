@@ -28,7 +28,8 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
     private EditText produtor;
     private EditText litros;
     private EditText obs;
-    private TextView amostra;
+    private EditText amostra;
+    private EditText compartimento;
     private Button atualizaColeta;
     private Button deletaColeta;
     private String rotaid;
@@ -55,9 +56,11 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         produtor.setText(coletas.getNomeProdutor());
         litros.setText(coletas.getLitrosColeta());
         amostra.setText(coletas.getAmostra());
+        compartimento.setText(coletas.getCompartimento());
         retifica="Registro Retificado";
         idRota= coletas.getIdRota();
         idColeta= coletas.getIdColeta();
+
 
 
 
@@ -104,6 +107,10 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
 
             litros.setError(getString(R.string.vazio));
             return false;}
+        if (compartimento.getText().toString().isEmpty()) {
+
+            compartimento.setError(getString(R.string.vazio));
+            return false;}
 
 
 
@@ -121,6 +128,7 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
         medida =(EditText)findViewById(R.id.edit_update_medida);
         produtor=(EditText)findViewById(R.id.edit_update_prod);
         litros=(EditText)findViewById(R.id.edit_update_litros);
+        compartimento=(EditText)findViewById(R.id.edit_update_compartimento);
         spinnerAlizarol=(Spinner)findViewById(R.id.spinner_update_Alizarol);
         spinner=(Spinner)findViewById(R.id.spinner_update_Temperatura);
     }
@@ -177,11 +185,12 @@ public class UpdateDeleteColetaActivity extends AppCompatActivity{
             final   String namostra = amostra.getText().toString().trim();
             final   String retificado = "Registro Retificado";
             final    String Horario= coletas.getHoraColeta();
+            final String mCompartimento = compartimento.getText().toString().trim();
             b.show();
         buttonAceitar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                coletaDao.updateColeta(id, rotaId, nomeProdutor, litragem, mat, Horario, alizarol, temperatura, namostra, retificado, sobs,"","");
+                coletaDao.updateColeta(id, rotaId, nomeProdutor, litragem, mat, Horario, alizarol, temperatura, namostra, retificado, sobs,"","",mCompartimento);
                     finish();
                 } }
 
