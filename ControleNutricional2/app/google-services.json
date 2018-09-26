@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "256837087892",
+    "firebase_url": "https://controlenutricional2.firebaseio.com",
+    "project_id": "controlenutricional2",
+    "storage_bucket": "controlenutricional2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:256837087892:android:bb9d3820b696f841",
+        "android_client_info": {
+          "package_name": "com.example.notebookdell.controlenutricional"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "256837087892-fa5f22q8ob0du432pigclrdoeuot5mq5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.notebookdell.controlenutricional",
+            "certificate_hash": "de07438e624f8b3b3a4e30bef9959b4e85d304dc"
+          }
+        },
+        {
+          "client_id": "256837087892-1c42rv3l3evcschvui5e93e425ajqviv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0LnraItcAGuJh8C-X7zdhARZyV30UYOk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "256837087892-1c42rv3l3evcschvui5e93e425ajqviv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
