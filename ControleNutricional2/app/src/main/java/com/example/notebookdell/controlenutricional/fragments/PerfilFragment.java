@@ -30,8 +30,7 @@ public class PerfilFragment extends Fragment {
     private FirebaseAuth auth;
     private TextView pessoa, celular, email, leiloes;
     private Query queryPerfil;
-    private String idusuario;
-    private FirebaseUser usuario = FirebaseAuth.getInstance().getCurrentUser() ;
+
 
     public PerfilFragment() {
         // Required empty public constructor
@@ -39,8 +38,7 @@ public class PerfilFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
@@ -49,10 +47,9 @@ public class PerfilFragment extends Fragment {
         if (auth.getCurrentUser() != null) {
 
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            idusuario=user.getUid();
+            getUsuario(user.getUid());
 
         }
-        getUsuario(usuario.getUid());
 
         setHasOptionsMenu(true);
         pessoa = view.findViewById(R.id.pessoaPerfil);
@@ -104,7 +101,7 @@ public class PerfilFragment extends Fragment {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 try{
                     Usuario usuario = dataSnapshot.getValue(Usuario.class);
-                   exibir(usuario);
+                    exibir(usuario);
 
                 }catch (Exception e){
                     e.printStackTrace();
