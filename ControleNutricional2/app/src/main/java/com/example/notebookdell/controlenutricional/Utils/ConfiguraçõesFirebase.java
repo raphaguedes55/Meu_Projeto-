@@ -15,7 +15,7 @@ public class ConfiguraçõesFirebase {
         return referenceFirebase;
     }
 
-    public static Query getProdutos() {
+    public static Query getReceitas() {
         return FirebaseDatabase.getInstance().getReference(ConstantsUtils.BANCO_RECEITAS);
     }
 }

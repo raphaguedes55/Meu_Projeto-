@@ -46,6 +46,7 @@ dependencies {
     implementation 'com.soundcloud.android:android-crop:1.0.1@aar'
     implementation 'com.firebaseui:firebase-ui-database:3.3.1'
     implementation 'com.google.firebase:firebase-core:16.0.1'
+    implementation 'com.github.medyo:fancybuttons:1.9.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

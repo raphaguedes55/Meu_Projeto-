@@ -18,7 +18,7 @@
 
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="289dp"
             android:layout_height="80dp"
             android:background="@drawable/banner">
 
@@ -89,7 +89,7 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@mipmap/ic_dieta" />
+                        android:src="@drawable/chat" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -129,13 +129,13 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:layout_gravity="center_horizontal"
-                        android:src="@mipmap/ic_dieta" />
+                        android:src="@drawable/info" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="ACOMPANHE SUA DIETA"
+                        android:text="Lista de Receitas"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
                         android:textSize="10sp"

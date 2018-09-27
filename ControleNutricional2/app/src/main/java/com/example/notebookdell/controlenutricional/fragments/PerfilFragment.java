@@ -4,12 +4,15 @@ package com.example.notebookdell.controlenutricional.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.notebookdell.controlenutricional.DAO.DatabaseDAO;
 import com.example.notebookdell.controlenutricional.R;
@@ -45,7 +48,6 @@ public class PerfilFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
-
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             getUsuario(user.getUid());
 
@@ -123,6 +125,7 @@ public class PerfilFragment extends Fragment {
         if (user != null) {
             if (user.getDisplayName() != null) {
                 pessoa.setText(usuario.getNomeUsuario());
+                Log.d("Foi usuario ",usuario.getNomeUsuario());
             }
             if (user.getPhoneNumber() != null){
                 celular.setText(usuario.getNumeroCelular());
@@ -134,5 +137,27 @@ public class PerfilFragment extends Fragment {
         }
 
     }
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        if(getView() == null){
+            return;
+        }
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    FragmentUtils.replace(getActivity(), new InicioFragment());
+                    return true;
+                }
+                return false;
+            }
+        });
+
+}
 }
