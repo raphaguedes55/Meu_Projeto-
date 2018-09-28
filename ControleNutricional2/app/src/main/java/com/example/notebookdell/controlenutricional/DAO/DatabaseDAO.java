@@ -52,11 +52,11 @@ public class   DatabaseDAO {
         }
 
 
-    private void uploadProduto(Receita produto) {
-        produto.setId(ConfiguraçõesFirebase.getFirebase().push().getKey());
-        Log.v("teste save", produto.getId() + produto.getNome());
+    private void uploadReceita(Receita receita) {
+        receita.setId(ConfiguraçõesFirebase.getFirebase().push().getKey());
+        Log.v("teste save", receita.getId() + receita.getNome());
         DatabaseReference reference = ConfiguraçõesFirebase.getFirebase();
-        reference.child(ConstantsUtils.BANCO_RECEITAS).child(String.valueOf(produto.getId())).setValue(produto);
+        reference.child(ConstantsUtils.BANCO_RECEITAS).child(String.valueOf(receita.getId())).setValue(receita);
     }
     private boolean uploadImagem(final ImageView image, final FragmentActivity activity, final Imagem imagem, final Receita receita, final ProgressDialog progressDialog) {
 
@@ -93,7 +93,7 @@ public class   DatabaseDAO {
                         cont++;
 
                         if(cont==3 && imagem.getUrl()!= null){
-                            uploadProduto(receita);
+                            uploadReceita(receita);
                             progressDialog.dismiss();
                             AlertDialog.Builder alert = new AlertDialog.Builder(activity);
 

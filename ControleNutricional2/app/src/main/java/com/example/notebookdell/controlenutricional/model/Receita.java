@@ -5,18 +5,21 @@ import java.io.Serializable;
 public class Receita implements Serializable {
     private String id ;
     private String nome;
+    private String sobre;
     private String ingredientes;
     private String preparo;
     private String tempo;
     private String categoria;
     private String data;
+
     private Imagem imagem1 = new Imagem();
     private Imagem imagem2 = new Imagem();
     private Imagem imagem3 = new Imagem();
 
-    public Receita(String id , String nome, String ingredientes , String preparo, String tempo , String data, String categoria){
+    public Receita(String id , String nome,String sobre,String ingredientes , String preparo, String tempo , String data, String categoria){
         this.id=id;
         this.nome=nome;
+        this.sobre=sobre;
         this.ingredientes=ingredientes;
         this.preparo=preparo;
         this.tempo=tempo;
@@ -102,5 +105,13 @@ public class Receita implements Serializable {
 
     public void setCategoria(String categoria) {
         this.categoria = categoria;
+    }
+
+    public String getSobre() {
+        return sobre;
+    }
+
+    public void setSobre(String sobre) {
+        this.sobre = sobre;
     }
 }

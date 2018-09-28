@@ -48,11 +48,7 @@
                 android:textAlignment="center"
                 android:textSize="16sp" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_margin="20dp"
-                android:background="@color/colorPrimaryDark" />
+
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -75,18 +71,39 @@
                     android:layout_marginLeft="5dp"
                     android:textSize="16sp" />
 
+
+
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_margin="20dp"
+                android:background="@color/colorPrimaryDark" />
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/linear_adm"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/meusleiloes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="20dp"
-                android:textSize="18sp"
+                android:textSize="20dp"
                 android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:text="Meus Leilões"/>
+                android:textAlignment="center"
+                android:text="ACESSO ADMINISTRADOR"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+                />
+                <Button
+                    android:id="@id/btn_receita"
+                    android:background="@color/colorPrimary"
+                    android:textColor="#ffffff"
+                    android:textStyle="bold"
+                    android:layout_margin="20dp"
+                    android:text="Cadastrar Receita"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -1,6 +1,7 @@
 package com.example.notebookdell.controlenutricional.fragments;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +35,10 @@ import com.google.firebase.database.ValueEventListener;
 public class PerfilFragment extends Fragment {
     private FirebaseAuth auth;
     private TextView pessoa, celular, email, leiloes;
+    private LinearLayout linearAdm;
+    private Button btnReceita;
     private Query queryPerfil;
+    private ProgressDialog progressDialog;
 
 
     public PerfilFragment() {
@@ -45,6 +51,10 @@ public class PerfilFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Carregando Informaçoes do Perfil...");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
 
         auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() != null) {
@@ -54,6 +64,8 @@ public class PerfilFragment extends Fragment {
         }
 
         setHasOptionsMenu(true);
+        linearAdm=view.findViewById(R.id.linear_adm);
+        btnReceita=view.findViewById(R.id.btn_receita);
         pessoa = view.findViewById(R.id.pessoaPerfil);
         celular = view.findViewById(R.id.celPerfil);
         email = view.findViewById(R.id.emailPerfil);
@@ -132,8 +144,18 @@ public class PerfilFragment extends Fragment {
             }
             if (user.getEmail() != null ) {
                 email.setText(usuario.getEmail());
-            }
 
+            }
+            if (usuario.getRoot()==true){
+                linearAdm.setVisibility(View.VISIBLE);
+                btnReceita.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        FragmentUtils.replace(getActivity(), new NovasReceitasFragment());
+                    }
+                });
+            }
+            progressDialog.dismiss();
         }
 
     }

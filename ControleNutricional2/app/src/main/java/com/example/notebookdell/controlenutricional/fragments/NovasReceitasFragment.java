@@ -32,7 +32,7 @@ import java.text.SimpleDateFormat;
 import static android.app.Activity.RESULT_OK;
 
 public class NovasReceitasFragment extends Fragment {
-    private EditText edit_nome , edit_ingredientes, edit_preparo,edit_tempo;
+    private EditText edit_nome,edit_resumo, edit_ingredientes, edit_preparo,edit_tempo;
     private ImageView image1, image2, image3;
     private Receita receita =  new Receita();
     private Spinner categoria;
@@ -66,6 +66,7 @@ public class NovasReceitasFragment extends Fragment {
         image3 = view.findViewById(R.id.image3);
 
         edit_nome = view.findViewById(R.id.edit_nome_receita);
+        edit_resumo=view.findViewById(R.id.edit_resumo_receita);
         edit_ingredientes = view.findViewById(R.id.edit_ingredientes);
         edit_preparo = view.findViewById(R.id.edit_modo_preparo);
         categoria = view.findViewById(R.id.spinner_categoria);
@@ -207,6 +208,7 @@ public class NovasReceitasFragment extends Fragment {
     private void validarcampos() {
 
         final String nome = edit_nome.getText().toString().trim();
+        final String resumo = edit_resumo.getText().toString().trim();
         final String ingredientes = edit_ingredientes.getText().toString().trim();
         final String preparo = edit_preparo.getText().toString().trim();
         final String tempo = edit_tempo.getText().toString().trim();
@@ -218,6 +220,14 @@ public class NovasReceitasFragment extends Fragment {
 
             return;
         }
+
+        if (TextUtils.isEmpty(resumo)) {
+            edit_resumo.setError("Campo Obrigatório");
+
+
+            return;
+        }
+
 
         if (TextUtils.isEmpty(ingredientes)) {
             edit_ingredientes.setError("Campo Obrigatório");

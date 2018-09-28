@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -146,7 +147,7 @@ public class CadastroFragment extends Fragment {
                             usuario.setNumeroCelular(numero);
                             usuario.setEmail(email);
                             usuario.setSenha(password);
-                            usuario.setRoot(true);
+                            usuario.setRoot(false);
 
                             new DatabaseDAO().saveUsuario(usuario);
                             FragmentUtils.replace(getActivity(), new InicioFragment());
@@ -159,6 +160,28 @@ public class CadastroFragment extends Fragment {
 
                 });
 
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if(getView() == null){
+            return;
+        }
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK){
+                    FragmentUtils.replace(getActivity(), new LoginFragment());
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
 }

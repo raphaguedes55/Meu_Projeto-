@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Controle Nutricional</string>
+    <string name="app_name">Nutri On</string>
     <string name="action_settings">Settings</string>
     <string name="aguarde">Carregando Receita!</string>
     <string name="esqueci_minha_senha">Esqueci minha senha!</string>
@@ -7,6 +7,7 @@
     <string name="ainda_n_o_possui_registro">Ainda nao possui registro</string>
     <string name="clique_aqui">CLIQUE AQUI</string>
     <string name="frase_redefinir">Precisamos da identificação do e-mail registrado para enviar instruções de reinicialização de senha</string>
+    <string name="controle">NutriOn</string>
 
     <array name="spinerTipoReceiteas">
         <item>Aperitivos</item>

@@ -35,7 +35,7 @@ public class ReceitaAdapter extends RecyclerView.Adapter<ReceitaAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imageReceita;
         private LinearLayout linear_receita;
-        private TextView textNomeReceita;
+        private TextView textNomeReceita,textResumo;
 
 
         public ViewHolder(View itemView) {
@@ -43,6 +43,7 @@ public class ReceitaAdapter extends RecyclerView.Adapter<ReceitaAdapter.ViewHold
            imageReceita= itemView.findViewById(R.id.imagem);
            linear_receita = itemView.findViewById(R.id.linearAdapter);
            textNomeReceita = itemView.findViewById(R.id.txt_nome_receita);
+           textResumo = itemView.findViewById(R.id.txt_sobre_receita);
         }
     }
     public void atualiza(List<Receita> produtos){

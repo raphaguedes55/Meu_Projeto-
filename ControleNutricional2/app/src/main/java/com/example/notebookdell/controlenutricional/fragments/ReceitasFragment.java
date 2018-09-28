@@ -60,13 +60,6 @@ public ReceitasFragment(){}
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
-    floatingActionButton = view.findViewById(R.id.fab_adc_receita);
-    floatingActionButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            FragmentUtils.replace(getActivity(), new NovasReceitasFragment());
-        }
-    });
     }
 
     private void preencherLista() {
